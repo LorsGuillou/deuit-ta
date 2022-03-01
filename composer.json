@@ -1,0 +1,16 @@
+{
+    "name": "kercode/projet",
+    "description": "Projet de fin de formation",
+    "autoload": {
+        "psr-4": {
+            "Kercode\\Projet\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Laurent Guillou",
+            "email": "laurent29190@hotmail.fr"
+        }
+    ],
+    "require": {}
+}

@@ -1,3 +1,7 @@
-<?php
+<?php include_once ('layout/header.php') ?>
 
-print 'Hello World';
+<main>
+    <h1>Accueil</h1>
+</main>
+
+<?php include_once ('layout/footer.php') ?>

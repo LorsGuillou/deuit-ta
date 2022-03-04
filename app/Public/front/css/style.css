@@ -1,4 +1,179 @@
+/* =====================
+=== Styles de police === 
+===================== */
+
+@font-face {
+    font-family: 'merriweatherregular';
+    src: url("police/merriweather-regular-webfont.woff2") format("woff2"),
+        url("police/merriweather-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'merriweatherlight';
+    src: url("police/merriweather-light-webfont.woff2") format("woff2"),
+        url("police/merriweather-light-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'merriweatherbold';
+    src: url("police/merriweather-bold-webfont.woff2") format("woff2"),
+        url("police/merriweather-bold-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ==========================
+=== Variables de couleurs === 
+========================== */
+
+:root {
+    --darkerbg: #262626;
+    /* --lighterbg: rgb(47, 43, 42); */
+    --linkhover : #ce2121;
+}
+
+/* ======================================
+=== Reset des marges et style général ===
+====================================== */
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: whitesmoke;
+    font-family: 'merriweatherregular';
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ======================
+=== Header et bandeau ===
+====================== */
+
+header {
+    background-color: var(--darkerbg);
+    box-shadow: 1px 1px 10px slategray;
+    position: fixed;
+}
+
+header #bandeau {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* =========
+=== Logo === 
+========= */
+
+header #bandeau #logo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+header #bandeau #logo #titre {
+    color: white;
+    font-size: 3rem;
+}
+
+header #bandeau #logo #sous-titre {
+    font-size: 1.68rem;
+    color: lightsteelblue;
+}
+
+/* =============== 
+=== Navigation === 
+=============== */
+
+header #bandeau #navigation .nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+header #bandeau #navigation .nav-menu .nav-item {
+    margin: 20px 0;
+}
+
+header #bandeau #navigation .nav-menu .nav-item .nav-link {
+    font-size: 1.2rem;
+    color: lightgray;
+    transition: 0.2s ease;
+}
+
+header #bandeau #navigation .nav-menu .nav-item .nav-link:hover {
+    color: var(--linkhover);
+}
+
+/* ================
+=== Menu burger === 
+================ */
+
+header #bandeau .hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+header #bandeau .hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: lightgray;
+}
+
+@media(max-width:768px) {
+    header #bandeau .hamburger {
+        display: block;
+    }
+    
+    header #bandeau .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    header #bandeau .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    header #bandeau .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    header #bandeau #navigation .nav-menu {
+        position: fixed;
+        flex-direction: column;
+        background-color: var(--darkerbg);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        left: -100%;
+        top: 84px;
+        gap: 0;
+    }
+
+    header #bandeau #navigation .nav-menu.active {
+        left: 0;
+    }
+}
+

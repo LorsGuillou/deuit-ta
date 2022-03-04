@@ -3,7 +3,7 @@
     "description": "Projet de fin de formation",
     "autoload": {
         "psr-4": {
-            "Kercode\\Projet\\": "src/"
+            "Projet\\": "./app"
         }
     },
     "authors": [

@@ -16,18 +16,18 @@
                 <p id="sous-titre">La dère des dères</p>
             </div>
             <nav id="navigation">
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil</a>
+                        <a class="nav-link" href="index.php?action=home">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">A propos</a>
+                        <a class="nav-link" href="index.php?action=about">A propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">TO DO</a>
+                        <a class="nav-link" href="index.php?action=rencontres">Rencontres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">TO DO</a>
+                        <a class="nav-link" href="index.php?action=actu">Actualités</a>
                     </li>
                 </ul>
             </nav>

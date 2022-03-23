@@ -2,25 +2,25 @@
 
 namespace Projet\Controllers;
 
-class FrontController {
+class FrontController extends Controller {
 
     function home() {
-        require 'app/Views/front/home.php';
+        return $this->view('home');
     }
 
     function about() {
-        require 'app/Views/front/about.php';
+        return $this->view('about');
     }
 
     function rencontres() {
-        require 'app/Views/front/rencontres.php';
+        return $this->view('rencontres');
     }
 
     function actu() {
-        require 'app/Views/front/actu.php';
+        return $this->view('actu');
     }
 
     function contact() {
-        require 'app/Views/front/contact.php';
+        return $this->view('contact');
     }
 }

@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Projet final - admin</title>
-</head>
+<?php include_once ('layout/header.php') ?>
 
 <body>
     <main>
-        <h1>Créer un profil administrateur</h1>
+        <h1>Créez votre compte ! Krouat ho c'hont !</h1>
             <form action="indexAdmin.php?action=createAdmin" method="post">
                 <p>
                     <input type="text" id="firstname" name="firstname" placeholder="Prénom">
@@ -28,3 +22,5 @@
             </form>
     </main>
 </body>
+
+<?php include_once ('layout/footer.php') ?>

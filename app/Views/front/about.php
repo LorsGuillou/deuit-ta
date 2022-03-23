@@ -1,5 +1,7 @@
 <?php include_once ('layout/header.php') ?>
 
-<?php
+<main>
+    <h1>A propos</h1>
+</main>
 
-print "A propos";
+<?php include_once ('layout/footer.php') ?>

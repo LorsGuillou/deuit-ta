@@ -15,26 +15,41 @@
                 <p id="titre">Projet final</p>
                 <p id="sous-titre">La dère des dères</p>
             </div>
-            <nav id="navigation">
-                <ul class="nav-menu" id="nav-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=home">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=about">A propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=rencontres">Rencontres</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=actu">Actualités</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div id="links">
+                <div id="user-space">
+                    <ul id="user-menu">
+                        <li class="user-item">
+                            <a class="user-link" href="index.php?action=login">Connexion</a>
+                        </li>
+                        <li class="user-item">
+                            <a class="user-link" href="index.php?action=register">Créer un compte</a>
+                        </li>
+                    </ul>
+                </div>
+                <nav id="navigation">
+                    <ul class="nav-menu" id="nav-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=home">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=about">A propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=rencontres">Rencontres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=actu">Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?action=contact">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </div>
     </header>

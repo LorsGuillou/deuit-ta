@@ -51,7 +51,7 @@
 
 body {
     background-color: var(--lightbg);
-    font-family: 'merriweatherregular';
+    font-family: 'merriweatherregular', 'Calibri';
 }
 
 a {
@@ -75,7 +75,7 @@ ul {
 header {
     background-color: var(--darkbg);
     box-shadow: 1px 1px 10px var(--shadow);
-    position: fixed;
+    /* position: fixed; */
 }
 
 header #bandeau {
@@ -145,6 +145,19 @@ header #bandeau .hamburger .bar {
     transition: all 0.3s ease-in-out;
     background-color: var(--menulinks);
 }
+
+/* ===========
+=== Footer === 
+=========== */
+
+footer {
+    background-color: var(--darkbg);
+    margin-top: 100px;
+}
+
+/* ==================
+=== Media queries === 
+================== */
 
 @media(max-width:768px) {
     header #bandeau .hamburger {

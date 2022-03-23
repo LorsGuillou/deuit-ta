@@ -1,3 +1,1 @@
-<?php
-
-print 'Hello World';
+<a href="indexAdmin.php?action=newAdmin">Nouvel admin</a>

@@ -2,6 +2,8 @@
 
 namespace Projet\Models;
 
+use FFI\Exception;
+
 class Manager {
 
     private static $bdd = null;
@@ -10,13 +12,17 @@ class Manager {
         if (isset(self::$bdd)) {
             return self::$bdd;
         } else {
-            self::$bdd = new \PDO(
+            try {
+                self::$bdd = new \PDO (
                 'mysql:host=localhost;
                 dbname=projet-final;
                 charset=utf8',
                 'root',
                 '');
-        return self::$bdd;
+                return self::$bdd;
+            } catch (Exception $e) {
+                die ('Erreur : ' . $e->getMessage());
+            }
         }
     }
 

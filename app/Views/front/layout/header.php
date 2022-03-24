@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css ">
-    <link rel="stylesheet" href="app/Public/front/css/style.css">
+    <link rel="stylesheet" href="Public/front/css/style.css">
     <title>Projet final</title>
 </head>
 <body>
-    <header class="container">
+    <header>
         <div id="bandeau" class="container">
             <div id="logo">
                 <p id="titre">Projet final</p>
@@ -19,10 +19,10 @@
                 <div id="user-space">
                     <ul id="user-menu">
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=login">Connexion</a>
+                            <a class="user-link" href="index.php?action=login">Connexion    <i class="fa-solid fa-user-check"></i></a>
                         </li>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=register">Créer un compte</a>
+                            <a class="user-link" href="index.php?action=register">Créer un compte    <i class="fa-solid fa-user-plus"></i></a>
                         </li>
                     </ul>
                 </div>

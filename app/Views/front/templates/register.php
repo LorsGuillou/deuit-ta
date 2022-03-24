@@ -1,14 +1,11 @@
-<?php include_once ('layout/header.php') ?>
+<?php include_once ('app/Views/front/layout/header.php') ?>
 
 <body>
     <main>
         <h1>Créez votre compte ! Krouat ho c'hont !</h1>
-            <form action="indexAdmin.php?action=createAdmin" method="post">
+            <form action="index.php?action=createUser" method="post">
                 <p>
-                    <input type="text" id="firstname" name="firstname" placeholder="Prénom">
-                </p>
-                <p>
-                    <input type="text" id="lastname" name="lastname" placeholder="Nom">
+                    <input type="text" id="pseudo" name="pseudo" placeholder="Pseudonyme">
                 </p>
                 <p>
                     <input type="mail" id="mail" name="mail" placeholder="Email">
@@ -23,4 +20,4 @@
     </main>
 </body>
 
-<?php include_once ('layout/footer.php') ?>
+<?php include_once ('app/Views/front/layout/footer.php') ?>

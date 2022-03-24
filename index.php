@@ -10,11 +10,8 @@ try {
     $userController = new \Projet\Controllers\UserController();
 
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'register') {
-
-            $userController->newUser();
-
-        } elseif ($_GET['action'] == 'home') {
+        
+        if ($_GET['action'] == 'home') {
 
             $frontController->home();
 
@@ -29,16 +26,42 @@ try {
         } elseif ($_GET['action'] == 'contact') {
 
             $frontController->contact();
-            
+
+        } elseif ($_GET['action'] == 'login') {
+
+            $userController->login();
+
+        } elseif ($_GET['action'] == 'register') {
+
+            $userController->newUser();
+    
         } elseif ($_GET['action'] == 'createUser') {
 
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
+            $pseudo = $_POST['pseudo'];
             $mail = $_POST['mail'];
             $pass = $_POST['password'];
             $mdp = password_hash($pass, PASSWORD_DEFAULT);
-            $adminController->createAdmin($firstname, $lastname, $mail, $mdp);
 
+            if (empty($pseudo) || empty($mail) || empty($pass)) {
+
+                echo "<script type='text/javascript'>alert('Tout les champs doivent être remplis !')</script>";
+                $userController->newUser();
+
+            } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+
+                echo "<script type='text/javascript'>alert('Cette adresse mail est invalide !')</script>";
+                $userController->newUser();
+
+            } elseif ($userController->pseudoCheck($pseudo)) {
+
+                echo "<script type='text/javascript'>alert('Ce pseudonyme existe déjà !')</script>";
+                $userController->newUser();
+
+            } else {
+
+                $userController->createUser($pseudo, $mail, $mdp);
+
+            }
         } elseif ($_GET['action'] == 'about') {
 
             $frontController->about();

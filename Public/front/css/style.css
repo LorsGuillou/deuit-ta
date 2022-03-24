@@ -108,22 +108,42 @@ header #bandeau #logo #sous-titre {
 === Navigation === 
 =============== */
 
-header #bandeau #navigation .nav-menu {
+header #bandeau #links #user-space #user-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+header #bandeau #links #user-space #user-menu .user-item {
+    margin: 10px 0 15px;
+}
+
+header #bandeau #links #user-space #user-menu .user-item .user-link {
+    font-size: 0.8rem;
+    color: var(--menulinks);
+    transition: 0.2s ease;
+}
+
+header #bandeau #links #user-space #user-menu .user-item .user-link:hover {
+    color: var(--linkhover);
+}
+
+header #bandeau #links #navigation .nav-menu {
     display: flex;
     gap: 25px;
 }
 
-header #bandeau #navigation .nav-menu .nav-item {
-    margin: 20px 0;
+header #bandeau #links #navigation .nav-menu .nav-item {
+    margin: 10px 0;
 }
 
-header #bandeau #navigation .nav-menu .nav-item .nav-link {
+header #bandeau #links #navigation .nav-menu .nav-item .nav-link {
     font-size: 1.2rem;
     color: var(--menulinks);
     transition: 0.2s ease;
 }
 
-header #bandeau #navigation .nav-menu .nav-item .nav-link:hover {
+header #bandeau #links #navigation .nav-menu .nav-item .nav-link:hover {
     color: var(--linkhover);
 }
 

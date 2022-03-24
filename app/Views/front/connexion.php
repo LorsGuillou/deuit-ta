@@ -1,1 +1,0 @@
-<a href="indexAdmin.php?action=newAdmin">Nouvel utilisateur</a>

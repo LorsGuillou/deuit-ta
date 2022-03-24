@@ -35,10 +35,7 @@ class Manager {
         $sqlQuery = "SELECT * FROM `{$child}`";
       
         foreach (self::dbConnect()->query($sqlQuery) as $res) {
-        array_push(
-            $objects, 
-            new self($res)
-            );
+        array_push($objects, new self($res));
         }
         return $objects;
     }

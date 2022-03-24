@@ -10,5 +10,5 @@
 </head>
 <body>
     <header>
-
+        <p>Le header est là.</p>
     </header>

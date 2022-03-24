@@ -12,6 +12,14 @@ class UserModel extends Manager {
         return $req;
    }
 
+   public function getPassword($mail, $pass) {
+        $bdd = self::dbConnect();
+        $req = $bdd->prepare('SELECT id, pseudo, mail, `password`, `role` FROM user WHERE mail=?');
+        $req->execute(array($mail));
+
+        return $req;
+   }
+
    public function pseudoCheck($pseudo) {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('SELECT COUNT(*) FROM user WHERE pseudo=?');

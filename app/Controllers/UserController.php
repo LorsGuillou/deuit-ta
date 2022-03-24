@@ -5,20 +5,44 @@ namespace Projet\Controllers;
 class UserController extends Controller {
 
     public function login() {
-        return $this->view('login');
+        return $this->frontView('login');
     }
 
     public function newUser() {
-        return $this->view('register');
+        return $this->frontView('register');
     }
 
     public function createUser($pseudo, $mail, $mdp) {
         $userManager = new \Projet\Models\UserModel();
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             $newUser = $userManager->createUser($pseudo, $mail, $mdp);
-            return $this->view('confirmation');
+            return $this->frontView('confirmation');
         } else {
             header('Location: app/Views/front/errors/error.php');
+        }
+    }
+
+    public function connect($mail, $pass) {
+        $userManager = new \Projet\Models\UserModel();
+        $connect = $userManager->getPassword($mail, $pass);
+
+        $res = $connect->fetch();
+
+        $passwordCheck = password_verify($pass, $res['password']);
+
+        $_SESSION['id'] = $res['id'];
+        $_SESSION['pseudo'] = $res['pseudo'];
+        $_SESSION['mail'] = $res['mail'];
+        $_SESSION['password'] = $res['password'];
+        $_SESSION['role'] = $res['role'];
+
+        if ($passwordCheck && $res['role'] === 1) {
+            return $this->dashboard();
+        } elseif ($passwordCheck) {
+            return $this->frontView('account');
+        } else {
+            echo "<script type'text/javascript'>alert('Le mot de passe est incorrect !')</script>";
+            return $this->frontView('login');
         }
     }
 

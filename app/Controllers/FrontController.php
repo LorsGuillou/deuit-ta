@@ -5,22 +5,22 @@ namespace Projet\Controllers;
 class FrontController extends Controller {
 
     function home() {
-        return $this->view('home');
+        return $this->frontView('home');
     }
 
     function about() {
-        return $this->view('about');
+        return $this->frontView('about');
     }
 
     function rencontres() {
-        return $this->view('rencontres');
+        return $this->frontView('rencontres');
     }
 
     function actu() {
-        return $this->view('actu');
+        return $this->frontView('actu');
     }
 
     function contact() {
-        return $this->view('contact');
+        return $this->frontView('contact');
     }
 }

@@ -26,7 +26,63 @@
     font-style: normal;
 }
 
+/* ==========================
+=== Variables de couleurs ===
+========================== */
+
+:root {
+    --darkbg: rgba(38, 38, 38, 1);
+    --lightbg: #f5f5f5f2;
+    --shadow: rgba(112, 128, 144, 0.87);
+    --menulinks: rgba(202, 209, 224, 0.87);
+    --linkhover: rgba(206, 33, 33, 0.993);
+}
+
+/* ======================================
+=== Reset des marges et style général ===
+====================================== */
+
 * {
     margin: 0;
     padding: 0;
 }
+
+body {
+    background-color: var(--lightbg);
+    font-family: 'merriweatherregular', 'Calibri';
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ======================
+=== Header et bandeau ===
+====================== */
+
+header {
+    background-color: var(--darkbg);
+}
+
+header #bandeau {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header #bandeau #admin-space p {
+    color: white;
+    font-size: 2rem;
+}
+

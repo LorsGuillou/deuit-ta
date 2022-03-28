@@ -15,7 +15,14 @@ try {
 
             $adminController->dashboard();
 
+        } elseif ($_GET['action'] == 'logout') {
+
+            session_destroy();
+            header('Location: index.php');
+
         }
+
+        
 
     // Arrivée sur l'administration
     } else {

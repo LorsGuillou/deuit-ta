@@ -10,5 +10,9 @@
 </head>
 <body>
     <header>
-        <p>Le header est là.</p>
+        <div id="bandeau" class="container">
+            <div id="admin-space">
+                <p><?= $_SESSION['pseudo'] ?></p>
+            </div>
+        </div>
     </header>

@@ -15,7 +15,7 @@ class Manager {
             try {
                 self::$bdd = new \PDO (
                 'mysql:host=localhost;
-                dbname=projet-final;
+                dbname=deuit-ta;
                 charset=utf8',
                 'root',
                 '');

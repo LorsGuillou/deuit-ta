@@ -53,7 +53,6 @@ try {
 
             } else {
 
-                // throw new Exception('Renseignez vos identifiants pour vous connecter !');
                 echo "<script type'text/javascript'>alert('Renseignez vos identifiants pour vous connecter !')</script>";
                 $userController->login();
 
@@ -97,10 +96,12 @@ try {
 
             }
 
+        // Aller sur la page compte
         } elseif ($_GET['action'] == 'account') {
 
             $frontController->account();
 
+        // Se déconnecter
         } elseif ($_GET['action'] == 'logout') {
 
             session_destroy();

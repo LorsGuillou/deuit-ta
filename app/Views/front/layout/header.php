@@ -20,17 +20,17 @@
                     <ul id="user-menu">
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 0) : ?>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=account">Mon compte <i class="fa-solid fa-user"></i></a>
+                            <a class="user-link" href="index.php?action=account"><i class="fa-solid fa-user"></i> Mon compte</a>
                         </li>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=logout">Déconnexion <i class="fa-solid fa-right-from-bracket"></i></i></a>
+                            <a class="user-link" href="index.php?action=logout"><i class="fa-solid fa-right-from-bracket"> Déconnexion</i></i></a>
                         </li>
                     <?php else : ?>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=login">Connexion <i class="fa-solid fa-user-check"></i></a>
+                            <a class="user-link" href="index.php?action=login"><i class="fa-solid fa-user-check"></i> Connexion</a>
                         </li>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=register">Créer un compte <i class="fa-solid fa-user-plus"></i></a>
+                            <a class="user-link" href="index.php?action=register"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
                         </li>
                     <?php endif; ?>
                     </ul>

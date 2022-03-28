@@ -32,7 +32,7 @@
 
 :root {
     --darkbg: rgba(38, 38, 38, 1);
-    --lightbg: #f5f5f5f2;
+    --lightbg: rgba(245, 245, 245, 0.949);
     --shadow: rgba(112, 128, 144, 0.87);
     --bigtitles: rgba(176, 196, 222, 1);
     --bzh: rgb(102, 125, 155);

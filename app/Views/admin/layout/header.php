@@ -11,8 +11,21 @@
 <body>
     <header>
         <div id="bandeau" class="container">
-            <div id="admin-space">
-                <p><?= $_SESSION['pseudo'] ?></p>
-            </div>
-        </div>
+            <a href="indexAdmin.php?action=home"><?= $_SESSION['pseudo'] ?></a>
+        </div>        
     </header>
+    <main>
+        <section id="side-menu">
+            <nav id="navigation">
+                <ul id="admin-menu">
+                    <li class="admin-item"><a href="indexAdmin.php?action=users"><i class="fa-solid fa-users"></i> Membres</a></li>
+                    <li class="admin-item"><a href="indexAdmin.php?action=mails"><i class="fa-solid fa-envelope"></i> Mails</a></li>
+                    <li class="admin-item"><a href="indexAdmin.php?action=meetings"><i class="fa-solid fa-calendar"></i> Rencontres</a></li>
+                    <li class="admin-item"><a href="indexAdmin.php?action=blog"><i class="fa-solid fa-newspaper"></i> Articles</a></li>
+                    <li class="admin-item"><a href="indexAdmin.php?action=logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section id="dashboard" class="container">
+
+

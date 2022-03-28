@@ -32,7 +32,7 @@
 
 :root {
     --darkbg: rgba(38, 38, 38, 1);
-    --lightbg: #f5f5f5f2;
+    --lightbg: rgba(245, 245, 245, 0.949);
     --shadow: rgba(112, 128, 144, 0.87);
     --menulinks: rgba(202, 209, 224, 0.87);
     --linkhover: rgba(206, 33, 33, 0.993);
@@ -60,6 +60,10 @@ ul {
     list-style-type: none;
 }
 
+main {
+    display: flex;
+}
+
 .container {
     max-width: 1320px;
     width: 100%;
@@ -76,13 +80,61 @@ header {
 }
 
 header #bandeau {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    height: 50px;
+    padding-top: 15px;
 }
 
-header #bandeau #admin-space p {
+header #bandeau a {
     color: white;
     font-size: 2rem;
 }
+
+/* =================
+=== Menu latéral ===
+================= */
+
+#side-menu {
+    width: 17%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--darkbg);
+}
+
+#side-menu #navigation {
+    padding-left: 15px;
+}
+
+#side-menu #navigation #admin-menu .admin-item {
+    margin: 0 0 30px;
+}
+
+#side-menu #navigation #admin-menu .admin-item:first-child {
+    margin-top: 15px;
+}
+
+#side-menu #navigation #admin-menu .admin-item:last-child {
+    margin: 30px 0 15px;
+}
+
+#side-menu #navigation #admin-menu .admin-item a {
+    color: var(--menulinks);
+    transition: 0.2s ease;
+}
+
+#side-menu #navigation #admin-menu .admin-item a:hover {
+    color: var(--linkhover);
+}
+
+#side-menu #navigation #admin-menu .admin-item a i {
+    margin-right: 4px;
+}
+
+/* ====================
+=== Tableau de bord ===
+==================== */
+
+#dashboard {
+    padding-top: 10px;
+}
+
 

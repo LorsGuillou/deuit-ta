@@ -9,10 +9,6 @@ class Controller {
     }
 
     public function adminView($viewName) {
-        include ('app/Views/admin/templates' . $viewName . '.php');
-    }
-
-    public function dashboard() {
-        include ('indexAdmin.php');
+        include ('app/Views/admin/templates/' . $viewName . '.php');
     }
 }

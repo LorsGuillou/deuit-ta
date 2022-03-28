@@ -2,7 +2,7 @@
 
 namespace Projet\Models;
 
-class UserModel extends Manager {
+class User extends Manager {
 
     public function createUser($pseudo, $mail, $password) {
         $bdd = self::dbConnect();
@@ -27,5 +27,12 @@ class UserModel extends Manager {
         $check = $req->fetch()[0];
 
         return $check;
+   }
+
+   public function nbUser() {
+        $bdd = self::dbConnect();
+        $req = $bdd->prepare('SELECT COUNT(id) FROM user');
+        $req->execute(array());
+        return $req;
    }
 }

@@ -13,7 +13,7 @@ class UserController extends Controller {
     }
 
     public function createUser($pseudo, $mail, $mdp) {
-        $userManager = new \Projet\Models\UserModel();
+        $userManager = new \Projet\Models\User();
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             $newUser = $userManager->createUser($pseudo, $mail, $mdp);
             return $this->frontView('confirmation');
@@ -23,7 +23,7 @@ class UserController extends Controller {
     }
 
     public function connect($mail, $pass) {
-        $userManager = new \Projet\Models\UserModel();
+        $userManager = new \Projet\Models\User();
         $connect = $userManager->getPassword($mail, $pass);
 
         $res = $connect->fetch();
@@ -37,17 +37,17 @@ class UserController extends Controller {
         $_SESSION['role'] = $res['role'];
 
         if ($passwordCheck && $res['role'] === 1) {
-            return $this->dashboard();
+            header('Location: indexAdmin.php');
         } elseif ($passwordCheck) {
             return $this->frontView('account');
         } else {
-            echo "<script type'text/javascript'>alert('Le mot de passe est incorrect !')</script>";
+            echo "<script type='text/javascript'>alert('Le mot de passe est incorrect !')</script>";
             return $this->frontView('login');
         }
     }
 
     public function pseudoCheck($pseudo) {
-        $userManager = new \Projet\Models\UserModel();
+        $userManager = new \Projet\Models\User();
         return $userManager->pseudoCheck($pseudo);
     }
 }

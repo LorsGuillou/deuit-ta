@@ -23,4 +23,8 @@ class FrontController extends Controller {
     function contact() {
         return $this->frontView('contact');
     }
+
+    function account() {
+        return $this->frontView('account');
+    }
 }

@@ -16,6 +16,11 @@ try {
 
             $frontController->home();
 
+        // Aller sur A propos
+        } elseif ($_GET['action'] == 'about') {
+
+            $frontController->about();
+
         // Aller sur Rencontres
         } elseif ($_GET['action'] == 'rencontres') {
 
@@ -65,45 +70,55 @@ try {
             $pseudo = $_POST['pseudo'];
             $mail = $_POST['mail'];
             $pass = $_POST['password'];
-            $mdp = password_hash($pass, PASSWORD_DEFAULT);
+
+            $safePseudo = htmlspecialchars($pseudo);
+            $safeMail = htmlspecialchars($mail);
+            $passHash = password_hash($pass, PASSWORD_DEFAULT);
+            
 
             if (empty($pseudo) || empty($mail) || empty($pass)) {
 
-                // throw new Exception('Tout les champs doivent être remplis !');
                 echo "<script type'text/javascript'>alert('Tout les champs doivent être remplis')</script>";
                 $userController->newUser();
 
-            } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            } elseif (!filter_var($safeMail, FILTER_VALIDATE_EMAIL)) {
 
-                // throw new Exception('Cette adresse mail est invalide !');
                 echo "<script type'text/javascript'>alert('Cette adresse mail est invalide !')</script>";
                 $userController->newUser();
 
             } elseif ($userController->pseudoCheck($pseudo)) {
 
-                // throw new Exception('Ce pseudonyme existe déjà !');
                 echo "<script type'text/javascript'>alert('Ce pseudonyme existe déjà !')</script>";
                 $userController->newUser();
 
             } else {
 
-                $userController->createUser($pseudo, $mail, $mdp);
+                $userController->createUser($safePseudo, $safeMail, $passHash);
 
             }
 
-        // Aller sur A propos
-        } elseif ($_GET['action'] == 'about') {
+        } elseif ($_GET['action'] == 'account') {
 
-            $frontController->about();
+            $frontController->account();
+
+        } elseif ($_GET['action'] == 'logout') {
+
+            session_destroy();
+            header('Location: index.php');
 
         }
+
     
     // Arrivée sur le site
     } else {
+
         $frontController->home();
+
     }
 
 } catch (Exception $e) {
+
     require 'app/Views/front/errors/error.php';
+    
 }
 

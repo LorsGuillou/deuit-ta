@@ -1,3 +1,31 @@
+/* =====================
+=== Styles de police === 
+===================== */
+
+@font-face {
+    font-family: 'merriweatherregular';
+    src: url("police/merriweather-regular-webfont.woff2") format("woff2"),
+        url("police/merriweather-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'merriweatherlight';
+    src: url("police/merriweather-light-webfont.woff2") format("woff2"),
+        url("police/merriweather-light-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'merriweatherbold';
+    src: url("police/merriweather-bold-webfont.woff2") format("woff2"),
+        url("police/merriweather-bold-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;

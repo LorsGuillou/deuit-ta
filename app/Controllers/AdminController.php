@@ -5,6 +5,8 @@ namespace Projet\Controllers;
 class AdminController extends Controller {
     
     public function dashboard() {
+        $userManager = new \Projet\Models\User();
+        $numbers = $userManager->nbUsers();
         require ($this->view('admin', 'dashboard'));
     }
 
@@ -24,5 +26,12 @@ class AdminController extends Controller {
 
     public function blog() {
         require ($this->view('admin', 'blog'));
+    }
+
+    public function deleteUser($id) {
+        $userManager = new \Projet\Models\User();
+        $delete = $userManager->deleteUser($id);
+
+        require ($this->view('admin', 'mails'));
     }
 }

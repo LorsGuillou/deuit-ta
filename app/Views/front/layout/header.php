@@ -22,7 +22,7 @@
                             <a class="user-link" href="index.php?action=account"><i class="fa-solid fa-user"></i> Mon compte</a>
                         </li>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=logout"><i class="fa-solid fa-right-from-bracket"> Déconnexion</i></i></a>
+                            <a class="user-link" href="index.php?action=logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</i></a>
                         </li>
                     <?php else : ?>
                         <li class="user-item">

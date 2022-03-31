@@ -131,16 +131,39 @@ header #bandeau a {
     margin-right: 4px;
 }
 
-#side-menu #navigation #admin-menu .admin-item .disconnect {
-    color: var(--linkhover);
-}
-
 /* ====================
 === Tableau de bord ===
 ==================== */
 
 #dashboard {
-    padding-top: 10px;
+    margin-top: 10px;
 }
+
+#dashboard .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#dashboard .admin-table,
+#dashboard .admin-table thead tr th,
+#dashboard .admin-table tbody tr td {
+    border: 2px solid var(--shadow);
+    padding: 8px 4px;
+    text-align: left;
+}
+
+#dashboard .admin-table tbody tr .action-case {
+    text-align: center;
+}
+
+#dashboard .admin-table tbody tr .action-case a {
+    color: black;
+}
+
+#dashboard .admin-table tbody tr .action-case a .action-delete {
+    color: red;
+}
+
 
 

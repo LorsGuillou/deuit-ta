@@ -49,7 +49,7 @@ try {
     // Arrivée sur l'administration
     } else {
 
-        $adminController->view('admin', 'dashboard');
+        $adminController->dashboard();
 
     }
 

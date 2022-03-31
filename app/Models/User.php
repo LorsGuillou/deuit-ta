@@ -39,7 +39,7 @@ class User extends Manager {
 
    public function userList() {
         $bdd = self::dbConnect();
-        $req = $bdd->query('SELECT pseudo, mail, avatar FROM user');
+        $req = $bdd->query('SELECT pseudo, mail, avatar, created_at FROM user');
         $list = $req->fetchAll();
         
         return $list;

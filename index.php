@@ -121,7 +121,7 @@ try {
 
 } catch (Exception $e) {
 
-    require 'app/Views/front/errors/error.php';
+    $e->getMessage();
     
 }
 

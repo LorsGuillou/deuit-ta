@@ -131,6 +131,10 @@ header #bandeau a {
     margin-right: 4px;
 }
 
+#side-menu #navigation #admin-menu .admin-item .disconnect {
+    color: var(--linkhover);
+}
+
 /* ====================
 === Tableau de bord ===
 ==================== */

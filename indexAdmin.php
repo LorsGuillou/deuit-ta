@@ -16,22 +16,27 @@ try {
 
             $adminController->dashboard();
 
+        // Liste des membres
         } elseif ($_GET['action'] == 'users') {
             
             $adminController->users();
 
+        // Liste des messages
         } elseif ($_GET['action'] == 'mails') {
 
             $adminController->mails();
-        
+
+        // Liste des rencontres
         } elseif ($_GET['action'] == 'meetings') {
 
             $adminController->meetings();
         
+        // Liste des articles
         } elseif ($_GET['action'] == 'blog') {
 
             $adminController->blog();
-
+        
+        // Déconnexion
         } elseif ($_GET['action'] == 'logout') {
 
             session_destroy();
@@ -49,5 +54,7 @@ try {
     }
 
 } catch (Exception $e) {
-    require 'app/Views/front/errors/error.php';
+
+    $e->getMessage();
+
 }

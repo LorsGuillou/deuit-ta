@@ -69,6 +69,8 @@ try {
             $pseudo = $_POST['pseudo'];
             $mail = $_POST['mail'];
             $pass = $_POST['password'];
+            $avatar = 'no-avatar.png';
+            $date = date('Y-m-d H:i:s');
 
             $safePseudo = htmlspecialchars($pseudo);
             $safeMail = htmlspecialchars($mail);
@@ -77,7 +79,7 @@ try {
 
             if (empty($pseudo) || empty($mail) || empty($pass)) {
 
-                echo "<script type'text/javascript'>alert('Tout les champs doivent être remplis')</script>";
+                echo "<script type'text/javascript'>alert('Tout les champs doivent être remplis !')</script>";
                 $userController->newUser();
 
             } elseif (!filter_var($safeMail, FILTER_VALIDATE_EMAIL)) {
@@ -85,14 +87,14 @@ try {
                 echo "<script type'text/javascript'>alert('Cette adresse mail est invalide !')</script>";
                 $userController->newUser();
 
-            } elseif ($userController->pseudoCheck($pseudo)) {
+            } elseif ($userController->pseudoCheck($safePseudo)) {
 
                 echo "<script type'text/javascript'>alert('Ce pseudonyme existe déjà !')</script>";
                 $userController->newUser();
 
             } else {
 
-                $userController->createUser($safePseudo, $safeMail, $passHash);
+                $userController->createUser($safePseudo, $safeMail, $passHash, $avatar, $date);
 
             }
 

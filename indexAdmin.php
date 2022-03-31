@@ -7,6 +7,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 try {
 
     $adminController = new \Projet\Controllers\AdminController();
+    $userController = new \Projet\Controllers\UserController();
 
     if (isset($_GET['action'])) {
 
@@ -14,6 +15,22 @@ try {
         if ($_GET['action'] == 'home') {
 
             $adminController->dashboard();
+
+        } elseif ($_GET['action'] == 'users') {
+            
+            $adminController->users();
+
+        } elseif ($_GET['action'] == 'mails') {
+
+            $adminController->mails();
+        
+        } elseif ($_GET['action'] == 'meetings') {
+
+            $adminController->meetings();
+        
+        } elseif ($_GET['action'] == 'blog') {
+
+            $adminController->blog();
 
         } elseif ($_GET['action'] == 'logout') {
 
@@ -27,7 +44,7 @@ try {
     // Arrivée sur l'administration
     } else {
 
-        $adminController->dashboard();
+        $adminController->view('admin', 'dashboard');
 
     }
 

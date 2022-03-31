@@ -12,8 +12,7 @@
     <header>
         <div id="bandeau" class="container">
             <div id="logo">
-                <p id="titre">Projet final</p>
-                <p id="sous-titre">La dère des dères</p>
+                <img src="Public/front/img/logo-removebg-preview.png">
             </div>
             <div id="links">
                 <div id="user-space">

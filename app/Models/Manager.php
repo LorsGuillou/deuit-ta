@@ -18,7 +18,8 @@ class Manager {
                 dbname=deuit-ta;
                 charset=utf8',
                 'root',
-                '');
+                ''
+            );
                 return self::$bdd;
             } catch (Exception $e) {
                 die ('Erreur : ' . $e->getMessage());

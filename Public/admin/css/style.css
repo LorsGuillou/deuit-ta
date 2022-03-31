@@ -35,7 +35,7 @@
     --lightbg: rgba(245, 245, 245, 0.949);
     --shadow: rgba(112, 128, 144, 0.87);
     --menulinks: rgba(202, 209, 224, 0.87);
-    --linkhover: rgba(206, 33, 33, 0.993);
+    --linkhover: rgba(228, 35, 35, 0.993);
 }
 
 /* ======================================
@@ -97,11 +97,13 @@ header #bandeau a {
     width: 17%;
     display: flex;
     flex-direction: column;
-    background-color: var(--darkbg);
+    
 }
 
 #side-menu #navigation {
     padding-left: 15px;
+    background-color: var(--darkbg);
+    
 }
 
 #side-menu #navigation #admin-menu .admin-item {

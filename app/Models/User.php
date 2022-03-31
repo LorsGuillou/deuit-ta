@@ -4,10 +4,10 @@ namespace Projet\Models;
 
 class User extends Manager {
 
-    public function createUser($pseudo, $mail, $password) {
+    public function createUser($pseudo, $mail, $password, $avatar, $date) {
         $bdd = self::dbConnect();
-        $req = $bdd->prepare('INSERT INTO `user` (`pseudo`, `mail`, `password`) VALUE (?, ?, ?)');
-        $req->execute(array($pseudo, $mail, $password));
+        $req = $bdd->prepare('INSERT INTO `user` (`pseudo`, `mail`, `password`, avatar, created_at) VALUE (?, ?, ?, ?, ?)');
+        $req->execute(array($pseudo, $mail, $password, $avatar, $date));
 
         return $req;
    }
@@ -29,10 +29,19 @@ class User extends Manager {
         return $check;
    }
 
-   public function nbUser() {
+   public function nbUsers() {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('SELECT COUNT(id) FROM user');
         $req->execute(array());
+
         return $req;
+   }
+
+   public function userList() {
+        $bdd = self::dbConnect();
+        $req = $bdd->query('SELECT pseudo, mail, avatar FROM user');
+        $list = $req->fetchAll();
+        
+        return $list;
    }
 }

@@ -36,6 +36,36 @@ try {
 
             $frontController->contact();
 
+        // Formulaire de contact
+        } elseif ($_GET['action'] == 'contactPost') {
+
+            $id = $_SESSION['id'];
+            $name = $_SESSION['pseudo'];
+            $object = htmlspecialchars($_POST['object']);
+            $message = htmlspecialchars($_POST['message']);
+            $date = date('Y-m-d');
+
+            if (empty($object) && empty($message)) {
+
+                throw new \Exception ('Vous ne pouvez pas envoyer un formulaire vide !');
+                $frontController->contact();
+            
+            } elseif (empty($object)) {
+
+                throw new \Exception ("Vous devez renseigner l'objet de votre message !");
+                $frontController->contact();
+            
+            } elseif(empty($message)) {
+
+                throw new \Exception ("Votre message est vide !");
+                $frontController->contact();
+
+            } else {
+
+                $userController->postMail($id, $name, $object, $message, $date);
+
+            }
+
         // Aller sur Connexion
         } elseif ($_GET['action'] == 'login') {
 
@@ -53,7 +83,7 @@ try {
 
             } else {
 
-                echo "<script type'text/javascript'>alert('Renseignez vos identifiants pour vous connecter !')</script>";
+                throw new \Exception ('Renseignez vos identifiants pour vous connecter !');
                 $userController->login();
 
             }
@@ -66,35 +96,33 @@ try {
         // Création de compte
         } elseif ($_GET['action'] == 'createUser') {
 
-            $pseudo = $_POST['pseudo'];
-            $mail = $_POST['mail'];
+            $lastname = htmlspecialchars($_POST['lastname']);
+            $firstname = htmlspecialchars($_POST['firstname']);
+            $mail = htmlspecialchars($_POST['mail']);
             $pass = $_POST['password'];
             $avatar = 'no-avatar.png';
-            $date = date('Y-m-d H:i:s');
+            $date = date('Y-m-d');
 
-            $safePseudo = htmlspecialchars($pseudo);
-            $safeMail = htmlspecialchars($mail);
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
             
+            if (empty($lastname) || empty($firstname) || empty($mail) || empty($pass)) {
 
-            if (empty($pseudo) || empty($mail) || empty($pass)) {
-
-                echo "<script type'text/javascript'>alert('Tout les champs doivent être remplis !')</script>";
+                throw new \Exception ('Tout les champs doivent être remplis !');
                 $userController->newUser();
 
-            } elseif (!filter_var($safeMail, FILTER_VALIDATE_EMAIL)) {
+            } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 
-                echo "<script type'text/javascript'>alert('Cette adresse mail est invalide !')</script>";
+                throw new \Exception ('Cette adresse mail est invalide !');
                 $userController->newUser();
 
-            } elseif ($userController->pseudoCheck($safePseudo)) {
+            // } elseif ($userController->pseudoCheck($pseudo)) {
 
-                echo "<script type'text/javascript'>alert('Ce pseudonyme existe déjà !')</script>";
-                $userController->newUser();
+            //     throw new \Exception ('Ce pseudonyme existe déjà !');
+            //     $userController->newUser();
 
             } else {
 
-                $userController->createUser($safePseudo, $safeMail, $passHash, $avatar, $date);
+                $userController->createUser($lastname, $firstname, $mail, $passHash, $avatar, $date);
 
             }
 

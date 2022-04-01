@@ -5,7 +5,10 @@
         <h1>Créez votre compte <span class="txt-bzh">Krouat ho kont</span></h1>
         <form action="index.php?action=createUser" method="post">
             <p>
-                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudonyme">
+                <input type="text" id="lastname" name="lastname" placeholder="Nom">
+            </p>
+            <p>
+                <input type="text" id="firstname" name="firstname" placeholder="Prénom">
             </p>
             <p>
                 <input type="mail" id="mail" name="mail" placeholder="Email">

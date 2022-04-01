@@ -12,10 +12,10 @@ class UserController extends Controller {
         require ($this->view('front', 'register'));
     }
 
-    public function createUser($pseudo, $mail, $pass, $avatar, $date) {
+    public function createUser($lastname, $firstname, $mail, $pass, $avatar, $date) {
         $userManager = new \Projet\Models\User();
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            $newUser = $userManager->createUser($pseudo, $mail, $pass, $avatar, $date);
+            $newUser = $userManager->createUser($lastname, $firstname, $mail, $pass, $avatar, $date);
             require ($this->view('front', 'confirmation'));
         } else {
             header('Location: app/Views/front/errors/error.php');
@@ -31,7 +31,8 @@ class UserController extends Controller {
         $passwordCheck = password_verify($pass, $res['password']);
 
         $_SESSION['id'] = $res['id'];
-        $_SESSION['pseudo'] = $res['pseudo'];
+        $_SESSION['lastname'] = $res['lastname'];
+        $_SESSION['firstname'] = $res['firstname'];
         $_SESSION['mail'] = $res['mail'];
         $_SESSION['password'] = $res['password'];
         $_SESSION['role'] = $res['role'];
@@ -41,19 +42,25 @@ class UserController extends Controller {
         } elseif ($passwordCheck) {
             require ($this->view('front', 'account'));
         } else {
-            echo "<script type='text/javascript'>alert('Le mot de passe est incorrect !')</script>";
-            return $this->view('front', 'login');
+            throw new \Exception ('Le mot de passe est incorrect !');
         }
     }
 
-    public function pseudoCheck($pseudo) {
-        $userManager = new \Projet\Models\User();
-        return $userManager->pseudoCheck($pseudo);
-    }
+    // public function pseudoCheck($pseudo) {
+    //     $userManager = new \Projet\Models\User();
+    //     return $userManager->pseudoCheck($pseudo);
+    // }
 
     public function nbUsers() {
         $userManager = new \Projet\Models\User();
         $users = $userManager->nbUsers();
         return $users;
+    }
+
+    public function postMail($id, $name, $object, $message, $date) {
+        $contactManager = new \Projet\Models\Contact();
+        $mail = $contactManager->postMail($id, $name, $object, $message, $date);
+        echo "<script type'text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
+        require ($this->view('front', 'contact'));
     }
 }

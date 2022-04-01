@@ -4,30 +4,30 @@ namespace Projet\Models;
 
 class User extends Manager {
 
-    public function createUser($pseudo, $mail, $password, $avatar, $date) {
+    public function createUser($lastname, $firstname, $mail, $password, $avatar, $date) {
         $bdd = self::dbConnect();
-        $req = $bdd->prepare('INSERT INTO `user` (`pseudo`, `mail`, `password`, avatar, created_at) VALUE (?, ?, ?, ?, ?)');
-        $req->execute(array($pseudo, $mail, $password, $avatar, $date));
+        $req = $bdd->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar, created_at) VALUE (?, ?, ?, ?, ?, ?)');
+        $req->execute(array($lastname, $firstname, $mail, $password, $avatar, $date));
 
         return $req;
    }
 
    public function getPassword($mail, $pass) {
         $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT id, pseudo, mail, `password`, `role` FROM user WHERE mail=?');
+        $req = $bdd->prepare('SELECT id, lastname, firstname, mail, `password`, avatar, created_at, `role` FROM user WHERE mail=?');
         $req->execute(array($mail));
 
         return $req;
    }
 
-   public function pseudoCheck($pseudo) {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT COUNT(*) FROM user WHERE pseudo=?');
-        $req->execute([$pseudo]);
-        $check = $req->fetch()[0];
+//    public function pseudoCheck($pseudo) {
+//         $bdd = self::dbConnect();
+//         $req = $bdd->prepare('SELECT COUNT(*) FROM user WHERE lastname=?');
+//         $req->execute([$pseudo]);
+//         $check = $req->fetch()[0];
 
-        return $check;
-   }
+//         return $check;
+//    }
 
    public function nbUsers() {
         $bdd = self::dbConnect();
@@ -40,7 +40,7 @@ class User extends Manager {
 
    public function userList() {
         $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT id, pseudo, mail, avatar, created_at FROM user');
+        $req = $bdd->prepare('SELECT id, lastname, firstname, mail, avatar, created_at FROM user');
         $req->execute();
         $list = $req->fetchAll();
         

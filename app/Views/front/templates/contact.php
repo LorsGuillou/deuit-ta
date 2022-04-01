@@ -5,8 +5,17 @@
         <?php if (isset($_SESSION['role']) && ($_SESSION['role'] === 0)) : ?>
             <h2>Contactez-nous</h2>
             <p>Un problème avec le site ? Une idée à nous proposer ? Dites-nous tout !</p>
-            <form>
-                
+            <form id="contact-form" action="index.php?action=contactPost" method="post">
+                <p>
+                    <input type="text" id="object" name="object" placeholder="Objet" maxlength="50">
+                </p>
+                <p>
+                    <textarea id="message" name="message" placeholder="Votre message..."></textarea>
+                </p>
+                <p>
+                    <button type="submit" id="submit-contact">Envoyer</button>
+                    <button type="reset" id="reset-contact">Effacer</button>
+                </p>
             </form>
         <?php else : ?>    
             <section id="contact-info">

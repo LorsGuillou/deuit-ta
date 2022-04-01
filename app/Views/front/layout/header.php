@@ -43,7 +43,7 @@
                             <a class="nav-link" href="index.php?action=about">A propos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=rencontres">Rencontres</a>
+                            <a class="nav-link" href="index.php?action=rencontres">Activités</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?action=actu">Actualités</a>

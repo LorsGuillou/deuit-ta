@@ -5,7 +5,8 @@
             <table id="user-list" class="admin-table">
                 <thead>
                     <tr>
-                        <th>Pseudonyme</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
                         <th>Adresse e-mail</th>
                         <th>Avatar</th>
                         <th>Date d'inscription</th>
@@ -15,7 +16,8 @@
                 <?php foreach ($users as $user) : ?>
                     <tbody>
                         <tr>
-                            <td><?= $user['pseudo'] ?></td>
+                            <td><?= $user['lastname'] ?></td>
+                            <td><?= $user['firstname'] ?></td>
                             <td><?= $user['mail'] ?></td>
                             <td><?= $user['avatar'] ?></td>
                             <td><?= $user['created_at'] ?></td>

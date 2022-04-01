@@ -21,7 +21,11 @@
                             <td><?= $user['mail'] ?></td>
                             <td><?= $user['avatar'] ?></td>
                             <td><?= $user['created_at'] ?></td>
-                            <td class="action-case"><a href="indexAdmin?action=ban"><span class="action-delete"><i class="fa-solid fa-trash-can"></i></span></a></td>
+                            <td class="action-case">
+                                <a href="indexAdmin.php?action=deleteUser&id=<?= $user['id'] ?>">
+                                    <span class="action-delete"><i class="fa-solid fa-trash-can"></i></span>
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 <?php endforeach ?>

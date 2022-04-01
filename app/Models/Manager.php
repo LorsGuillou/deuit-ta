@@ -27,32 +27,45 @@ class Manager {
         }
     }
 
-    public static function all() {
+    // public static function all() {
 
-        $objects = [];
+    //     $objects = [];
 
-        $child = get_called_class();
+    //     $child = get_called_class();
   
-        $sqlQuery = "SELECT * FROM `{$child}`";
+    //     $sqlQuery = "SELECT * 
+    //                 FROM `{$child}`";
       
-        foreach (self::dbConnect()->query($sqlQuery) as $res) {
-        array_push($objects, new self($res));
-        }
-        return $objects;
-    }
+    //     foreach (self::dbConnect()->query($sqlQuery) as $res) {
+    //     array_push($objects, new self($res));
+    //     }
+    //     return $objects;
+    // }
 
-    public static function find($id) {
+    // public static function find($id) {
 
-        $names = [];
+    //     $names = [];
   
-        $child = get_called_class();
+    //     $child = get_called_class();
 
-        $sqlQuery = "SELECT `nom` OR `titre` FROM `{$child}` WHERE id=:id";
+    //     $sqlQuery = "SELECT `nom` 
+    //                 OR `titre` 
+    //                 FROM `{$child}` 
+    //                 WHERE id=:id";
   
-        $req = self::dbConnect()->prepare($sqlQuery);
-        $req->execute(array(':id' => $id));
-        array_push($names, new self($req));
+    //     $req = self::dbConnect()->prepare($sqlQuery);
+    //     $req->execute(array(':id' => $id));
+    //     array_push($names, new self($req));
 
-        return $names;
-      }
+    //     return $names;
+    //   }
+
+    // public static function delete($id) {
+    //     $bdd = self::dbConnect();
+    //     $child = get_called_class();
+    //     $req = $bdd->prepare("DELETE FROM `{$child}` WHERE id=?");
+    //     $req->execute(array($id));
+
+    //     return $req;
+    // }
 }

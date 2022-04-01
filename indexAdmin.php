@@ -21,10 +21,22 @@ try {
             
             $adminController->users();
 
+        // Supprimer un utilisateur
+        } elseif ($_GET['action'] == 'deleteUser') {
+
+            $id = $_GET['id'];
+            $adminController->deleteUser($id);
+
         // Liste des messages
         } elseif ($_GET['action'] == 'mails') {
 
             $adminController->mails();
+
+        // Supprimer un message
+        } elseif ($_GET['action'] == 'deleteMail') {
+
+            $id = $_GET['id'];
+            $adminController->deleteMail($id);
 
         // Liste des rencontres
         } elseif ($_GET['action'] == 'meetings') {
@@ -43,8 +55,6 @@ try {
             header('Location: index.php');
 
         }
-
-        
 
     // Arrivée sur l'administration
     } else {

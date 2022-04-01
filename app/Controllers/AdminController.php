@@ -6,7 +6,9 @@ class AdminController extends Controller {
     
     public function dashboard() {
         $userManager = new \Projet\Models\User();
-        $numbers = $userManager->nbUsers();
+        $contactManager = new \Projet\Models\Contact();
+        $nbUsers = $userManager->nbUsers();
+        $nbMails = $contactManager->nbMails();
         require ($this->view('admin', 'dashboard'));
     }
 
@@ -17,6 +19,8 @@ class AdminController extends Controller {
     }
 
     public function mails() {
+        $contactManager = new \Projet\Models\Contact();
+        $mails = $contactManager->mailList();
         require ($this->view('admin', 'mails'));
     }
 
@@ -30,8 +34,13 @@ class AdminController extends Controller {
 
     public function deleteUser($id) {
         $userManager = new \Projet\Models\User();
-        $delete = $userManager->deleteUser($id);
+        $deleteMail = $userManager->deleteUser($id);
+        header('Location: indexAdmin.php?action=users');
+    }
 
-        require ($this->view('admin', 'mails'));
+    public function deleteMail($id) {
+        $contactManager = new \Projet\Models\Contact();
+        $deleteMail = $contactManager->deleteMail($id);
+        header('Location: indexAdmin.php?action=mails');
     }
 }

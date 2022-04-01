@@ -161,9 +161,10 @@ header #bandeau a {
     color: black;
 }
 
+#dashboard .admin-table tbody tr .action-case a .action-view {
+    color: deepskyblue;
+}
+
 #dashboard .admin-table tbody tr .action-case a .action-delete {
     color: red;
 }
-
-
-

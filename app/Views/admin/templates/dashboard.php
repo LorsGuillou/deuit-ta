@@ -2,6 +2,7 @@
 
 
             <h1>Tableau de bord</h1>
-            <p>Nombre de membres : <?= $numbers['0'] ?></p>
+            <p>Nombre de membres : <?= $nbUsers['0'] ?></p>
+            <p>Nombre de mails : <?= $nbMails['0'] ?></p>
         </section>
     </main>

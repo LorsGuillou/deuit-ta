@@ -40,7 +40,6 @@ try {
         } elseif ($_GET['action'] == 'contactPost') {
 
             $id = $_SESSION['id'];
-            $name = $_SESSION['pseudo'];
             $object = htmlspecialchars($_POST['object']);
             $message = htmlspecialchars($_POST['message']);
             $date = date('Y-m-d');
@@ -62,7 +61,7 @@ try {
 
             } else {
 
-                $userController->postMail($id, $name, $object, $message, $date);
+                $userController->postMail($id, $object, $message, $date);
 
             }
 
@@ -107,12 +106,12 @@ try {
             
             if (empty($lastname) || empty($firstname) || empty($mail) || empty($pass)) {
 
-                throw new \Exception ('Tout les champs doivent être remplis !');
+                echo '<script type="text/javascript">alert("Tout les champs doivent être remplis !")</script>';
                 $userController->newUser();
 
             } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 
-                throw new \Exception ('Cette adresse mail est invalide !');
+                echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
                 $userController->newUser();
 
             // } elseif ($userController->pseudoCheck($pseudo)) {

@@ -20,7 +20,7 @@
                 <ul id="admin-menu">
                     <li class="admin-item"><a href="indexAdmin.php?action=users"><i class="fa-solid fa-users"></i> Membres</a></li>
                     <li class="admin-item"><a href="indexAdmin.php?action=mails"><i class="fa-solid fa-envelope"></i> Mails</a></li>
-                    <li class="admin-item"><a href="indexAdmin.php?action=meetings"><i class="fa-solid fa-calendar"></i> Rencontres</a></li>
+                    <li class="admin-item"><a href="indexAdmin.php?action=activities"><i class="fa-solid fa-calendar"></i> Activités</a></li>
                     <li class="admin-item"><a href="indexAdmin.php?action=blog"><i class="fa-solid fa-newspaper"></i> Articles</a></li>
                     <li class="admin-item"><a href="indexAdmin.php?action=logout" class="disconnect"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a></li>
                 </ul>

@@ -25,7 +25,7 @@ class Contact extends Manager {
 
     public function mailList() {
         $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT contact.id, contact.object, contact.message, contact.created_at, user.lastname, user.firstname 
+        $req = $bdd->prepare('SELECT contact.id, contact.object, contact.created_at, user.lastname, user.firstname 
                             FROM contact 
                             INNER JOIN user
                             ON contact.idUser = user.id');
@@ -35,9 +35,21 @@ class Contact extends Manager {
         return $list;
     }
 
+    public function readMail($id) {
+        $bdd = self::dbConnect();
+        $req = $bdd->prepare('SELECT contact.id, contact.object, contact.message, contact.created_at, user.lastname, user.firstname 
+                            FROM contact
+                            INNER JOIN user
+                            ON contact.idUser = user.id AND contact.id= ?');
+        $req->execute(array($id));
+        $mail = $req->fetch();
+
+        return $mail;
+    }
+
     public function deleteMail($id) {
         $bdd = self::dbConnect();
-        $req = $bdd->prepare('DELETE FROM contact WHERE id=?');
+        $req = $bdd->prepare('DELETE FROM contact WHERE id = ?');
         $req->execute(array($id));
 
         return $req;

@@ -32,16 +32,22 @@ try {
 
             $adminController->mails();
 
+        // Lire un message
+        } elseif ($_GET['action'] == 'readMail') {
+
+            $id = $_GET['id'];
+            $adminController->readMail($id);
+
         // Supprimer un message
         } elseif ($_GET['action'] == 'deleteMail') {
 
             $id = $_GET['id'];
             $adminController->deleteMail($id);
 
-        // Liste des rencontres
-        } elseif ($_GET['action'] == 'meetings') {
+        // Liste des activités
+        } elseif ($_GET['action'] == 'activities') {
 
-            $adminController->meetings();
+            $adminController->activities();
         
         // Liste des articles
         } elseif ($_GET['action'] == 'blog') {

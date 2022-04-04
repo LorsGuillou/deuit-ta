@@ -168,3 +168,15 @@ header #bandeau a {
 #dashboard .admin-table tbody tr .action-case a .action-delete {
     color: red;
 }
+
+/* ====================
+=== Lecture de mail === 
+==================== */
+
+#dashboard .read-mail {
+    margin-top: 20px;
+}
+
+#dashboard .read-mail p {
+    margin-top: 35px;
+}

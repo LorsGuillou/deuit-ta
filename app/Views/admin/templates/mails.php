@@ -20,7 +20,7 @@
                             <td><?= $mail['object'] ?></td>
                             <td><?= $mail['created_at'] ?></td>
                             <td class="action-case">
-                                <a href="indexAdmin.php?action=viewMail">
+                                <a href="indexAdmin.php?action=readMail&id=<?= $mail['id'] ?>">
                                     <span class="action-view"><i class="fa-solid fa-eye"></i></span>
                                 </a>
                                 <a href="indexAdmin.php?action=deleteMail&id=<?= $mail['id'] ?>">

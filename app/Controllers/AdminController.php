@@ -3,7 +3,8 @@
 namespace Projet\Controllers;
 
 class AdminController extends Controller {
-    
+
+    // Tableau de bord
     public function dashboard() {
         $userManager = new \Projet\Models\User();
         $contactManager = new \Projet\Models\Contact();
@@ -12,24 +13,11 @@ class AdminController extends Controller {
         require ($this->view('admin', 'dashboard'));
     }
 
+    // Méthodes Membres
     public function users() {
         $userManager = new \Projet\Models\User();
         $users = $userManager->userList();
         require ($this->view('admin', 'users'));
-    }
-
-    public function mails() {
-        $contactManager = new \Projet\Models\Contact();
-        $mails = $contactManager->mailList();
-        require ($this->view('admin', 'mails'));
-    }
-
-    public function meetings() {
-        require ($this->view('admin', 'meetings'));
-    }
-
-    public function blog() {
-        require ($this->view('admin', 'blog'));
     }
 
     public function deleteUser($id) {
@@ -38,9 +26,33 @@ class AdminController extends Controller {
         header('Location: indexAdmin.php?action=users');
     }
 
+    // Méthodes Mails
+    public function mails() {
+        $contactManager = new \Projet\Models\Contact();
+        $mails = $contactManager->mailList();
+        require ($this->view('admin', 'mails'));
+    }
+
+    public function readMail($id) {
+        $contactManager = new \Projet\Models\Contact();
+        $mail = $contactManager->readMail($id);
+        require ($this->view('admin', 'readMail'));
+    }
+
     public function deleteMail($id) {
         $contactManager = new \Projet\Models\Contact();
         $deleteMail = $contactManager->deleteMail($id);
         header('Location: indexAdmin.php?action=mails');
     }
+
+    // Méthodes Activités
+    public function activities() {
+        require ($this->view('admin', 'activities'));
+    }
+
+    public function blog() {
+        require ($this->view('admin', 'blog'));
+    }
+
+    
 }

@@ -17,7 +17,7 @@ class User extends Manager {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('SELECT id, lastname, firstname, mail, `password`, avatar, created_at, `role` 
                               FROM user 
-                              WHERE mail=?');
+                              WHERE mail= ? ');
         $req->execute(array($mail));
 
         return $req;
@@ -54,7 +54,7 @@ class User extends Manager {
 
    public function deleteUser($id) {
      $bdd = self::dbConnect();
-     $req = $bdd->prepare('DELETE FROM user WHERE id=?');
+     $req = $bdd->prepare('DELETE FROM user WHERE id= ? ');
      $req->execute(array($id));
 
      return $req;

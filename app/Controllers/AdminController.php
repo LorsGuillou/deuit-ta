@@ -8,8 +8,10 @@ class AdminController extends Controller {
     public function dashboard() {
         $userManager = new \Projet\Models\User();
         $contactManager = new \Projet\Models\Contact();
+        $blogManager = new \Projet\Models\Blog();
         $nbUsers = $userManager->nbUsers();
         $nbMails = $contactManager->nbMails();
+        $nbBlog = $blogManager->nbBlog();
         require ($this->view('admin', 'dashboard'));
     }
 
@@ -50,9 +52,31 @@ class AdminController extends Controller {
         require ($this->view('admin', 'activities'));
     }
 
+
+    // Méthodes Articles
     public function blog() {
+        $blogManager = new \Projet\Models\Blog();
+        $blogs = $blogManager->blogList();
         require ($this->view('admin', 'blog'));
     }
 
-    
+    public function write() {
+        require ($this->view('admin', 'write'));
+    }
+
+    public function publish($title, $excerpt, $img, $content, $date) {
+        $blogManager = new \Projet\Models\Blog();
+        $publish = $blogManager->publish($title, $excerpt, $img, $content, $date);
+        require ($this->view('admin', 'confirmation'));
+    }
+
+    public function editBlog($id) {
+        
+    }
+
+    public function deleteBlog($id) {
+        $blogManager = new \Projet\Models\Blog();
+        $deleteBlog = $blogManager->deleteBlog($id);
+        header('Location: indexAdmin.php?action=blog');
+    }
 }

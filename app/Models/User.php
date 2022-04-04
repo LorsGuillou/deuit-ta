@@ -7,7 +7,7 @@ class User extends Manager {
     public function createUser($lastname, $firstname, $mail, $password, $avatar, $date) {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar, created_at) 
-                              VALUE (?, ?, ?, ?, ?, ?)');
+                              VALUES (?, ?, ?, ?, ?, ?)');
         $req->execute(array($lastname, $firstname, $mail, $password, $avatar, $date));
 
         return $req;
@@ -36,7 +36,7 @@ class User extends Manager {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('SELECT COUNT(id) 
                               FROM user');
-        $req->execute();
+        $req->execute(array());
         $number = $req->fetch();
         
         return $number;
@@ -46,7 +46,7 @@ class User extends Manager {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('SELECT id, lastname, firstname, mail, avatar, created_at 
                               FROM user');
-        $req->execute();
+        $req->execute(array());
         $list = $req->fetchAll();
         
         return $list;

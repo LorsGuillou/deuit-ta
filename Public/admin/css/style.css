@@ -169,11 +169,15 @@ header #bandeau a {
 }
 
 #dashboard .admin-table tbody tr .action-case a span {
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 #dashboard .admin-table tbody tr .action-case a .action-view {
     color: deepskyblue;
+}
+
+#dashboard .admin-table tbody tr .action-case a .action-edit {
+    color: limegreen;
 }
 
 #dashboard .admin-table tbody tr .action-case a .action-delete {

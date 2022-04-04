@@ -17,7 +17,7 @@ class Contact extends Manager {
         $bdd = self::dbConnect();
         $req = $bdd->prepare('SELECT COUNT(id) 
                               FROM contact');
-        $req->execute();
+        $req->execute(array());
         $number = $req->fetch();
         
         return $number;

@@ -4,14 +4,6 @@ namespace Projet\Controllers;
 
 class UserController extends Controller {
 
-    public function login() {
-        require ($this->view('front', 'login'));
-    }
-
-    public function newUser() {
-        require ($this->view('front', 'register'));
-    }
-
     public function createUser($lastname, $firstname, $mail, $pass, $avatar, $date) {
         $userManager = new \Projet\Models\User();
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {

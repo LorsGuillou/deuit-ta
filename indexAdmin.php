@@ -53,7 +53,38 @@ try {
         } elseif ($_GET['action'] == 'blog') {
 
             $adminController->blog();
-        
+
+        // Ecrire un article
+        } elseif ($_GET['action'] == 'write') {
+
+            $adminController->write();
+
+        // Publier un article
+        } elseif ($_GET['action'] == 'publish') {
+
+            $title = htmlspecialchars($_POST['blog-title']);
+            $excerpt = htmlspecialchars($_POST['blog-excerpt']);
+            $img = 'no-img.png';
+            $content = htmlspecialchars($_POST['blog-content']);
+            $date = date('Y-m-d');
+
+            if (empty($title) || empty($excerpt) || empty($img) || empty($content) || empty($date)) {
+
+                echo '<script type="text/javascript">alert("Tout les champs doivent être remplis.")</script>';
+                $adminController->write();
+
+            } else {
+
+                $adminController->publish($title, $excerpt, $img, $content, $date);
+
+            }
+
+        // Supprimer un article
+        } elseif ($_GET['action'] == 'deleteBlog') {
+
+            $id = $_GET['id'];
+            $adminController->deleteBlog($id);
+
         // Déconnexion
         } elseif ($_GET['action'] == 'logout') {
 

@@ -68,7 +68,7 @@ try {
         // Aller sur Connexion
         } elseif ($_GET['action'] == 'login') {
 
-            $userController->login();
+            $frontController->login();
 
         // Se connecter
         } elseif ($_GET['action'] == 'connect') {
@@ -83,14 +83,14 @@ try {
             } else {
 
                 throw new \Exception ('Renseignez vos identifiants pour vous connecter !');
-                $userController->login();
+                $frontController->login();
 
             }
         
         // Aller sur Créer un compte
         } elseif ($_GET['action'] == 'register') {
 
-            $userController->newUser();
+            $frontController->newUser();
     
         // Création de compte
         } elseif ($_GET['action'] == 'createUser') {
@@ -107,12 +107,12 @@ try {
             if (empty($lastname) || empty($firstname) || empty($mail) || empty($pass)) {
 
                 echo '<script type="text/javascript">alert("Tout les champs doivent être remplis !")</script>';
-                $userController->newUser();
+                $frontController->newUser();
 
             } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 
                 echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
-                $userController->newUser();
+                $frontController->newUser();
 
             // } elseif ($userController->pseudoCheck($pseudo)) {
 

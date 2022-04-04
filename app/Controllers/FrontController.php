@@ -24,6 +24,14 @@ class FrontController extends Controller {
         require ($this->view('front', 'contact'));
     }
 
+    public function login() {
+        require ($this->view('front', 'login'));
+    }
+
+    public function newUser() {
+        require ($this->view('front', 'register'));
+    }
+
     function account() {
         require ($this->view('front', 'account'));
     }

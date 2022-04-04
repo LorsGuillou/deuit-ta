@@ -31,13 +31,13 @@
 ========================== */
 
 :root {
-    --darkbg: #262626;
-    --lightbg: #f5f5f5f2;
+    --darkbg: rgba(38, 38, 38, 1);
+    --lightbg: rgba(245, 245, 245, 0.95);
     --shadow: rgba(112, 128, 144, 0.87);
-    --bigtitles: #b0c4de;
-    --bzh: #667d9b;
+    --formbg: rgba(196, 218, 247, 0.9);
+    --bzh: rgba(102, 125, 155, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
-    --linkhover: #e42323fd;
+    --linkhover: rgba(228, 35, 35, 0.99);
 }
 
 /* ======================================
@@ -72,7 +72,12 @@ ul {
 
 .txt-bzh {
     color: var(--bzh);
+    margin-left: 10px;
     font-style: italic;
+}
+
+h1 {
+    padding-top: 110px;
 }
 
 /* ======================
@@ -80,9 +85,10 @@ ul {
 ====================== */
 
 header {
+    width: 100%;
     background-color: var(--darkbg);
     box-shadow: 1px 1px 10px var(--shadow);
-    /* position: fixed; */
+    position: fixed;
 }
 
 header #bandeau {
@@ -104,11 +110,6 @@ header #bandeau #logo img {
     width: 100%;
     height: 100%;
 }
-
-/* header #bandeau #logo #sous-titre {
-    font-size: 1.68rem;
-    color: var(--bigtitles);
-} */
 
 /* =============== 
 === Navigation === 
@@ -176,21 +177,60 @@ header #bandeau .hamburger .bar {
     background-color: var(--menulinks);
 }
 
-/* ==============
-=== Connexion === 
-============== */
+/* ================
+=== Formulaires === 
+================ */
 
-#login h1 .txt-bzh {
-    margin-left: 10px;
+.input-page {
+    margin: 25px auto 20px;
+    padding: 20px;
+    width: 35%;
+    text-align: center;
+    background-color: var(--formbg);
+    box-shadow: 1px 1px 3px var(--shadow);
+}
+
+.input-page p {
+    margin: 15px 0;
+}
+
+.input-page p input {
+    padding: 3px;
+    width: 250px;
+}
+
+.input-page p button {
+    border: none;
+    padding: 5px;
+    width: 80px;
+    margin: auto 3px;
+    color: white;
+    cursor: pointer;
+}
+
+.input-page p button.submit {
+    background-color: darkblue;
+}
+
+.input-page p button.reset {
+    background-color: darkred;
+}
+
+.input-page p textarea {
+    padding: 1px;
+}
+
+/* ============
+=== Contact === 
+============ */
+
+#contact-page {
+    width: 60%;
 }
 
 /* =======================
 === Création de compte === 
 ======================= */
-
-#register h1 .txt-bzh {
-    margin-left: 10px;
-}
 
 /* ===========
 === Footer === 

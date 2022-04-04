@@ -32,10 +32,12 @@
 
 :root {
     --darkbg: rgba(38, 38, 38, 1);
-    --lightbg: rgba(245, 245, 245, 0.949);
-    --shadow: rgba(112, 128, 144, 0.87);
+    --lightbg: rgba(245, 245, 245, 0.95);
+    --table: rgba(83, 84, 89, 0.95);
+    --tablehead: rgba(112, 128, 144, 0.9);
+    --tabletitles: rgba(235, 242, 250, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
-    --linkhover: rgba(228, 35, 35, 0.993);
+    --linkhover: rgba(228, 35, 35, 0.99);
 }
 
 /* ======================================
@@ -148,9 +150,14 @@ header #bandeau a {
 #dashboard .admin-table,
 #dashboard .admin-table thead tr th,
 #dashboard .admin-table tbody tr td {
-    border: 2px solid var(--shadow);
+    border: 2px solid var(--table);
     padding: 8px 4px;
     text-align: left;
+}
+
+#dashboard .admin-table thead tr th {
+    background-color: var(--tablehead);
+    color: var(--tabletitles);
 }
 
 #dashboard .admin-table tbody tr .action-case {
@@ -159,6 +166,10 @@ header #bandeau a {
 
 #dashboard .admin-table tbody tr .action-case a {
     color: black;
+}
+
+#dashboard .admin-table tbody tr .action-case a span {
+    margin-right: 5px;
 }
 
 #dashboard .admin-table tbody tr .action-case a .action-view {

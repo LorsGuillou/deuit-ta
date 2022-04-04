@@ -22,9 +22,9 @@ try {
             $frontController->about();
 
         // Aller sur Rencontres
-        } elseif ($_GET['action'] == 'rencontres') {
+        } elseif ($_GET['action'] == 'activities') {
 
-            $frontController->rencontres();
+            $frontController->activities();
 
         // Aller sur Actualités
         } elseif ($_GET['action'] == 'actu') {

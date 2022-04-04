@@ -12,7 +12,7 @@
     <header>
         <div id="bandeau" class="container">
             <div id="logo">
-                <img src="Public/front/img/logo-removebg-preview.png">
+                <img src="Public/front/img/logo.png">
             </div>
             <div id="links">
                 <div id="user-space">
@@ -43,7 +43,7 @@
                             <a class="nav-link" href="index.php?action=about">A propos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=rencontres">Activités</a>
+                            <a class="nav-link" href="index.php?action=activities">Activités</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?action=actu">Actualités</a>

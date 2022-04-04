@@ -12,8 +12,8 @@ class FrontController extends Controller {
         require ($this->view('front', 'about'));
     }
 
-    function rencontres() {
-        require ($this->view('front', 'rencontres'));
+    function activities() {
+        require ($this->view('front', 'activities'));
     }
 
     function actu() {

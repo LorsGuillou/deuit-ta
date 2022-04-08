@@ -100,7 +100,6 @@ try {
             $mail = htmlspecialchars($_POST['mail']);
             $pass = $_POST['password'];
             $avatar = 'no-avatar.png';
-            $date = date('Y-m-d');
 
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
             
@@ -114,14 +113,9 @@ try {
                 echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
                 $frontController->newUser();
 
-            // } elseif ($userController->pseudoCheck($pseudo)) {
-
-            //     throw new \Exception ('Ce pseudonyme existe déjà !');
-            //     $userController->newUser();
-
             } else {
 
-                $userController->createUser($lastname, $firstname, $mail, $passHash, $avatar, $date);
+                $userController->createUser($lastname, $firstname, $mail, $passHash, $avatar);
 
             }
 

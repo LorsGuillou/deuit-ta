@@ -4,10 +4,10 @@ namespace Projet\Controllers;
 
 class UserController extends Controller {
 
-    public function createUser($lastname, $firstname, $mail, $pass, $avatar, $date) {
+    public function createUser($lastname, $firstname, $mail, $pass, $avatar) {
         $userManager = new \Projet\Models\User();
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            $newUser = $userManager->createUser($lastname, $firstname, $mail, $pass, $avatar, $date);
+            $newUser = $userManager->createUser($lastname, $firstname, $mail, $pass, $avatar);
             require ($this->view('front', 'confirmation'));
         } else {
             header('Location: app/Views/front/errors/error.php');
@@ -38,20 +38,15 @@ class UserController extends Controller {
         }
     }
 
-    // public function pseudoCheck($pseudo) {
-    //     $userManager = new \Projet\Models\User();
-    //     return $userManager->pseudoCheck($pseudo);
-    // }
-
     public function nbUsers() {
         $userManager = new \Projet\Models\User();
         $users = $userManager->nbUsers();
         return $users;
     }
 
-    public function postMail($id, $object, $message, $date) {
+    public function postMail($id, $object, $message) {
         $contactManager = new \Projet\Models\Contact();
-        $mail = $contactManager->postMail($id, $object, $message, $date);
+        $mail = $contactManager->postMail($id, $object, $message);
         echo "<script type'text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
         require ($this->view('front', 'contact'));
     }

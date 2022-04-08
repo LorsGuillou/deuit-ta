@@ -35,7 +35,7 @@ class Blog extends Manager {
 
     public function readBlog($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, content, created_at, updated_at 
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, content, created_at 
                             FROM blog 
                             WHERE id = ?');
         $req->execute(array($id));

@@ -7,16 +7,20 @@
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>
             <form action="index.php?action=createUser" method="post">
                 <p>
-                    <input type="text" id="lastname" name="lastname" placeholder="Nom">
+                    <input type="text" id="lastname" name="lastname" placeholder="Nom" required>
                 </p>
                 <p>
-                    <input type="text" id="firstname" name="firstname" placeholder="Prénom">
+                    <input type="text" id="firstname" name="firstname" placeholder="Prénom" required>
                 </p>
                 <p>
-                    <input type="mail" id="mail" name="mail" placeholder="Email">
+                    <input type="mail" id="mail" name="mail" placeholder="Email" required>
                 </p>
                 <p>
-                    <input type="password" id="password" name="password" placeholder="Mot de passe">
+                    <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+                </p>
+                <p>
+                    <label for="rgpd">RGPD</label>
+                    <input type="checkbox" id="rgpd" name="rgpd" required>
                 </p>
                 <p>
                     <button type="submit" id="submit-register" class="submit">Envoyer</button>

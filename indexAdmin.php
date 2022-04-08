@@ -66,11 +66,11 @@ try {
             $excerpt = htmlspecialchars($_POST['blog-excerpt']);
             $content = htmlspecialchars($_POST['blog-content']);
 
-            $tmpName = $_FILES['blog-img']['tmp_name'];
-            $name = $_FILES['blog-img']['name'];
-            $size = $_FILES['blog-img']['size'];
-            $error = $_FILES['blog-img']['error'];
-            $type = $_FILES['blog-img']['type'];
+            $tmpName = $_FILES['image']['tmp_name'];
+            $name = $_FILES['image']['name'];
+            $size = $_FILES['image']['size'];
+            $error = $_FILES['image']['error'];
+            $type = $_FILES['image']['type'];
 
             $getExtension = explode('.', $name);
             $extension = strtolower(end($getExtension));
@@ -82,7 +82,7 @@ try {
 
                 $uniqueName = uniqid('', true);
                 $img = $uniqueName . '.' . $extension;
-                move_uploaded_file($tmpName, './Public/front/img/avatars/' . $img);
+                move_uploaded_file($tmpName, './Public/front/img/blog/' . $img);
                 $adminController->publish($title, $excerpt, $img, $content);
 
             } else {

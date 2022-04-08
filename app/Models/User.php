@@ -4,11 +4,11 @@ namespace Projet\Models;
 
 class User extends Manager {
 
-    public function createUser($lastname, $firstname, $mail, $password, $avatar, $date) {
+    public function createUser($lastname, $firstname, $mail, $password, $avatar) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar, created_at) 
                               VALUES (?, ?, ?, ?, ?, ?)');
-        $req->execute(array($lastname, $firstname, $mail, $password, $avatar, $date));
+        $req->execute(array($lastname, $firstname, $mail, $password, $avatar));
 
         return $req;
    }
@@ -23,15 +23,6 @@ class User extends Manager {
         return $req;
    }
 
-//    public function pseudoCheck($pseudo) {
-//         $pdo = self::dbConnect();
-//         $req = $pdo->prepare('SELECT COUNT(*) FROM user WHERE lastname=?');
-//         $req->execute([$pseudo]);
-//         $check = $req->fetch()[0];
-
-//         return $check;
-//    }
-
    public function nbUsers() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT COUNT(id) 
@@ -45,7 +36,7 @@ class User extends Manager {
    public function userList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, lastname, firstname, mail, avatar, created_at 
-                              FROM user');
+                              FROM user WHERE role=0');
         $req->execute(array());
         $list = $req->fetchAll();
         

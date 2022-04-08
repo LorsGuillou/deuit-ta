@@ -64,20 +64,58 @@ try {
 
             $title = htmlspecialchars($_POST['blog-title']);
             $excerpt = htmlspecialchars($_POST['blog-excerpt']);
-            $img = 'no-img.png';
             $content = htmlspecialchars($_POST['blog-content']);
-            $date = date('Y-m-d');
 
-            if (empty($title) || empty($excerpt) || empty($img) || empty($content) || empty($date)) {
+            $tmpName = $_FILES['blog-img']['tmp_name'];
+            $name = $_FILES['blog-img']['name'];
+            $size = $_FILES['blog-img']['size'];
+            $error = $_FILES['blog-img']['error'];
+            $type = $_FILES['blog-img']['type'];
 
-                echo '<script type="text/javascript">alert("Tout les champs doivent être remplis.")</script>';
-                $adminController->write();
+            $getExtension = explode('.', $name);
+            $extension = strtolower(end($getExtension));
+
+            $allowedExt = ['jpg', 'jpeg', 'gif', 'png'];
+            $maxSize = 400000;
+
+            if (in_array($extension, $allowedExt) && $size <= $maxSize && $error === 0) {
+
+                $uniqueName = uniqid('', true);
+                $img = $uniqueName . '.' . $extension;
+                move_uploaded_file($tmpName, './Public/front/img/avatars/' . $img);
+                $adminController->publish($title, $excerpt, $img, $content);
 
             } else {
 
-                $adminController->publish($title, $excerpt, $img, $content, $date);
+                echo '<script type="text/javascript">alert("Ton image est pas conforme, yo.")</script>';
+                $adminController->write();
 
             }
+
+            
+
+        // Lire un article
+        } elseif ($_GET['action'] == 'readBlog') {
+
+            $id = $_GET['id'];
+            $adminController->readBlog($id);
+        
+        // Modifier un article
+        } elseif ($_GET['action'] == 'editBlog') {
+
+            $id = $_GET['id'];
+            $adminController->edit($id);
+
+        // Publier la modification
+        } elseif ($_GET['action'] == 'modify') {
+
+            $id = $_GET['id'];
+            $title = htmlspecialchars($_POST['edit-title']);
+            $excerpt = htmlspecialchars($_POST['edit-excerpt']);
+            $img = 'no-img.png';
+            $content = htmlspecialchars($_POST['edit-content']);
+
+            $adminController->editBlog($title, $excerpt, $img, $content, $id);
 
         // Supprimer un article
         } elseif ($_GET['action'] == 'deleteBlog') {

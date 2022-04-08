@@ -6,21 +6,21 @@ use FFI\Exception;
 
 class Manager {
 
-    private static $bdd = null;
+    private static $pdo = null;
 
     protected static function dbConnect() {
-        if (isset(self::$bdd)) {
-            return self::$bdd;
+        if (isset(self::$pdo)) {
+            return self::$pdo;
         } else {
             try {
-                self::$bdd = new \PDO (
+                self::$pdo = new \PDO (
                 'mysql:host=localhost;
                 dbname=deuit-ta;
                 charset=utf8',
                 'root',
                 ''
             );
-                return self::$bdd;
+                return self::$pdo;
             } catch (Exception $e) {
                 die ('Erreur : ' . $e->getMessage());
             }
@@ -61,9 +61,9 @@ class Manager {
     //   }
 
     // public static function delete($id) {
-    //     $bdd = self::dbConnect();
+    //     $pdo = self::dbConnect();
     //     $child = get_called_class();
-    //     $req = $bdd->prepare("DELETE FROM `{$child}` WHERE id=?");
+    //     $req = $pdo->prepare("DELETE FROM `{$child}` WHERE id=?");
     //     $req->execute(array($id));
 
     //     return $req;

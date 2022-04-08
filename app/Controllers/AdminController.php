@@ -61,17 +61,33 @@ class AdminController extends Controller {
     }
 
     public function write() {
-        require ($this->view('admin', 'write'));
+        $blogManager = new \Projet\Models\Blog();
+        $blogs = $blogManager->blogList();
+        require ($this->view('admin', 'writeBlog'));
     }
 
-    public function publish($title, $excerpt, $img, $content, $date) {
+    public function edit($id) {
         $blogManager = new \Projet\Models\Blog();
-        $publish = $blogManager->publish($title, $excerpt, $img, $content, $date);
+        $blog = $blogManager->readBlog($id);
+        require ($this->view('admin', 'editBlog'));
+    }
+
+    public function publish($title, $excerpt, $img, $content) {
+        $blogManager = new \Projet\Models\Blog();
+        $publish = $blogManager->publish($title, $excerpt, $img, $content);
         require ($this->view('admin', 'confirmation'));
     }
 
-    public function editBlog($id) {
-        
+    public function readBlog($id) {
+        $blogManager = new \Projet\Models\Blog();
+        $blog = $blogManager->readBlog($id);
+        require ($this->view('admin', 'readBlog'));
+    }
+
+    public function editBlog($title, $excerpt, $img, $content, $id) {
+        $blogManager = new \Projet\Models\Blog();
+        $edit = $blogManager->editBlog($title, $excerpt, $img, $content, $id);
+        require ($this->view('admin', 'confirmation'));
     }
 
     public function deleteBlog($id) {

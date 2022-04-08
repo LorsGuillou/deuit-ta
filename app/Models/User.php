@@ -5,8 +5,8 @@ namespace Projet\Models;
 class User extends Manager {
 
     public function createUser($lastname, $firstname, $mail, $password, $avatar, $date) {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar, created_at) 
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar, created_at) 
                               VALUES (?, ?, ?, ?, ?, ?)');
         $req->execute(array($lastname, $firstname, $mail, $password, $avatar, $date));
 
@@ -14,8 +14,8 @@ class User extends Manager {
    }
 
    public function getPassword($mail, $pass) {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT id, lastname, firstname, mail, `password`, avatar, created_at, `role` 
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT id, lastname, firstname, mail, `password`, avatar, created_at, `role` 
                               FROM user 
                               WHERE mail= ? ');
         $req->execute(array($mail));
@@ -24,8 +24,8 @@ class User extends Manager {
    }
 
 //    public function pseudoCheck($pseudo) {
-//         $bdd = self::dbConnect();
-//         $req = $bdd->prepare('SELECT COUNT(*) FROM user WHERE lastname=?');
+//         $pdo = self::dbConnect();
+//         $req = $pdo->prepare('SELECT COUNT(*) FROM user WHERE lastname=?');
 //         $req->execute([$pseudo]);
 //         $check = $req->fetch()[0];
 
@@ -33,8 +33,8 @@ class User extends Manager {
 //    }
 
    public function nbUsers() {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT COUNT(id) 
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT COUNT(id) 
                               FROM user');
         $req->execute(array());
         $number = $req->fetch();
@@ -43,8 +43,8 @@ class User extends Manager {
    }
 
    public function userList() {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT id, lastname, firstname, mail, avatar, created_at 
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT id, lastname, firstname, mail, avatar, created_at 
                               FROM user');
         $req->execute(array());
         $list = $req->fetchAll();
@@ -53,8 +53,8 @@ class User extends Manager {
    }
 
    public function deleteUser($id) {
-     $bdd = self::dbConnect();
-     $req = $bdd->prepare('DELETE FROM user WHERE id= ? ');
+     $pdo = self::dbConnect();
+     $req = $pdo->prepare('DELETE FROM user WHERE id= ? ');
      $req->execute(array($id));
 
      return $req;

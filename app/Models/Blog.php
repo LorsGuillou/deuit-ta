@@ -4,18 +4,18 @@ namespace Projet\Models;
 
 class Blog extends Manager {
 
-    public function publish($title, $excerpt, $img, $content, $date) {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('INSERT INTO blog (title, excerpt, img, content, created_at) 
-                            VALUES (?, ?, ?, ?, ?)');
-        $req->execute(array($title, $excerpt, $img, $content, $date));
+    public function publish($title, $excerpt, $img, $content) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('INSERT INTO blog (title, excerpt, img, content) 
+                            VALUES (?, ?, ?, ?)');
+        $req->execute(array($title, $excerpt, $img, $content));
 
         return $req;
     }
 
     public function nbBlog() {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT COUNT(id) 
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT COUNT(id) 
                             FROM blog');
         $req->execute(array());
         $number = $req->fetch();
@@ -24,8 +24,8 @@ class Blog extends Manager {
     }
 
     public function blogList() {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('SELECT id, title, excerpt, created_at 
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at
                             FROM blog');
         $req->execute(array());
         $list = $req->fetchAll();
@@ -33,9 +33,20 @@ class Blog extends Manager {
         return $list;
     }
 
+    public function readBlog($id) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, content, created_at, updated_at 
+                            FROM blog 
+                            WHERE id = ?');
+        $req->execute(array($id));
+        $blog = $req->fetch();
+
+        return $blog;
+    }
+
     public function editBlog($title, $excerpt, $img, $content, $id) {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('UPDATE blog
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('UPDATE blog
                             SET title = ?, excerpt = ?, img = ?, content = ?
                             WHERE id = ?');
         $req->execute(array($title, $excerpt, $img, $content, $id));
@@ -44,8 +55,8 @@ class Blog extends Manager {
     }
 
     public function deleteBlog($id) {
-        $bdd = self::dbConnect();
-        $req = $bdd->prepare('DELETE FROM blog WHERE id = ?');
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('DELETE FROM blog WHERE id = ?');
         $req->execute(array($id));
 
         return $req;

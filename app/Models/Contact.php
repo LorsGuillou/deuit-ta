@@ -7,7 +7,7 @@ class Contact extends Manager {
     public function postMail($id, $object, $message) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO contact (idUser, `object`, `message`) 
-                            VALUES (?, ?, ?, ?)');
+                            VALUES (?, ?, ?)');
         $req->execute(array($id, $object, $message));
 
         return $req;

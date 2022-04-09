@@ -42,7 +42,6 @@ try {
             $id = $_SESSION['id'];
             $object = htmlspecialchars($_POST['object']);
             $message = htmlspecialchars($_POST['message']);
-            $date = date('Y-m-d');
 
             if (empty($object) && empty($message)) {
 
@@ -61,7 +60,7 @@ try {
 
             } else {
 
-                $userController->postMail($id, $object, $message, $date);
+                $userController->postMail($id, $object, $message);
 
             }
 

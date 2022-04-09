@@ -6,8 +6,8 @@ class User extends Manager {
 
     public function createUser($lastname, $firstname, $mail, $password, $avatar) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar, created_at) 
-                              VALUES (?, ?, ?, ?, ?, ?)');
+        $req = $pdo->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar) 
+                              VALUES (?, ?, ?, ?, ?)');
         $req->execute(array($lastname, $firstname, $mail, $password, $avatar));
 
         return $req;

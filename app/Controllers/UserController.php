@@ -47,7 +47,7 @@ class UserController extends Controller {
     public function postMail($id, $object, $message) {
         $contactManager = new \Projet\Models\Contact();
         $mail = $contactManager->postMail($id, $object, $message);
-        echo "<script type'text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
+        echo "<script type='text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
         require ($this->view('front', 'contact'));
     }
 }

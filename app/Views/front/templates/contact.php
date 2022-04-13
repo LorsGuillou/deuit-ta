@@ -11,7 +11,7 @@
                         <input type="text" id="object" name="object" placeholder="Objet" maxlength="50">
                     </p>
                     <p>
-                        <textarea id="message" name="message" placeholder="Votre message..." rows="15" cols="70"></textarea>
+                        <textarea id="message" name="message" placeholder="Votre message..."></textarea>
                     </p>
                     <p>
                         <button type="submit" id="submit-contact" class="submit">Envoyer</button>

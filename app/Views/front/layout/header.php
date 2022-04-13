@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <div id="bandeau" class="container">
+        <div id="headband" class="container">
             <div id="logo">
-                <img src="Public/front/img/logo.png">
+                <img src="Public/front/img/app/logo.png">
             </div>
             <div id="links">
                 <div id="user-space">

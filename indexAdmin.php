@@ -64,35 +64,10 @@ try {
 
             $title = htmlspecialchars($_POST['blog-title']);
             $excerpt = htmlspecialchars($_POST['blog-excerpt']);
+            $img = $adminController->getImg('admin', 'blog');
             $content = htmlspecialchars($_POST['blog-content']);
 
-            $tmpName = $_FILES['image']['tmp_name'];
-            $name = $_FILES['image']['name'];
-            $size = $_FILES['image']['size'];
-            $error = $_FILES['image']['error'];
-            $type = $_FILES['image']['type'];
-
-            $getExtension = explode('.', $name);
-            $extension = strtolower(end($getExtension));
-
-            $allowedExt = ['jpg', 'jpeg', 'gif', 'png'];
-            $maxSize = 400000;
-
-            if (in_array($extension, $allowedExt) && $size <= $maxSize && $error === 0) {
-
-                $uniqueName = uniqid('', true);
-                $img = $uniqueName . '.' . $extension;
-                move_uploaded_file($tmpName, './Public/front/img/blog/' . $img);
-                $adminController->publish($title, $excerpt, $img, $content);
-
-            } else {
-
-                echo '<script type="text/javascript">alert("Ton image est pas conforme, yo.")</script>';
-                $adminController->write();
-
-            }
-
-            
+            $adminController->publish($title, $excerpt, $img, $content);
 
         // Lire un article
         } elseif ($_GET['action'] == 'readBlog') {
@@ -112,7 +87,7 @@ try {
             $id = $_GET['id'];
             $title = htmlspecialchars($_POST['edit-title']);
             $excerpt = htmlspecialchars($_POST['edit-excerpt']);
-            $img = 'no-img.png';
+            $img = $adminController->getImg('admin', 'blog');
             $content = htmlspecialchars($_POST['edit-content']);
 
             $adminController->editBlog($title, $excerpt, $img, $content, $id);

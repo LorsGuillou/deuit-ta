@@ -200,3 +200,34 @@ header #bandeau a {
 === Lecture d'article === 
 ====================== */
 
+/* =================================
+=== Création / édition d'article === 
+================================= */
+
+#dashboard form {
+    margin-top: 20px;
+}
+
+#dashboard form p {
+    margin: 10px auto;
+}
+
+#dashboard form p input {
+    padding: 3px;
+    width: 250px;
+}
+
+#dashboard form p textarea {
+    width: 70%;
+    height: 400px;
+    padding: 3px;
+}
+
+#dashboard form button {
+    color: white;
+    background-color: darkblue;
+    border: none;
+    padding: 5px;
+    width: 80px;
+    cursor: pointer;
+}

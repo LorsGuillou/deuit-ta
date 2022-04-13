@@ -7,4 +7,33 @@ class Controller {
     public function view($viewType, $viewName) {
         return 'app/Views/' . $viewType . '/templates/' . $viewName . '.php';
     }
+
+    public function getImg($imgSide, $imgType) {
+
+        $tmpName = $_FILES['image']['tmp_name'];
+        $name = $_FILES['image']['name'];
+        $size = $_FILES['image']['size'];
+        $error = $_FILES['image']['error'];
+        $type = $_FILES['image']['type'];
+
+        $getExtension = explode('.', $name);
+        $extension = strtolower(end($getExtension));
+
+        $allowedExt = ['jpg', 'jpeg', 'gif', 'png'];
+        $maxSize = 400000;
+
+        if (in_array($extension, $allowedExt) && $size <= $maxSize && $error === 0) {
+
+            $uniqueName = uniqid('', true);
+            $img = $uniqueName . '.' . $extension;
+            move_uploaded_file($tmpName, './Public/' . $imgSide . '/img/' . $imgType . '/' . $img);
+            
+            return $img;
+
+        } else {
+
+            echo "<script type='text/javascript'>alert('L'image n'est pas conforme.')</script>";
+
+        }
+    }
 }

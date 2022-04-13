@@ -10,8 +10,8 @@
                     <input type="text" id="blog-excerpt" name="blog-excerpt" placeholder="Extrait" required>
                 </p>
                 <p>
-                    <label for ="image">Image : </label>
-                    <input type="file" name="image" required>
+                    <label for="image">Image : </label>
+                    <input type="file" id="blog-name" name="image" required>
                 </p>
                 <p>
                     <textarea id="blog-content" name="blog-content" placeholder="Contenu" required></textarea>

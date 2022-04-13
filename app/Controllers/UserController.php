@@ -4,10 +4,10 @@ namespace Projet\Controllers;
 
 class UserController extends Controller {
 
-    public function createUser($lastname, $firstname, $mail, $pass, $avatar) {
+    public function createUser($data) {
         $userManager = new \Projet\Models\User();
-        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            $newUser = $userManager->createUser($lastname, $firstname, $mail, $pass, $avatar);
+        if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+            $newUser = $userManager->createUser($data);
             require ($this->view('front', 'confirmation'));
         } else {
             header('Location: app/Views/front/errors/error.php');
@@ -44,9 +44,9 @@ class UserController extends Controller {
         return $users;
     }
 
-    public function postMail($id, $object, $message) {
+    public function postMail($data) {
         $contactManager = new \Projet\Models\Contact();
-        $mail = $contactManager->postMail($id, $object, $message);
+        $mail = $contactManager->postMail($data);
         echo "<script type='text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
         require ($this->view('front', 'contact'));
     }

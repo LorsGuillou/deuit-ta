@@ -5,6 +5,8 @@ namespace Projet\Controllers;
 class FrontController extends Controller {
 
     function home() {
+        $blogManager = new \Projet\Models\Blog();
+        $blogs = $blogManager->blogHome();
         require ($this->view('front', 'home'));
     }
 

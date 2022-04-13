@@ -4,11 +4,11 @@ namespace Projet\Models;
 
 class Blog extends Manager {
 
-    public function publish($title, $excerpt, $img, $content) {
+    public function publish($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO blog (title, excerpt, img, content) 
-                            VALUES (?, ?, ?, ?)');
-        $req->execute(array($title, $excerpt, $img, $content));
+                            VALUES (:title, :excerpt, :img, :content)');
+        $req->execute($data);
 
         return $req;
     }
@@ -44,21 +44,34 @@ class Blog extends Manager {
         return $blog;
     }
 
-    public function editBlog($title, $excerpt, $img, $content, $id) {
+    public function editBlog($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('UPDATE blog
-                            SET title = ?, excerpt = ?, img = ?, content = ?
-                            WHERE id = ?');
-        $req->execute(array($title, $excerpt, $img, $content, $id));
+                            SET title = :title, excerpt = :excerpt, img = :img, content = :content
+                            WHERE id = :id');
+        $req->execute($data);
 
         return $req;
     }
 
     public function deleteBlog($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('DELETE FROM blog WHERE id = ?');
+        $req = $pdo->prepare('DELETE FROM blog 
+                            WHERE id = ?');
         $req->execute(array($id));
 
         return $req;
+    }
+
+    public function blogHome() {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT title, excerpt, img, created_at 
+                            FROM blog 
+                            ORDER BY id 
+                            DESC');
+        $req->execute(array());
+        $blog = $req->fetch();
+        
+        return $blog;
     }
 }

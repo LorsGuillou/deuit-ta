@@ -72,9 +72,9 @@ class AdminController extends Controller {
         require ($this->view('admin', 'editBlog'));
     }
 
-    public function publish($title, $excerpt, $img, $content) {
+    public function publish($data) {
         $blogManager = new \Projet\Models\Blog();
-        $publish = $blogManager->publish($title, $excerpt, $img, $content);
+        $publish = $blogManager->publish($data);
         require ($this->view('admin', 'confirmation'));
     }
 

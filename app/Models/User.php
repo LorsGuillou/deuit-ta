@@ -4,11 +4,11 @@ namespace Projet\Models;
 
 class User extends Manager {
 
-    public function createUser($lastname, $firstname, $mail, $password, $avatar) {
+    public function createUser($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar) 
-                              VALUES (?, ?, ?, ?, ?)');
-        $req->execute(array($lastname, $firstname, $mail, $password, $avatar));
+                              VALUES (:lastname, :firstname, :mail, :password, :avatar)');
+        $req->execute($data);
 
         return $req;
    }

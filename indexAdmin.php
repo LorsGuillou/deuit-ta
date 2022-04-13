@@ -62,12 +62,14 @@ try {
         // Publier un article
         } elseif ($_GET['action'] == 'publish') {
 
-            $title = htmlspecialchars($_POST['blog-title']);
-            $excerpt = htmlspecialchars($_POST['blog-excerpt']);
-            $img = $adminController->getImg('admin', 'blog');
-            $content = htmlspecialchars($_POST['blog-content']);
+            $data = [
+                ":title" => htmlspecialchars($_POST['blog-title']),
+                ":excerpt" => htmlspecialchars($_POST['blog-excerpt']),
+                ":img" => $adminController->getImg('admin', 'blog'),
+                ":content" => htmlspecialchars($_POST['blog-content'])
+            ];
 
-            $adminController->publish($title, $excerpt, $img, $content);
+            $adminController->publish($data);
 
         // Lire un article
         } elseif ($_GET['action'] == 'readBlog') {
@@ -84,11 +86,13 @@ try {
         // Publier la modification
         } elseif ($_GET['action'] == 'modify') {
 
-            $id = $_GET['id'];
-            $title = htmlspecialchars($_POST['edit-title']);
-            $excerpt = htmlspecialchars($_POST['edit-excerpt']);
-            $img = $adminController->getImg('admin', 'blog');
-            $content = htmlspecialchars($_POST['edit-content']);
+            $data = [
+                ":id" => $_GET['id'],
+                ":title" => htmlspecialchars($_POST['edit-title']),
+                ":excerpt" => htmlspecialchars($_POST['edit-excerpt']),
+                ":img" => $adminController->getImg('admin', 'blog'),
+                ":content" => htmlspecialchars($_POST['edit-content'])
+            ];
 
             $adminController->editBlog($title, $excerpt, $img, $content, $id);
 

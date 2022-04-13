@@ -72,12 +72,16 @@ ul {
 
 .txt-bzh {
     color: var(--bzh);
-    margin-left: 10px;
     font-style: italic;
 }
 
 h1 {
     padding-top: 110px;
+}
+
+h1 .txt-bzh,
+h2 .txt-bzh {
+    margin-left: 10px;
 }
 
 /* ======================
@@ -101,7 +105,7 @@ header #headband {
 ========= */
 
 header #headband #logo {
-    width: 11%;
+    width: 120px;
     height: 90px;
 }
 
@@ -176,9 +180,9 @@ header #headband .hamburger .bar {
     background-color: var(--menulinks);
 }
 
-/* =============
-=== Bannière === 
-============= */
+/* ===================
+=== Page d'accueil === 
+=================== */
 
 #banner {
     color: whitesmoke;
@@ -200,6 +204,22 @@ header #headband .hamburger .bar {
 #banner span {
     color: rgba(176, 196, 222, 1);
     font-style: italic;
+}
+
+#home-page .home-titles {
+    text-align: center;
+    margin: 25px;
+    padding: 15px;
+    border-top: 2px solid var(--shadow);
+    border-bottom: 2px solid var(--shadow);
+}
+
+#home-page #home-activities .txt-visitor {
+    padding: 0 200px;
+}
+
+#home-page #home-activities .txt-visitor:first-child {
+    margin-bottom: 10px;
 }
 
 /* ================

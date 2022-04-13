@@ -4,11 +4,11 @@ namespace Projet\Models;
 
 class Contact extends Manager {
 
-    public function postMail($id, $object, $message) {
+    public function postMail($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO contact (idUser, `object`, `message`) 
-                            VALUES (?, ?, ?)');
-        $req->execute(array($id, $object, $message));
+                            VALUES (:id, :object, :message)');
+        $req->execute($data);
 
         return $req;
     }

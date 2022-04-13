@@ -39,28 +39,30 @@ try {
         // Formulaire de contact
         } elseif ($_GET['action'] == 'contactPost') {
 
-            $id = $_SESSION['id'];
-            $object = htmlspecialchars($_POST['object']);
-            $message = htmlspecialchars($_POST['message']);
+            $data = [
+                ":id" => $id = $_SESSION['id'],
+                ":object" => htmlspecialchars($_POST['object']),
+                ":message" => htmlspecialchars($_POST['message'])
+            ];
 
-            if (empty($object) && empty($message)) {
+            if (empty($_POST['object']) && empty($_POST['message'])) {
 
                 throw new \Exception ('Vous ne pouvez pas envoyer un formulaire vide !');
                 $frontController->contact();
             
-            } elseif (empty($object)) {
+            } elseif (empty($_POST['object'])) {
 
-                throw new \Exception ("Vous devez renseigner l'objet de votre message !");
+                throw new \Exception ('Vous devez renseigner l\'objet de votre message !');
                 $frontController->contact();
             
-            } elseif(empty($message)) {
+            } elseif(empty($_POST['message'])) {
 
                 throw new \Exception ("Votre message est vide !");
                 $frontController->contact();
 
             } else {
 
-                $userController->postMail($id, $object, $message);
+                $userController->postMail($data);
 
             }
 
@@ -94,27 +96,31 @@ try {
         // Création de compte
         } elseif ($_GET['action'] == 'createUser') {
 
-            $lastname = htmlspecialchars($_POST['lastname']);
-            $firstname = htmlspecialchars($_POST['firstname']);
-            $mail = htmlspecialchars($_POST['mail']);
-            $pass = $_POST['password'];
-            $avatar = 'no-avatar.png';
+            $pass = htmlspecialchars($_POST['password']);
 
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
+
+            $data = [
+                ":lastname" => htmlspecialchars($_POST['lastname']),
+                ":firstname" => htmlspecialchars($_POST['firstname']),
+                ":mail" => htmlspecialchars($_POST['mail']),
+                ":password" => $passHash,
+                ":avatar" => 'no-avatar.png'
+            ];
             
-            if (empty($lastname) || empty($firstname) || empty($mail) || empty($pass)) {
+            if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password'])) {
 
                 echo '<script type="text/javascript">alert("Tout les champs doivent être remplis !")</script>';
                 $frontController->newUser();
 
-            } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            } elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 
                 echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
                 $frontController->newUser();
 
             } else {
 
-                $userController->createUser($lastname, $firstname, $mail, $passHash, $avatar);
+                $userController->createUser($data);
 
             }
 

@@ -26,46 +26,4 @@ class Manager {
             }
         }
     }
-
-    // public static function all() {
-
-    //     $objects = [];
-
-    //     $child = get_called_class();
-  
-    //     $sqlQuery = "SELECT * 
-    //                 FROM `{$child}`";
-      
-    //     foreach (self::dbConnect()->query($sqlQuery) as $res) {
-    //     array_push($objects, new self($res));
-    //     }
-    //     return $objects;
-    // }
-
-    // public static function find($id) {
-
-    //     $names = [];
-  
-    //     $child = get_called_class();
-
-    //     $sqlQuery = "SELECT `nom` 
-    //                 OR `titre` 
-    //                 FROM `{$child}` 
-    //                 WHERE id=:id";
-  
-    //     $req = self::dbConnect()->prepare($sqlQuery);
-    //     $req->execute(array(':id' => $id));
-    //     array_push($names, new self($req));
-
-    //     return $names;
-    //   }
-
-    // public static function delete($id) {
-    //     $pdo = self::dbConnect();
-    //     $child = get_called_class();
-    //     $req = $pdo->prepare("DELETE FROM `{$child}` WHERE id=?");
-    //     $req->execute(array($id));
-
-    //     return $req;
-    // }
 }

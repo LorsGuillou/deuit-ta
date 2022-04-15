@@ -8,18 +8,25 @@
         <div id="home-page" class="container">
             <h2 class="home-titles">Les prochaines activités</h2>
             <section id="home-activities">
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 0) : ?>
+                <?php if (!empty($_SESSION)) : ?>
                     <p>Un texte bouche trou</p>
                 <?php else : ?>
-                    <p class="txt-visitor">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="index.php?action=register">Créez un compte</a> ou <a href="index.php?action=login">connectez-vous</a> pour parler breton en bonne compagnie !</p>
-                    <p class="txt-visitor txt-bzh">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="index.php?action=register">Créez un compte</a> ou <a href="index.php?action=login">connectez-vous</a> pour parler breton en bonne compagnie !</p>
+                    <p class="txt-visitor">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="register">Créez un compte</a> ou <a href="login">connectez-vous</a> pour parler breton en bonne compagnie !</p>
+                    <p class="txt-visitor txt-bzh">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="register">Créez un compte</a> ou <a href="login">connectez-vous</a> pour parler breton en bonne compagnie !</p>
                 <?php endif; ?>
             </section>
             <h2 class="home-titles">Les dernières actualités</h2>
             <section id="home-blog">
-                <?php for ($i = 0; $i < 2; $i++) { ?>
-                    
-                <?php } ?>
+                <?php foreach ($blogs as $blog) : ?>
+                    <article class="home-actu">
+                        <h3><?= $blog['title'] ?><?= $blog['created_at'] ?></h3>
+                        <div class="home-actu-body">
+                            <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>"></figure>
+                            <p><?= $blog['excerpt'] ?></p>
+                            <a href="readActu&id=<?= $blog['id'] ?>">Voir l'article</a>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
             </section>
         </div>
     </main>

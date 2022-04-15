@@ -6,7 +6,7 @@ class Contact extends Manager {
 
     public function postMail($data) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('INSERT INTO contact (idUser, `object`, `message`) 
+        $req = $pdo->prepare('INSERT INTO contact (idUser, object, message) 
                             VALUES (:id, :object, :message)');
         $req->execute($data);
 
@@ -40,7 +40,8 @@ class Contact extends Manager {
         $req = $pdo->prepare('SELECT contact.id, contact.object, contact.message, contact.created_at, user.lastname, user.firstname 
                             FROM contact
                             INNER JOIN user
-                            ON contact.idUser = user.id AND contact.id= ?');
+                            ON contact.idUser = user.id 
+                            AND contact.id= ?');
         $req->execute(array($id));
         $mail = $req->fetch();
 

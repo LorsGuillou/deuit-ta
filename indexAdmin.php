@@ -4,6 +4,9 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(DIR);
+$dotenv->load();
+
 try {
 
     $adminController = new \Projet\Controllers\AdminController();
@@ -45,7 +48,7 @@ try {
             $adminController->deleteMail($id);
 
         // Liste des activités
-        } elseif ($_GET['action'] == 'activities') {
+        } elseif ($_GET['action'] == 'adminactivities') {
 
             $adminController->activities();
         
@@ -94,7 +97,7 @@ try {
                 ":content" => htmlspecialchars($_POST['edit-content'])
             ];
 
-            $adminController->editBlog($title, $excerpt, $img, $content, $id);
+            $adminController->editBlog($data);
 
         // Supprimer un article
         } elseif ($_GET['action'] == 'deleteBlog') {

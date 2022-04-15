@@ -6,7 +6,7 @@
             <section id="contact-page" class="input-page">
                 <h2>Contactez-nous</h2>
                 <p>Un problème avec le site ? Une idée à nous proposer ? Dites-nous tout !</p>
-                <form id="contact-form" action="index.php?action=contactPost" method="post">
+                <form id="contact-form" action="contactPost" method="post">
                     <p>
                         <input type="text" id="object" name="object" placeholder="Objet" maxlength="50">
                     </p>
@@ -22,7 +22,7 @@
             <?php else : ?>    
             <section id="contact-info">
                 <h2>Vous souhaitez nous contacter ?</h2>
-                <p>Pour cela, vous pouvez <a href="index.php?action=register">créer un compte</a> ou, si vous en avez déjà un, <a href="index.php?action=login">vous connectez</a> pour pouvoir remplir le formulaire de contact.</p>
+                <p>Pour cela, vous pouvez <a href="register">créer un compte</a> ou, si vous en avez déjà un, <a href="login">vous connectez</a> pour pouvoir remplir le formulaire de contact.</p>
             </section>
             <?php endif ?>
         

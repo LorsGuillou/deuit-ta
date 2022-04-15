@@ -188,12 +188,22 @@ header #bandeau a {
 === Lecture de mail === 
 ==================== */
 
+#dashboard #title-mail {
+    padding-bottom: 15px;
+    border-bottom: 4px solid var(--table);
+}
+
 #dashboard .read-mail {
     margin-top: 20px;
 }
 
+#dashboard .read-mail h3 {
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--table);
+}
+
 #dashboard .read-mail p {
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
 /* ======================

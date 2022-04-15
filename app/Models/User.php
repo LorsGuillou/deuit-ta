@@ -6,7 +6,7 @@ class User extends Manager {
 
     public function createUser($data) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('INSERT INTO `user` (`lastname`, firstname, `mail`, `password`, avatar) 
+        $req = $pdo->prepare('INSERT INTO user (lastname, firstname, mail, password, avatar) 
                               VALUES (:lastname, :firstname, :mail, :password, :avatar)');
         $req->execute($data);
 
@@ -45,7 +45,8 @@ class User extends Manager {
 
    public function deleteUser($id) {
      $pdo = self::dbConnect();
-     $req = $pdo->prepare('DELETE FROM user WHERE id= ? ');
+     $req = $pdo->prepare('DELETE FROM user
+                         WHERE id= ?');
      $req->execute(array($id));
 
      return $req;

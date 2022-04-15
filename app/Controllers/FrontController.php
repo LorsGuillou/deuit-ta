@@ -4,25 +4,36 @@ namespace Projet\Controllers;
 
 class FrontController extends Controller {
 
-    function home() {
+    public function home() {
         $blogManager = new \Projet\Models\Blog();
         $blogs = $blogManager->blogHome();
         require ($this->view('front', 'home'));
     }
 
-    function about() {
+    public function about() {
         require ($this->view('front', 'about'));
     }
 
-    function activities() {
-        require ($this->view('front', 'activities'));
-    }
-
-    function actu() {
+    public function actu() {
+        $blogManager = new \Projet\Models\Blog();
+        $blogs = $blogManager->blogList();
         require ($this->view('front', 'actu'));
     }
 
-    function contact() {
+    public function readActu($id) {
+        $blogManager = new \Projet\Models\Blog();
+        $commentManager = new \Projet\Models\Comments();
+        $blog = $blogManager->readBlog($id);
+        $number = $commentManager->nbComments($id);
+        $comments = $commentManager->displayComments($id);
+        require ($this->view('front', 'readActu'));
+    }
+
+    public function activities() {
+        require ($this->view('front', 'activities'));
+    }
+
+    public function contact() {
         require ($this->view('front', 'contact'));
     }
 
@@ -34,7 +45,7 @@ class FrontController extends Controller {
         require ($this->view('front', 'register'));
     }
 
-    function account() {
+    public function account() {
         require ($this->view('front', 'account'));
     }
 }

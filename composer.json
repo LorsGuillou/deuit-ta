@@ -12,5 +12,8 @@
             "email": "laurent29190@hotmail.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "filp/whoops": "^2.14",
+        "vlucas/phpdotenv": "^5.4"
+    }
 }

@@ -12,24 +12,24 @@
     <header>
         <div id="headband" class="container">
             <div id="logo">
-                <img src="Public/front/img/app/logo.png">
+                <img src="Public/front/img/app/logo.png" alt="Logo Deuit 'ta !">
             </div>
             <div id="links">
                 <div id="user-space">
                     <ul id="user-menu">
-                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 0) : ?>
+                    <?php if (!empty($_SESSION)) : ?>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=account"><i class="fa-solid fa-user"></i> Mon compte</a>
+                            <a class="user-link" href="account"><i class="fa-solid fa-user"></i> Mon compte</a>
                         </li>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</i></a>
+                            <a class="user-link" href="logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</i></a>
                         </li>
                     <?php else : ?>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=login"><i class="fa-solid fa-user-check"></i> Connexion</a>
+                            <a class="user-link" href="login"><i class="fa-solid fa-user-check"></i> Connexion</a>
                         </li>
                         <li class="user-item">
-                            <a class="user-link" href="index.php?action=register"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
+                            <a class="user-link" href="register"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
                         </li>
                     <?php endif; ?>
                     </ul>
@@ -37,20 +37,20 @@
                 <nav id="navigation">
                     <ul class="nav-menu" id="nav-menu">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=home">Accueil</a>
+                            <a class="nav-link" href="home">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=about">A propos</a>
+                            <a class="nav-link" href="about">A propos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=actu">Actualités</a>
+                            <a class="nav-link" href="actu">Actualités</a>
                         </li>
-                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 0) : ?>
+                        <?php if (!empty($_SESSION)) : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=activities">Activités</a>
+                            <a class="nav-link" href="activities">Activités</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?action=contact">Contact</a>
+                            <a class="nav-link" href="contact">Contact</a>
                         </li>
                         <?php endif; ?>
                     </ul>

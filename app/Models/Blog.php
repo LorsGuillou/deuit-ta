@@ -65,12 +65,12 @@ class Blog extends Manager {
 
     public function blogHome() {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT title, excerpt, img, created_at 
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at 
                             FROM blog 
                             ORDER BY id 
-                            DESC');
+                            DESC LIMIT 2');
         $req->execute(array());
-        $blog = $req->fetch();
+        $blog = $req->fetchAll();
         
         return $blog;
     }

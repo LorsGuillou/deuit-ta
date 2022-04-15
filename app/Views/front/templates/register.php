@@ -5,7 +5,7 @@
         <h1>Créez votre compte <span class="txt-bzh">Krouat ho kont</span></h1>
         <section id="register-page" class="input-page">
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>
-            <form action="index.php?action=createUser" method="post">
+            <form action="createUser" method="post">
                 <p>
                     <input type="text" id="lastname" name="lastname" placeholder="Nom" required>
                 </p>

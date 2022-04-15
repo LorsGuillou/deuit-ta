@@ -38,6 +38,12 @@ class UserController extends Controller {
         }
     }
 
+    public function comment($data) {
+        $commentManager = new \Projet\Models\Comments();
+        $comment = $commentManager->comment($data);
+        echo "<script type='text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
+    }
+
     public function nbUsers() {
         $userManager = new \Projet\Models\User();
         $users = $userManager->nbUsers();
@@ -47,7 +53,7 @@ class UserController extends Controller {
     public function postMail($data) {
         $contactManager = new \Projet\Models\Contact();
         $mail = $contactManager->postMail($data);
-        echo "<script type='text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
+        echo "<script type='text/javascript'>alert('Votre commentaire a été publié !')</script>";
         require ($this->view('front', 'contact'));
     }
 }

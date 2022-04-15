@@ -222,6 +222,24 @@ header #headband .hamburger .bar {
     margin-bottom: 10px;
 }
 
+#home-page #home-blog .home-actu .home-actu-body figure {
+    width: 250px;
+    height: 350px;
+}
+
+#home-page #home-blog .home-actu .home-actu-body figure img {
+    object-fit: cover;
+    width: 100%;
+}
+
+/* ===================
+=== Page d'article === 
+=================== */
+
+#comments p {
+    white-space: pre-line;
+}
+
 /* ================
 === Formulaires === 
 ================ */

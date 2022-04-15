@@ -1,18 +1,20 @@
 <?php include_once ('app/Views/front/layout/header.php') ?>
 
     <main class="container">
-        <article id="readBlog"> 
+        <article id="read-blog"> 
                <h1><?= $blog['title'] ?></h1>
                 <p><?= $blog['created_at'] ?></p>
                 <img src="./Public/admin/img/blog/<?= $blog['img'] ?>">
                 <p><?= $blog['content'] ?></p>
         </article>
         <?php if (isset($comments)) : ?>
-            <h4>Commentaires (<?= $number['0'] ?>)</h4>
-            <?php foreach ($comments as $comment) : ?>
-                <h5><?= $comment['lastname'] ?> <?= $comment['firstname'] ?></h5>
-                <p><?= $comment['comment'] ?></p>
-            <?php endforeach ?>
+            <div id="comments">
+                <h4>Commentaires (<?= $number['0'] ?>)</h4>
+                <?php foreach ($comments as $comment) : ?>
+                    <h5><?= $comment['lastname'] ?> <?= $comment['firstname'] ?></h5>
+                    <p><?= $comment['comment'] ?></p>
+                <?php endforeach ?>
+            </div>
         <?php endif; ?>
         <?php if (!empty($_SESSION)) : ?>
             <h4>Laissez un commentaire</h4>

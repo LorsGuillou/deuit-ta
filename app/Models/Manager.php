@@ -14,11 +14,11 @@ class Manager {
         } else {
             try {
                 self::$pdo = new \PDO (
-                'mysql:host=localhost;
-                dbname=deuit-ta;
+                'mysql:host=' . $_ENV['DB_HOST'] . ';
+                dbname=' . $_ENV['DB_NAME'] . ';
                 charset=utf8',
-                'root',
-                ''
+                $_ENV['DB_USERNAME'],
+                $_ENV['DB_PASSWORD']
             );
                 return self::$pdo;
             } catch (Exception $e) {

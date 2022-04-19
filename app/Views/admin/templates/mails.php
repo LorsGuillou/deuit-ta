@@ -21,10 +21,10 @@
                             <td><?= $mail['created_at'] ?></td>
                             <td class="action-case">
                                 <a href="indexAdmin.php?action=readMail&id=<?= $mail['id'] ?>" title="Lire">
-                                    <span class="action-view"><i class="fa-solid fa-eye"></i></span>
+                                    <i class="fa-solid fa-eye action-view"></i>
                                 </a>
                                 <a href="indexAdmin.php?action=deleteMail&id=<?= $mail['id'] ?>" title="Supprimer">
-                                    <span class="action-delete"><i class="fa-solid fa-trash-can"></i></span>
+                                    <i class="fa-solid fa-trash-can action-delete"></i>
                                 </a>
                             </td>
                         </tr>

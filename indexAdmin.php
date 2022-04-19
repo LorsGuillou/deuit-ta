@@ -10,6 +10,7 @@ $dotenv->load();
 try {
 
     $adminController = new \Projet\Controllers\AdminController();
+    $frontController = new \Projet\Controllers\FrontController();
     $userController = new \Projet\Controllers\UserController();
 
     if (empty($_SESSION)) {
@@ -31,7 +32,7 @@ try {
         // Supprimer un utilisateur
         } elseif ($_GET['action'] == 'deleteUser') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $adminController->deleteUser($id);
 
         // Liste des messages
@@ -42,13 +43,13 @@ try {
         // Lire un message
         } elseif ($_GET['action'] == 'readMail') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $adminController->readMail($id);
 
         // Supprimer un message
         } elseif ($_GET['action'] == 'deleteMail') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $adminController->deleteMail($id);
 
         // Liste des activités
@@ -81,13 +82,13 @@ try {
         // Lire un article
         } elseif ($_GET['action'] == 'readBlog') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $adminController->readBlog($id);
         
         // Modifier un article
         } elseif ($_GET['action'] == 'editBlog') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $adminController->edit($id);
 
         // Publier la modification
@@ -106,8 +107,13 @@ try {
         // Supprimer un article
         } elseif ($_GET['action'] == 'deleteBlog') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $adminController->deleteBlog($id);
+
+        // Naviguer sur le site
+        } elseif ($_GET['action'] == 'navigate') {
+
+            $frontController->home();
 
         // Déconnexion
         } elseif ($_GET['action'] == 'logout') {

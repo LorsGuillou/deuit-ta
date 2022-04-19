@@ -44,19 +44,27 @@ try {
         // Lire un article en entier
         } elseif ($_GET['action'] == 'readActu') {
 
-            $id = $_GET['id'];
+            $id = htmlspecialchars($_GET['id']);
             $frontController->readActu($id);
 
         // Commenter un article
         } elseif ($_GET['action'] == 'comment') {
 
             $data = [
-                ":idUser" => $_SESSION['id'],
-                ":idArticle" => $_GET['id'],
+                ":idUser" => htmlspecialchars($_SESSION['id']),
+                ":idArticle" => htmlspecialchars($_GET['id']),
                 ":comment" => htmlspecialchars($_POST['type-comment'])
             ];
 
             $userController->comment($data);
+
+        // Supprimer son commentaire
+        } elseif ($_GET['action'] == 'deleteComment') {
+
+            $id = htmlspecialchars($_GET['id']);
+            $idPage = htmlspecialchars($_GET['idPage']);
+            $userController->deleteComment($id);
+            header('Location: readActu&id=' . $idPage);
 
         // Aller sur Rencontres
         } elseif ($_GET['action'] == 'activities') {
@@ -72,31 +80,12 @@ try {
         } elseif ($_GET['action'] == 'contactPost') {
 
             $data = [
-                ":id" => $id = $_SESSION['id'],
+                ":id" => htmlspecialchars($_SESSION['id']),
                 ":object" => htmlspecialchars($_POST['object']),
                 ":message" => htmlspecialchars($_POST['message'])
             ];
 
-            // if (empty($_POST['object']) && empty($_POST['message'])) {
-
-            //     throw new \Exception ('Vous ne pouvez pas envoyer un formulaire vide !');
-            //     $frontController->contact();
-            
-            // } elseif (empty($_POST['object'])) {
-
-            //     throw new \Exception ('Vous devez renseigner l\'objet de votre message !');
-            //     $frontController->contact();
-            
-            // } elseif(empty($_POST['message'])) {
-
-            //     throw new \Exception ("Votre message est vide !");
-            //     $frontController->contact();
-
-            // } else {
-
-                $userController->postMail($data);
-
-            // }
+            $userController->postMail($data);
 
         // Aller sur Connexion
         } elseif ($_GET['action'] == 'login') {
@@ -107,7 +96,7 @@ try {
         } elseif ($_GET['action'] == 'connect') {
 
             $mail = htmlspecialchars($_POST['login-mail']);
-            $pass = $_POST['login-pswd'];
+            $pass = htmlspecialchars($_POST['login-pswd']);
 
             if (!empty($mail) && !empty($pass)) {
 
@@ -150,12 +139,7 @@ try {
                 ":avatar" => $avatar
             ];
             
-            if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password'])) {
-
-                echo '<script type="text/javascript">alert("Tout les champs doivent être remplis !")</script>';
-                $frontController->newUser();
-
-            } elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 
                 echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
                 $frontController->newUser();
@@ -192,7 +176,6 @@ try {
 
 } catch (Exception $e) {
 
-    // var_dump($e);die;
     eCatcher($e);
     if ($e->getCode() === 404) {
         require "app/Views/front/errors/404.php";
@@ -202,7 +185,6 @@ try {
     
 } catch (Error $e) {
 
-    // var_dump($e);die;
     eCatcher($e);
     require "app/Views/front/errors/error.php";
 

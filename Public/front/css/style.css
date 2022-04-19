@@ -118,47 +118,27 @@ header #headband #logo img {
 === Navigation === 
 =============== */
 
-header #headband #links #user-space #user-menu {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
-
-header #headband #links #user-space #user-menu .user-item {
-    margin: 10px 0 15px;
-}
-
-header #headband #links #user-space #user-menu .user-item .user-link {
-    font-size: 0.8rem;
-    color: var(--menulinks);
-    transition: 0.2s ease;
-}
-
-header #headband #links #user-space #user-menu .user-item .user-link:hover {
-    color: var(--linkhover);
-}
-
-header #headband #links #navigation .nav-menu {
+header #headband #navigation .nav-menu {
     display: flex;
     gap: 25px;
 }
 
-header #headband #links #navigation .nav-menu .nav-item {
+header #headband #navigation .nav-menu .nav-item {
     margin: 10px 0;
 }
 
-header #headband #links #navigation .nav-menu .nav-item .nav-link {
-    font-size: 1.2rem;
+header #headband #navigation .nav-menu .nav-item .nav-link {
+    font-size: 1.05rem;
     color: var(--menulinks);
     transition: 0.2s ease;
 }
 
-header #headband #links #navigation .nav-menu .nav-item .nav-link:hover {
+header #headband #navigation .nav-menu .nav-item .nav-link:hover {
     color: var(--linkhover);
 }
 
-header #headband #links #user-space #user-menu .user-item .user-link i {
-    margin-right: 3px;
+header #headband #navigation .nav-menu .nav-item .nav-link i {
+    margin-right: 5px;
 }
 
 /* ================

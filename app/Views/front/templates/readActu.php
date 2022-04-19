@@ -13,6 +13,11 @@
                 <?php foreach ($comments as $comment) : ?>
                     <h5><?= $comment['lastname'] ?> <?= $comment['firstname'] ?></h5>
                     <p><?= $comment['comment'] ?></p>
+                    <?php if (!empty($_SESSION) && $comment['idUser'] === $_SESSION['id'] || !empty($_SESSION) && $_SESSION['role'] === 1) : ?>
+                        <a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>&idPage=<?= $blog['id'] ?>">
+                            <i class="fa-solid fa-trash-can action-delete"></i>
+                        </a>
+                    <?php endif; ?>
                 <?php endforeach ?>
             </div>
         <?php endif; ?>

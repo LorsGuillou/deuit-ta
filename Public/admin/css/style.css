@@ -168,8 +168,8 @@ header #bandeau a {
     color: black;
 }
 
-#dashboard .admin-table tbody tr .action-case a span {
-    margin-right: 10px;
+#dashboard .admin-table tbody tr .action-case a i {
+    margin-right: 5px;
 }
 
 #dashboard .admin-table tbody tr .action-case a .action-view {

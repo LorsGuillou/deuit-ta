@@ -26,7 +26,7 @@ class Comments extends Manager {
 
     public function displayComments($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT users.lastname, users.firstname, comments.comment 
+        $req = $pdo->prepare('SELECT users.lastname, users.firstname, comments.id, comments.idUser, comments.comment 
                             FROM comments
                             INNER JOIN users
                             ON users.id = comments.idUser
@@ -36,14 +36,4 @@ class Comments extends Manager {
 
         return $liste;
     }
-
-    public function deleteComment($id) {
-        $pdo = self::dbConnect();
-        $req = $pdo->prepare('DELETE FROM comments 
-                            WHERE id = ?');
-        $req->execute(array($id));
-
-        return $req;
-    }
-
 }

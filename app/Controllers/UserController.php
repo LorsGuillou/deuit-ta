@@ -44,11 +44,11 @@ class UserController extends Controller {
         echo "<script type='text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
     }
 
-    public function nbUsers() {
-        $userManager = new \Projet\Models\Users();
-        $users = $userManager->nbUsers();
-        return $users;
-    }
+   public function deleteComment($id) {
+       $commentManager = new \Projet\Models\Comments();
+       $delete = $commentManager->delete($id);
+
+   }
 
     public function postMail($data) {
         $contactManager = new \Projet\Models\Contact();

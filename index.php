@@ -64,7 +64,7 @@ try {
             $id = htmlspecialchars($_GET['id']);
             $idPage = htmlspecialchars($_GET['idPage']);
             $userController->deleteComment($id);
-            header('Location: readActu&id=' . $idPage);
+            $frontController->readActu($idPage);
 
         // Aller sur Rencontres
         } elseif ($_GET['action'] == 'activities') {
@@ -154,6 +154,17 @@ try {
         } elseif ($_GET['action'] == 'account') {
 
             $frontController->account();
+
+        } elseif ($_GET['action'] == 'editAccount') {
+
+            
+            $data = [
+                ":id" => $_SESSION['id'],
+                ":avatar" => $userController->getImg('front', 'avatars', 100000)
+            ];
+
+            $_SESSION['avatar'] = $data[':avatar'];
+            $userController->editUser($data);
 
         // Se déconnecter
         } elseif ($_GET['action'] == 'logout') {

@@ -16,7 +16,11 @@
             <div id="logo">
                 <img src="Public/front/img/app/logo.png" alt="Logo Deuit 'ta !">
             </div>
-
+            <?php if (!empty($_SESSION)) : ?>
+            <figure id="avatar">
+                <img src="./Public/front/img/avatars/<?= $_SESSION['avatar'] ?>" alt="Votre image de profil">
+            </figure>
+            <?php endif; ?>
             <nav id="navigation">
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
@@ -29,9 +33,10 @@
                         <a class="nav-link" href="actu"><i class="fa-solid fa-newspaper"></i> Actualités</a>
                     </li>
                     <?php if (!empty($_SESSION)) : ?>
-                    <li class="nav-item">
+                    <!-- Fonction à venir -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="activities"><i class="fa-solid fa-calendar"> </i>Activités</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="contact"><i class="fa-solid fa-envelope"></i> Contact</a>
                     </li>

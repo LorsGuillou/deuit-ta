@@ -27,6 +27,7 @@ class UserController extends Controller {
         $_SESSION['firstname'] = $res['firstname'];
         $_SESSION['mail'] = $res['mail'];
         $_SESSION['password'] = $res['password'];
+        $_SESSION['avatar'] = $res['avatar'];
         $_SESSION['role'] = $res['role'];
 
         if ($passwordCheck && $res['role'] === 1) {
@@ -38,6 +39,12 @@ class UserController extends Controller {
         }
     }
 
+    public function editUser($data) {
+        $userManager = new \Projet\Models\Users();
+        $edit = $userManager->editUser($data);
+        header('Location: index.php?action=account');
+    }
+
     public function comment($data) {
         $commentManager = new \Projet\Models\Comments();
         $comment = $commentManager->comment($data);
@@ -47,7 +54,6 @@ class UserController extends Controller {
    public function deleteComment($id) {
        $commentManager = new \Projet\Models\Comments();
        $delete = $commentManager->delete($id);
-
    }
 
     public function postMail($data) {

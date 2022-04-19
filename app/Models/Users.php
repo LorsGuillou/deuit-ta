@@ -15,9 +15,9 @@ class Users extends Manager {
 
    public function getPassword($mail, $pass) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, lastname, firstname, mail, `password`, avatar, created_at, `role` 
+        $req = $pdo->prepare('SELECT id, lastname, firstname, mail, password, avatar, created_at, role 
                               FROM users 
-                              WHERE mail= ? ');
+                              WHERE mail= ?');
         $req->execute(array($mail));
 
         return $req;
@@ -31,5 +31,15 @@ class Users extends Manager {
         $list = $req->fetchAll();
         
         return $list;
+   }
+
+   public function editUser($data) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('UPDATE users
+                              SET avatar = :avatar
+                              WHERE id = :id');
+        $req->execute($data);
+        
+        return $req;
    }
 }

@@ -11,7 +11,7 @@
                 </p>
                 <p>
                     <label for="image">Image : </label>
-                    <input type="file" id="edit-name" name="image" required>
+                    <input type="file" id="edit-image" name="image" required>
                 </p>
                 <p>
                     <textarea id="edit-content" name="edit-content" required><?php if (isset($blog['content'])) : echo $blog['content']; endif; ?></textarea>

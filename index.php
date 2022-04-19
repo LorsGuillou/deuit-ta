@@ -132,12 +132,22 @@ try {
 
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
+            if (empty($_FILES['image'])) {
+
+                $avatar = 'blank.jpg';
+
+            } else {
+
+                $avatar = $frontController->getImg('front', 'avatars', 100000);
+
+            }
+
             $data = [
                 ":lastname" => htmlspecialchars($_POST['lastname']),
                 ":firstname" => htmlspecialchars($_POST['firstname']),
                 ":mail" => htmlspecialchars($_POST['mail']),
                 ":password" => $passHash,
-                ":avatar" => 'no-avatar.png'
+                ":avatar" => $avatar
             ];
             
             if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password'])) {

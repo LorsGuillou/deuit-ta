@@ -13,16 +13,6 @@ class Blog extends Manager {
         return $req;
     }
 
-    public function nbBlog() {
-        $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT COUNT(id) 
-                            FROM blog');
-        $req->execute(array());
-        $number = $req->fetch();
-
-        return $number;
-    }
-
     public function blogList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at
@@ -50,15 +40,6 @@ class Blog extends Manager {
                             SET title = :title, excerpt = :excerpt, img = :img, content = :content
                             WHERE id = :id');
         $req->execute($data);
-
-        return $req;
-    }
-
-    public function deleteBlog($id) {
-        $pdo = self::dbConnect();
-        $req = $pdo->prepare('DELETE FROM blog 
-                            WHERE id = ?');
-        $req->execute(array($id));
 
         return $req;
     }

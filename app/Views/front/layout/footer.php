@@ -8,6 +8,6 @@
             <p>Copyright Kercode 2022 - <a href="#">Mentions légales</a></p>
         </div>
     </footer>
-    <script type="text/javascript" src="Public/front/js/menu.js"></script>
+    <script src="Public/front/js/menu.js"></script>
 </body>
 </html>

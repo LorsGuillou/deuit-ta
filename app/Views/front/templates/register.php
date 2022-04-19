@@ -5,12 +5,16 @@
         <h1>Créez votre compte <span class="txt-bzh">Krouat ho kont</span></h1>
         <section id="register-page" class="input-page">
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>
-            <form action="createUser" method="post">
+            <form action="createUser" method="post" enctype="multipart/form-data">
                 <p>
                     <input type="text" id="lastname" name="lastname" placeholder="Nom" required>
                 </p>
                 <p>
                     <input type="text" id="firstname" name="firstname" placeholder="Prénom" required>
+                </p>
+                <p>
+                    <label for="image">Avatar : </label>
+                    <input type="file" id="avatar" name="image">
                 </p>
                 <p>
                     <input type="mail" id="mail" name="mail" placeholder="Email" required>

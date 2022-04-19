@@ -26,4 +26,33 @@ class Manager {
             }
         }
     }
+
+    public static function getChild() {
+        $child = get_called_class();
+        $childName = explode('\\', $child);
+        $res = end($childName);
+
+        return $res;
+    }
+
+    public static function count() {
+        $pdo = self::dbConnect();
+        $child = self::getChild();
+        $req = $pdo->prepare("SELECT COUNT(id) 
+                              FROM {$child}");
+        $req->execute(array());
+        $number = $req->fetch();
+        
+        return $number;
+    }
+
+    public static function delete($id) {
+        $pdo = self::dbConnect();
+        $child = self::getChild();
+        $req = $pdo->prepare("DELETE FROM `{$child}` 
+                            WHERE id = ?");
+        $req->execute(array($id));
+
+        return $req;
+    }
 }

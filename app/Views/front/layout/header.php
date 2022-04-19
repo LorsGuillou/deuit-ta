@@ -55,11 +55,11 @@
                         <?php endif; ?>
                     </ul>
                 </nav>
-                <div class="hamburger">
+                <a href="contact" class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
-                </div>
+                </a>
             </div>
         </div>
     </header>

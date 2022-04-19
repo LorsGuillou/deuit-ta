@@ -5,7 +5,7 @@ namespace Projet\Controllers;
 class UserController extends Controller {
 
     public function createUser($data) {
-        $userManager = new \Projet\Models\User();
+        $userManager = new \Projet\Models\Users();
         if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
             $newUser = $userManager->createUser($data);
             require ($this->view('front', 'confirmation'));
@@ -15,7 +15,7 @@ class UserController extends Controller {
     }
 
     public function connect($mail, $pass) {
-        $userManager = new \Projet\Models\User();
+        $userManager = new \Projet\Models\Users();
         $connect = $userManager->getPassword($mail, $pass);
 
         $res = $connect->fetch();
@@ -45,7 +45,7 @@ class UserController extends Controller {
     }
 
     public function nbUsers() {
-        $userManager = new \Projet\Models\User();
+        $userManager = new \Projet\Models\Users();
         $users = $userManager->nbUsers();
         return $users;
     }

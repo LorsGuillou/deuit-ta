@@ -6,25 +6,25 @@ class AdminController extends Controller {
 
     // Tableau de bord
     public function dashboard() {
-        $userManager = new \Projet\Models\User();
+        $userManager = new \Projet\Models\Users();
         $contactManager = new \Projet\Models\Contact();
         $blogManager = new \Projet\Models\Blog();
-        $nbUsers = $userManager->nbUsers();
-        $nbMails = $contactManager->nbMails();
-        $nbBlog = $blogManager->nbBlog();
+        $nbUsers = $userManager->count();
+        $nbMails = $contactManager->count();
+        $nbBlog = $blogManager->count();
         require ($this->view('admin', 'dashboard'));
     }
 
     // Méthodes Membres
     public function users() {
-        $userManager = new \Projet\Models\User();
+        $userManager = new \Projet\Models\Users();
         $users = $userManager->userList();
         require ($this->view('admin', 'users'));
     }
 
     public function deleteUser($id) {
-        $userManager = new \Projet\Models\User();
-        $deleteUser = $userManager->deleteUser($id);
+        $userManager = new \Projet\Models\Users();
+        $deleteUser = $userManager::delete($id);
         header('Location: indexAdmin.php?action=users');
     }
 
@@ -43,7 +43,7 @@ class AdminController extends Controller {
 
     public function deleteMail($id) {
         $contactManager = new \Projet\Models\Contact();
-        $deleteMail = $contactManager->deleteMail($id);
+        $deleteMail = $contactManager->delete($id);
         header('Location: indexAdmin.php?action=mails');
     }
 
@@ -92,7 +92,7 @@ class AdminController extends Controller {
 
     public function deleteBlog($id) {
         $blogManager = new \Projet\Models\Blog();
-        $deleteBlog = $blogManager->deleteBlog($id);
+        $deleteBlog = $blogManager->delete($id);
         header('Location: indexAdmin.php?action=blog');
     }
 }

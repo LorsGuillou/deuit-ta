@@ -12,6 +12,10 @@ try {
     $adminController = new \Projet\Controllers\AdminController();
     $userController = new \Projet\Controllers\UserController();
 
+    if (empty($_SESSION)) {
+        throw new Exception('Vous n\'avez pas l\'autorisation d\'être là !', 401);
+    }
+
     if (isset($_GET['action'])) {
 
         // Retour au tableau de bord
@@ -68,7 +72,7 @@ try {
             $data = [
                 ":title" => htmlspecialchars($_POST['blog-title']),
                 ":excerpt" => htmlspecialchars($_POST['blog-excerpt']),
-                ":img" => $adminController->getImg('admin', 'blog'),
+                ":img" => $adminController->getImg('admin', 'blog', 400000),
                 ":content" => htmlspecialchars($_POST['blog-content'])
             ];
 
@@ -93,7 +97,7 @@ try {
                 ":id" => $_GET['id'],
                 ":title" => htmlspecialchars($_POST['edit-title']),
                 ":excerpt" => htmlspecialchars($_POST['edit-excerpt']),
-                ":img" => $adminController->getImg('admin', 'blog'),
+                ":img" => $adminController->getImg('admin', 'blog', 400000),
                 ":content" => htmlspecialchars($_POST['edit-content'])
             ];
 
@@ -122,6 +126,6 @@ try {
 
 } catch (Exception $e) {
 
-    $e->getMessage();
+    echo $e->getMessage();
 
 }

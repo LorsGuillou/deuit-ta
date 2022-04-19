@@ -2,11 +2,11 @@
 
 namespace Projet\Models;
 
-class User extends Manager {
+class Users extends Manager {
 
     public function createUser($data) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('INSERT INTO user (lastname, firstname, mail, password, avatar) 
+        $req = $pdo->prepare('INSERT INTO users (lastname, firstname, mail, password, avatar) 
                               VALUES (:lastname, :firstname, :mail, :password, :avatar)');
         $req->execute($data);
 
@@ -16,39 +16,20 @@ class User extends Manager {
    public function getPassword($mail, $pass) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, lastname, firstname, mail, `password`, avatar, created_at, `role` 
-                              FROM user 
+                              FROM users 
                               WHERE mail= ? ');
         $req->execute(array($mail));
 
         return $req;
    }
 
-   public function nbUsers() {
-        $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT COUNT(id) 
-                              FROM user');
-        $req->execute(array());
-        $number = $req->fetch();
-        
-        return $number;
-   }
-
    public function userList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, lastname, firstname, mail, avatar, created_at 
-                              FROM user WHERE role=0');
+                              FROM users WHERE role = 0');
         $req->execute(array());
         $list = $req->fetchAll();
         
         return $list;
    }
-
-   public function deleteUser($id) {
-     $pdo = self::dbConnect();
-     $req = $pdo->prepare('DELETE FROM user
-                         WHERE id= ?');
-     $req->execute(array($id));
-
-     return $req;
- }
 }

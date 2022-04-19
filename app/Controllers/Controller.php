@@ -8,7 +8,7 @@ class Controller {
         return 'app/Views/' . $viewType . '/templates/' . $viewName . '.php';
     }
 
-    public function getImg($imgSide, $imgType) {
+    public function getImg($imgSide, $imgType, $maxSize) {
 
         $tmpName = $_FILES['image']['tmp_name'];
         $name = $_FILES['image']['name'];
@@ -20,7 +20,6 @@ class Controller {
         $extension = strtolower(end($getExtension));
 
         $allowedExt = ['jpg', 'jpeg', 'gif', 'png'];
-        $maxSize = 400000;
 
         if (in_array($extension, $allowedExt) && $size <= $maxSize && $error === 0) {
 

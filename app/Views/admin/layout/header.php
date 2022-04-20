@@ -11,7 +11,7 @@
 <body>
     <header>
         <div id="bandeau" class="container">
-            <a href="home"><?= $_SESSION['firstname'] ?> <?= $_SESSION['lastname'] ?></a>
+            <a href="indexAdmin.php?action=home"><?= $_SESSION['firstname'] ?> <?= $_SESSION['lastname'] ?></a>
         </div>        
     </header>
     <main>

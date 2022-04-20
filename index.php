@@ -121,7 +121,7 @@ try {
 
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
-            if (empty($_FILES['image'])) {
+            if (($_FILES['image']['name'] == "")) {
 
                 $avatar = 'blank.jpg';
 
@@ -200,4 +200,3 @@ try {
     require "app/Views/front/errors/error.php";
 
 }
-

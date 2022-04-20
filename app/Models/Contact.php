@@ -27,7 +27,7 @@ class Contact extends Manager {
 
     public function readMail($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT contact.id, contact.object, contact.message, contact.created_at, users.lastname, users.firstname 
+        $req = $pdo->prepare('SELECT contact.id, contact.object, contact.message, contact.created_at, users.lastname, users.firstname, users.mail 
                             FROM contact
                             INNER JOIN users
                             ON contact.idUser = users.id 

@@ -33,3 +33,5 @@
             </table>
         </section>
     </main>
+
+<?php include_once('app/Views/admin/layout/footer.php') ?>

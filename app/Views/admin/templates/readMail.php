@@ -5,4 +5,7 @@
                     <h3>Objet : <?= $mail['object'] ?></h3>
                         <p><?= $mail['message'] ?></p>
                 </div>
+        </section>
+    </main>
 
+<?php include_once('app/Views/admin/layout/footer.php') ?>

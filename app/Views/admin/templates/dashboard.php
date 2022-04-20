@@ -7,3 +7,5 @@
             <p>Nombre d'articles : <?= $nbBlog['0'] ?></p>
         </section>
     </main>
+
+<?php include_once('app/Views/admin/layout/footer.php') ?>

@@ -125,6 +125,10 @@ header #bandeau a {
     transition: 0.2s ease;
 }
 
+#side-menu #navigation #admin-menu .admin-item .active {
+    color: var(--linkhover);
+}
+
 #side-menu #navigation #admin-menu .admin-item a:hover {
     color: var(--linkhover);
 }

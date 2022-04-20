@@ -152,6 +152,10 @@ header #headband #navigation .nav-menu .nav-item .nav-link:hover {
     color: var(--linkhover);
 }
 
+header #headband #navigation .nav-menu .nav-item .active {
+    color: var(--linkhover);
+}
+
 header #headband #navigation .nav-menu .nav-item .nav-link i {
     margin-right: 5px;
 }

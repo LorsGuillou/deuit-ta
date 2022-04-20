@@ -24,7 +24,7 @@
             <nav id="navigation">
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="home"><i class="fa-solid fa-house"></i> Accueil</a>
+                        <a class="nav-link active" href="home"><i class="fa-solid fa-house"></i> Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about"><i class="fa-solid fa-id-card"></i> A propos</a>

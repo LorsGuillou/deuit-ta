@@ -2,7 +2,7 @@
 
     <main class="container">
         <h1>Contact</h1>
-            <?php if (isset($_SESSION['role']) && ($_SESSION['role'] === 0)) : ?>
+            <?php if (!empty($_SESSION)) : ?>
             <section id="contact-page" class="input-page">
                 <h2>Contactez-nous</h2>
                 <p>Un problème avec le site ? Une idée à nous proposer ? Dites-nous tout !</p>

@@ -10,5 +10,6 @@
     </footer>
     <script src="Public/front/js/burger.js"></script>
     <script src="Public/front/js/active.js"></script>
+    <script src="Public/front/js/password.js"></script>
 </body>
 </html>

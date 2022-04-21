@@ -13,14 +13,26 @@
                     <input type="text" id="firstname" name="firstname" placeholder="Prénom" required>
                 </p>
                 <p>
-                    <label for="image">Avatar : </label>
+                    <label for="image">Image de profil : </label>
                     <input type="file" id="avatar" name="image">
                 </p>
                 <p>
                     <input type="mail" id="mail" name="mail" placeholder="Email" required>
                 </p>
-                <p>
-                    <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+                <p class="pswdSpace">
+                    <input type="password" id="password" name="password" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <i class="fa-solid fa-eye" id="togglePswd"></i>
+                </p>
+                <div id="pswdMessage">
+                    <p>Le mot de passe doit contenir :</p>
+                    <p id="pswdLength" class="invalid">Au moins 8 caractères</p>
+                    <p id="pswdNumber" class="invalid">Un chiffre</p>
+                    <p id="pswdUpper" class="invalid">Une lettre majuscule</p>
+                    <p id="pswdLower" class="invalid">Une lettre minuscule</p>
+                </div>
+                <p class="pswdSpace">
+                    <input type="password" id="confirmPswd" name="confirmPswd" placeholder="Confirmer le mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                    <i class="fa-solid fa-eye" id="toggleConfirm"></i>
                 </p>
                 <p>
                     <label for="rgpd">RGPD</label>

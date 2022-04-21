@@ -38,6 +38,7 @@
     --bzh: rgba(102, 125, 155, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
     --linkhover: rgba(228, 35, 35, 1);
+    --border: rgba(176, 196, 222, 1);
 }
 
 /* ======================================
@@ -125,6 +126,7 @@ header #headband #avatar {
 
 header #headband #avatar img {
     object-fit: cover;
+    border: 1px solid var(--border);
     border-radius: 50%;
     width: 100%;
 }
@@ -244,12 +246,16 @@ header #headband .hamburger .bar {
 ================ */
 
 .input-page {
-    margin: 25px auto 20px;
-    padding: 20px;
+    margin: 40px auto 50px;
+    padding: 30px;
     width: 35%;
     text-align: center;
     background-color: var(--formbg);
     box-shadow: 1px 1px 3px var(--shadow);
+}
+
+.input-page h2 {
+    margin-bottom: 25px;
 }
 
 .input-page p {
@@ -258,7 +264,7 @@ header #headband .hamburger .bar {
 
 .input-page p input {
     padding: 3px;
-    width: 250px;
+    width: 85%;
 }
 
 .input-page p button {
@@ -272,16 +278,77 @@ header #headband .hamburger .bar {
 
 .input-page p button.submit {
     background-color: darkblue;
+    color: lightgrey;
+}
+
+.input-page p button.submit:hover {
+    background-color: blue;
+    color: white;
 }
 
 .input-page p button.reset {
     background-color: darkred;
+    color: lightgrey;
+}
+
+.input-page p button.reset:hover {
+    background-color: red;
+    color: white;
 }
 
 .input-page p textarea {
     padding: 1px;
     width: 80%;
     height: 300px;
+}
+
+/* =======================
+=== Création de compte === 
+========================*/
+
+.input-page .pswdSpace {
+    margin-right: 11px;
+}
+
+.input-page .pswdSpace #password,
+.input-page .pswdSpace #confirmPswd {
+    width: 88%;
+}
+
+.input-page p i {
+    color: grey;
+    font-size: 0.8rem;
+    margin-left: -30px;
+    cursor: pointer;
+    display: inline;
+}
+
+.input-page #pswdMessage {
+    display: none;
+    position: relative;
+    text-align: left;
+    font-size: 0.7rem;
+    margin: 20px 25px;
+    padding: 5px 15px;
+    background-color: var(--border);
+}
+
+.input-page #pswdMessage .valid {
+    color: green;
+}
+
+.input-page #pswdMessage .valid:before {
+    position: relative;
+    left: -35px;
+}
+
+.input-page #pswdMessage .invalid {
+    color: red;
+}
+  
+.input-page #pswdMessage .invalid:before {
+    position: relative;
+    left: -35px;
 }
 
 /* ============

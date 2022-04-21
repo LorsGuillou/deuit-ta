@@ -25,7 +25,7 @@ class AdminController extends Controller {
     public function deleteUser($id) {
         $userManager = new \Projet\Models\Users();
         $deleteUser = $userManager::delete($id);
-        header('Location: ' . $_SERVER['REQUEST_URI']);
+        header('Location: indexAdmin.php?action=users');
     }
 
     // Méthodes Mails

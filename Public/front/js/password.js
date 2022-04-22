@@ -74,17 +74,3 @@ password.addEventListener("keyup", () => {
         upper.classList.add("invalid");
     }
 });
-
-// Confirmer le mot de passe
-
-// button.addEventListener("click", (e) => {
-//     var ogPass = password.value;
-//     var passCheck = confirmPassword.value;
-
-//     if (ogPass != passCheck) {
-//         alert("Les mots de passes ne correspondent pas.");
-//         e.preventDefault();
-//         return false;
-//     }
-//     return true;
-// });

@@ -41,7 +41,7 @@ class FrontController extends Controller {
         require ($this->view('front', 'login'));
     }
 
-    public function newUser() {
+    public function newUser($error = null) {
         require ($this->view('front', 'register'));
     }
 

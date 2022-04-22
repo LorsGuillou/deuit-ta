@@ -140,15 +140,25 @@ try {
                 ":avatar" => $avatar
             ];
             
-            if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+            if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password']) || empty($_POST['confirmPswd'])) {
 
-                echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
-                $frontController->newUser();
+                $error = '<p class="register-error">Tout les champs doivent être remplis !</p>';
+                $frontController->newUser($error);
+
+            } elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+
+                $error = '<p class="register-error">Cette adresse mail est invalide !</p>';
+                $frontController->newUser($error);
 
             } elseif ($passCheck != $pass) {
             
-                echo '<script type="text/javascript">alert("Les mots de passes ne correspondent pas.")</script>';
-                $frontController->newUser();
+                $error = '<p class="register-error">Les mots de passes ne correspondent pas !</p>';
+                $frontController->newUser($error);
+
+            } elseif (!isset($_POST['rgpd'])) {
+
+                $error = '<p class="register-error">Vous devez cocher la case pour continuer !</p>';
+                $frontController->newUser($error);
 
             } else {
 

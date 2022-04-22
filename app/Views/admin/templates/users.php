@@ -8,7 +8,6 @@
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Adresse e-mail</th>
-                        <th>Avatar</th>
                         <th>Date d'inscription</th>
                         <th>Actions</th>
                     </tr>
@@ -19,7 +18,6 @@
                             <td><?= $user['lastname'] ?></td>
                             <td><?= $user['firstname'] ?></td>
                             <td><?= $user['mail'] ?></td>
-                            <td><?= $user['avatar'] ?></td>
                             <td><?= $user['created_at'] ?></td>
                             <td class="action-case">
                                 <a href="indexAdmin.php?action=deleteUser&id=<?= $user['id'] ?>" title="Supprimer ce compte membre">

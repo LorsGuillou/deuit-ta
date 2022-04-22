@@ -26,11 +26,24 @@ class Comments extends Manager {
 
     public function displayComments($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT users.lastname, users.firstname, comments.id, comments.idUser, comments.comment 
+        $req = $pdo->prepare('SELECT users.lastname, users.firstname, comments.id, comments.idUser, comments.comment, comments.created_at
                             FROM comments
                             INNER JOIN users
                             ON users.id = comments.idUser
-                            AND idArticle = ?');
+                            AND comments.idArticle = ?');
+        $req->execute(array($id));
+        $liste = $req->fetchAll();
+
+        return $liste;
+    }
+
+    public function userComments($id) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT comments.id, comments.comment, comments.created_at, blog.title
+                            FROM comments
+                            INNER JOIN blog
+                            ON blog.id = comments.idArticle
+                            AND comments.idUser = ?');
         $req->execute(array($id));
         $liste = $req->fetchAll();
 

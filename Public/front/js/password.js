@@ -41,6 +41,7 @@ password.addEventListener("keyup", () => {
     if (password.value.length >= 8) {
         pswdLength.classList.remove("invalid");
         pswdLength.classList.add("valid");
+        checkmark
     } else {
         pswdLength.classList.remove("valid");
         pswdLength.classList.add("invalid");
@@ -76,14 +77,14 @@ password.addEventListener("keyup", () => {
 
 // Confirmer le mot de passe
 
-button.addEventListener("click", (e) => {
-    var ogPass = password.value;
-    var passCheck = confirmPassword.value;
+// button.addEventListener("click", (e) => {
+//     var ogPass = password.value;
+//     var passCheck = confirmPassword.value;
 
-    if (ogPass != passCheck) {
-        alert("Les mots de passes ne correspondent pas.");
-        e.preventDefault();
-        return false;
-    }
-    return true;
-});
+//     if (ogPass != passCheck) {
+//         alert("Les mots de passes ne correspondent pas.");
+//         e.preventDefault();
+//         return false;
+//     }
+//     return true;
+// });

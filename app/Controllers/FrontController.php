@@ -45,7 +45,9 @@ class FrontController extends Controller {
         require ($this->view('front', 'register'));
     }
 
-    public function account() {
+    public function account($id) {
+        $commentsManager = new \Projet\Models\Comments;
+        $comments = $commentsManager->userComments($id);
         require ($this->view('front', 'account'));
     }
 }

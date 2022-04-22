@@ -77,7 +77,7 @@ ul {
 }
 
 h1 {
-    padding-top: 110px;
+    padding-top: 120px;
 }
 
 h1 .txt-bzh,
@@ -126,7 +126,7 @@ header #headband #avatar {
 
 header #headband #avatar img {
     object-fit: cover;
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     border-radius: 50%;
     width: 100%;
 }
@@ -230,6 +230,7 @@ header #headband .hamburger .bar {
 
 #home-page #home-blog .home-actu .home-actu-body figure img {
     object-fit: cover;
+    height: 100%;
     width: 100%;
 }
 
@@ -246,7 +247,7 @@ header #headband .hamburger .bar {
 ================ */
 
 .input-page {
-    margin: 40px auto 50px;
+    margin: 46px auto 46px;
     padding: 30px;
     width: 35%;
     text-align: center;
@@ -260,6 +261,11 @@ header #headband .hamburger .bar {
 
 .input-page p {
     margin: 15px 0;
+}
+
+.input-page label {
+    text-align: left;
+    font-size: 0.8rem;
 }
 
 .input-page p input {
@@ -325,11 +331,10 @@ header #headband .hamburger .bar {
 
 .input-page #pswdMessage {
     display: none;
-    position: relative;
     text-align: left;
     font-size: 0.7rem;
     margin: 20px 25px;
-    padding: 5px 15px;
+    padding: 5px 25px;
     background-color: var(--border);
 }
 
@@ -337,9 +342,10 @@ header #headband .hamburger .bar {
     color: green;
 }
 
-.input-page #pswdMessage .valid:before {
+.input-page #pswdMessage .valid::before {
     position: relative;
-    left: -35px;
+    left: -7px;
+    content: "\2714";
 }
 
 .input-page #pswdMessage .invalid {
@@ -348,7 +354,8 @@ header #headband .hamburger .bar {
   
 .input-page #pswdMessage .invalid:before {
     position: relative;
-    left: -35px;
+    left: -7px;
+    content: "\2716";
 }
 
 /* ============

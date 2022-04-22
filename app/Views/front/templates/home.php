@@ -19,7 +19,7 @@
             <section id="home-blog">
                 <?php foreach ($blogs as $blog) : ?>
                     <article class="home-actu">
-                        <h3><?= $blog['title'] ?><?= $blog['created_at'] ?></h3>
+                        <h3><?= $blog['title'] ?> <?= $blog['created_at'] ?></h3>
                         <div class="home-actu-body">
                             <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>"></figure>
                             <p><?= $blog['excerpt'] ?></p>

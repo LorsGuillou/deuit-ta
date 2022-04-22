@@ -245,3 +245,13 @@ header #bandeau a {
     width: 80px;
     cursor: pointer;
 }
+
+@media(max-width:768px) {
+    #side-menu {
+        width: 7%;
+    }
+
+    #side-menu #navigation #admin-menu .admin-item a span {
+        display: none;
+    }
+}

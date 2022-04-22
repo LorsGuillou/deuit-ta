@@ -57,6 +57,7 @@ try {
             ];
 
             $userController->comment($data);
+            $frontController->readActu($_GET['id']);
 
         // Supprimer son commentaire
         } elseif ($_GET['action'] == 'deleteComment') {
@@ -118,7 +119,7 @@ try {
         } elseif ($_GET['action'] == 'createUser') {
 
             $pass = htmlspecialchars($_POST['password']);
-
+            $passCheck = htmlspecialchars($_POST['confirmPswd']);
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
 
             if (($_FILES['image']['name'] == "")) {
@@ -127,7 +128,7 @@ try {
 
             } else {
 
-                $avatar = $frontController->getImg('front', 'avatars', 100000);
+                $avatar = htmlspecialchars($frontController->getImg('front', 'avatars', 100000));
 
             }
 
@@ -144,6 +145,11 @@ try {
                 echo '<script type="text/javascript">alert("Cette adresse e-mail est invalide !")</script>';
                 $frontController->newUser();
 
+            } elseif ($passCheck != $pass) {
+            
+                echo '<script type="text/javascript">alert("Les mots de passes ne correspondent pas.")</script>';
+                $frontController->newUser();
+
             } else {
 
                 $userController->createUser($data);
@@ -153,10 +159,11 @@ try {
         // Aller sur la page compte
         } elseif ($_GET['action'] == 'account') {
 
-            $frontController->account();
+            $id = $_SESSION['id'];
+            $frontController->account($id);
 
+        // Modifier le compte
         } elseif ($_GET['action'] == 'editAccount') {
-
             
             $data = [
                 ":id" => $_SESSION['id'],
@@ -165,6 +172,13 @@ try {
 
             $_SESSION['avatar'] = $data[':avatar'];
             $userController->editUser($data);
+        
+        // Supprimer les commentaires depuis la page Compte
+        } elseif ($_GET['action'] == 'deleteCommFromAcc') {
+
+            $id = htmlspecialchars($_GET['id']);
+            $userController->deleteComment($id);
+            $frontController->account($_SESSION['id']);
 
         // Se déconnecter
         } elseif ($_GET['action'] == 'logout') {

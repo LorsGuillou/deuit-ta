@@ -4,6 +4,7 @@
         <h1>Se connecter <span class="txt-bzh">Digeriñ un dalc'h</span></h1>
         <section id="login-page" class="input-page">
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>
+            <?= $error ?>
             <form action="index.php?action=connect" method="post">
                 <p>
                     <input type="email" id="login-mail" name="login-mail" placeholder="Email">

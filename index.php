@@ -86,7 +86,16 @@ try {
                 ":message" => htmlspecialchars($_POST['message'])
             ];
 
-            $userController->postMail($data);
+            if (empty(($_POST['object'])) || empty($_POST['message'])) {
+
+                $error = '<p class="form-error">Tout les champs doivent être remplis !</p>';
+                $frontController->contact($error);
+            
+            } else {
+
+                $userController->postMail($data);
+
+            }
 
         // Aller sur Connexion
         } elseif ($_GET['action'] == 'login') {
@@ -97,16 +106,16 @@ try {
         } elseif ($_GET['action'] == 'connect') {
 
             $mail = htmlspecialchars($_POST['login-mail']);
-            $pass = htmlspecialchars($_POST['login-pswd']);
+            $password = htmlspecialchars($_POST['login-pswd']);
 
-            if (!empty($mail) && !empty($pass)) {
+            if (empty($mail) || empty($password)) {
 
-                $userController->connect($mail, $pass);
+                $error = '<p class="form-error">Tout les champs doivent être remplis !</p>';
+                $frontController->login($error);
 
             } else {
 
-                throw new \Exception ('Renseignez vos identifiants pour vous connecter !');
-                $frontController->login();
+                $userController->connect($mail, $password);
 
             }
         
@@ -142,22 +151,22 @@ try {
             
             if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password']) || empty($_POST['confirmPswd'])) {
 
-                $error = '<p class="register-error">Tout les champs doivent être remplis !</p>';
+                $error = '<p class="form-error">Tout les champs doivent être remplis !</p>';
                 $frontController->newUser($error);
 
             } elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 
-                $error = '<p class="register-error">Cette adresse mail est invalide !</p>';
+                $error = '<p class="form-error">Cette adresse mail est invalide !</p>';
                 $frontController->newUser($error);
 
             } elseif ($passCheck != $pass) {
             
-                $error = '<p class="register-error">Les mots de passes ne correspondent pas !</p>';
+                $error = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
                 $frontController->newUser($error);
 
             } elseif (!isset($_POST['rgpd'])) {
 
-                $error = '<p class="register-error">Vous devez cocher la case pour continuer !</p>';
+                $error = '<p class="form-error">Vous devez cocher la case pour continuer !</p>';
                 $frontController->newUser($error);
 
             } else {

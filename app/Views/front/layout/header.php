@@ -14,7 +14,9 @@
     <header>
         <div id="headband" class="container">
             <div id="logo">
-                <img src="Public/front/img/app/logo.png" alt="Logo Deuit 'ta !">
+                <a href="home">
+                    <img src="Public/front/img/app/logo.png" alt="Logo Deuit 'ta !">
+                </a>
             </div>
             <?php if (!empty($_SESSION)) : ?>
             <figure id="avatar">

@@ -39,6 +39,7 @@
     --menulinks: rgba(202, 209, 224, 0.87);
     --linkhover: rgba(228, 35, 35, 1);
     --border: rgba(176, 196, 222, 1);
+    --errorbg: rgba(250, 167, 167, 1);
 }
 
 /* ======================================
@@ -307,6 +308,15 @@ header #headband .hamburger .bar {
     width: 80%;
     height: 300px;
 }
+
+.input-page .form-error {
+    background-color: var(--errorbg);
+    color: brown;
+    margin-top: -15px;
+    display: block;
+    padding: 20px 0;
+}
+
 
 /* =======================
 === Création de compte === 

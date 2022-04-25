@@ -33,11 +33,11 @@ class FrontController extends Controller {
         require ($this->view('front', 'activities'));
     }
 
-    public function contact() {
+    public function contact($error = null) {
         require ($this->view('front', 'contact'));
     }
 
-    public function login() {
+    public function login($error = null) {
         require ($this->view('front', 'login'));
     }
 

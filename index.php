@@ -37,7 +37,7 @@ try {
             $frontController->about();
 
         // Aller sur Actualités
-        } elseif ($_GET['action'] == 'actu') {
+        } elseif ($_GET['action'] == 'blog') {
 
             if (isset($_GET['page']) && !empty($_GET['page'])) {
 
@@ -52,10 +52,10 @@ try {
             $frontController->actu($currentPage);
 
         // Lire un article en entier
-        } elseif ($_GET['action'] == 'readActu') {
+        } elseif ($_GET['action'] == 'readBlog') {
 
             $id = htmlspecialchars($_GET['id']);
-            $frontController->readActu($id);
+            $frontController->readBlog($id);
 
         // Commenter un article
         } elseif ($_GET['action'] == 'comment') {
@@ -67,7 +67,7 @@ try {
             ];
 
             $userController->comment($data);
-            $frontController->readActu($_GET['id']);
+            $frontController->readBlog($_GET['id']);
 
         // Supprimer son commentaire
         } elseif ($_GET['action'] == 'deleteComment') {
@@ -75,7 +75,7 @@ try {
             $id = htmlspecialchars($_GET['id']);
             $idPage = htmlspecialchars($_GET['idPage']);
             $userController->deleteComment($id);
-            $frontController->readActu($idPage);
+            $frontController->readBlog($idPage);
 
         // Aller sur Rencontres
         } elseif ($_GET['action'] == 'activities') {

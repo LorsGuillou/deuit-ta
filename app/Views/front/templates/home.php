@@ -23,7 +23,7 @@
                         <div class="home-actu-body">
                             <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>"></figure>
                             <p><?= $blog['excerpt'] ?></p>
-                            <a href="readActu&id=<?= $blog['id'] ?>">Voir l'article</a>
+                            <a href="readBlog&id=<?= $blog['id'] ?>">Voir l'article</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

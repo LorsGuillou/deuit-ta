@@ -24,13 +24,13 @@ class FrontController extends Controller {
         require ($this->view('front', 'blog'));
     }
 
-    public function readActu($id) {
+    public function readBlog($id) {
         $blogManager = new \Projet\Models\Blog();
         $commentManager = new \Projet\Models\Comments();
         $blog = $blogManager->readBlog($id);
         $number = $commentManager->nbComments($id);
         $comments = $commentManager->displayComments($id);
-        require ($this->view('front', 'readActu'));
+        require ($this->view('front', 'readBlog'));
     }
 
     public function activities() {

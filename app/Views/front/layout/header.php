@@ -32,7 +32,7 @@
                         <a class="nav-link" href="about"><i class="fa-solid fa-id-card"></i> A propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="actu"><i class="fa-solid fa-newspaper"></i> Actualités</a>
+                        <a class="nav-link" href="blog"><i class="fa-solid fa-newspaper"></i> Actualités</a>
                     </li>
                     <?php if (!empty($_SESSION)) : ?>
                     <!-- Fonction à venir -->

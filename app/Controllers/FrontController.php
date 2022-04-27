@@ -14,10 +14,14 @@ class FrontController extends Controller {
         require ($this->view('front', 'about'));
     }
 
-    public function actu() {
+    public function actu($currentPage) {
         $blogManager = new \Projet\Models\Blog();
-        $blogs = $blogManager->blogList();
-        require ($this->view('front', 'actu'));
+        $nbBlog = $blogManager->count();
+        $byPage = 6;
+        $pages = ceil($nbBlog[0] / $byPage);
+        $firstBlog = ($currentPage * $byPage) - $byPage;
+        $blogs = $blogManager->blogPage($firstBlog, $byPage);
+        require ($this->view('front', 'blog'));
     }
 
     public function readActu($id) {
@@ -33,15 +37,15 @@ class FrontController extends Controller {
         require ($this->view('front', 'activities'));
     }
 
-    public function contact($error = null) {
+    public function contact($alert = null) {
         require ($this->view('front', 'contact'));
     }
 
-    public function login($error = null) {
+    public function login($alert = null) {
         require ($this->view('front', 'login'));
     }
 
-    public function newUser($error = null) {
+    public function newUser($alert = null) {
         require ($this->view('front', 'register'));
     }
 

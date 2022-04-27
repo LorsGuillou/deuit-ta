@@ -15,7 +15,7 @@
         <div id="headband" class="container">
             <div id="logo">
                 <a href="home">
-                    <img src="Public/front/img/app/logo.png" alt="Logo Deuit 'ta !">
+                    <img src="Public/front/img/front/logo.png" alt="Logo Deuit 'ta !">
                 </a>
             </div>
             <?php if (!empty($_SESSION)) : ?>
@@ -54,6 +54,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="register"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if (!empty($_SESSION) && $_SESSION['role'] === 1) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAdmin.php?action=home"><i class="fa-solid fa-gear"></i></i>Administration</a>
                     </li>
                     <?php endif; ?>
                 </ul>

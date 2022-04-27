@@ -238,12 +238,17 @@ header #bandeau a {
 }
 
 #dashboard form button {
-    color: white;
+    color: lightgrey;
     background-color: darkblue;
     border: none;
     padding: 5px;
     width: 80px;
     cursor: pointer;
+}
+
+#dashboard form button:hover {
+    color: white;
+    background-color: blue;
 }
 
 @media(max-width:768px) {

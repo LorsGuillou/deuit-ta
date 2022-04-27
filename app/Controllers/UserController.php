@@ -14,13 +14,13 @@ class UserController extends Controller {
         }
     }
 
-    public function connect($mail, $pass) {
+    public function connect($mail, $password) {
         $userManager = new \Projet\Models\Users();
-        $connect = $userManager->getPassword($mail, $pass);
+        $connect = $userManager->getPassword($mail, $password);
 
         $res = $connect->fetch();
 
-        $passwordCheck = password_verify($pass, $res['password']);
+        $passwordCheck = password_verify($password, $res['password']);
 
         if ($passwordCheck) {
             $_SESSION['id'] = $res['id'];

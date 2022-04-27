@@ -189,7 +189,7 @@ header #headband .hamburger .bar {
 #banner {
     color: whitesmoke;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/app/andreas-brunn--mimtlr1_ek-unsplash.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/front/andreas-brunn--mimtlr1_ek-unsplash.jpg");
     background-position: center;
     background-size: cover;
 }

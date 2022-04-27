@@ -13,6 +13,20 @@ class Blog extends Manager {
         return $req;
     }
 
+    public function blogPage($firstBlog, $byPage) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at 
+                            FROM blog 
+                            ORDER BY created_at 
+                            DESC LIMIT :firstBlog, :byPage');
+        $req->bindValue(':firstBlog', $firstBlog, $pdo::PARAM_INT);
+        $req->bindValue(':byPage', $byPage, $pdo::PARAM_INT);
+        $req->execute();
+        $blog = $req->fetchAll();
+        
+        return $blog;
+    }
+
     public function blogList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at
@@ -48,7 +62,7 @@ class Blog extends Manager {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at 
                             FROM blog 
-                            ORDER BY id 
+                            ORDER BY created_at 
                             DESC LIMIT 2');
         $req->execute(array());
         $blog = $req->fetchAll();

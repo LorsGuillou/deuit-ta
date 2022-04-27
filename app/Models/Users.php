@@ -13,7 +13,7 @@ class Users extends Manager {
         return $req;
    }
 
-   public function getPassword($mail, $pass) {
+   public function getPassword($mail, $password) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, lastname, firstname, mail, password, avatar, created_at, role 
                               FROM users 

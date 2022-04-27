@@ -39,7 +39,17 @@ try {
         // Aller sur Actualités
         } elseif ($_GET['action'] == 'actu') {
 
-            $frontController->actu();
+            if (isset($_GET['page']) && !empty($_GET['page'])) {
+
+                $currentPage = (int) strip_tags($_GET['page']);
+
+            } else {
+
+                $currentPage = 1;
+
+            }
+
+            $frontController->actu($currentPage);
 
         // Lire un article en entier
         } elseif ($_GET['action'] == 'readActu') {
@@ -51,9 +61,9 @@ try {
         } elseif ($_GET['action'] == 'comment') {
 
             $data = [
-                ":idUser" => htmlspecialchars($_SESSION['id']),
-                ":idArticle" => htmlspecialchars($_GET['id']),
-                ":comment" => htmlspecialchars($_POST['type-comment'])
+                ':idUser' => htmlspecialchars($_SESSION['id']),
+                ':idArticle' => htmlspecialchars($_GET['id']),
+                ':comment' => htmlspecialchars($_POST['type-comment'])
             ];
 
             $userController->comment($data);
@@ -81,15 +91,25 @@ try {
         } elseif ($_GET['action'] == 'contactPost') {
 
             $data = [
-                ":id" => htmlspecialchars($_SESSION['id']),
-                ":object" => htmlspecialchars($_POST['object']),
-                ":message" => htmlspecialchars($_POST['message'])
+                ':id' => htmlspecialchars($_SESSION['id']),
+                ':object' => htmlspecialchars($_POST['object']),
+                ':message' => htmlspecialchars($_POST['message'])
             ];
 
-            if (empty(($_POST['object'])) || empty($_POST['message'])) {
+            if (empty($_POST['object'])) {
 
-                $error = '<p class="form-error">Tout les champs doivent être remplis !</p>';
-                $frontController->contact($error);
+                $alert = '<p class="form-error">Veuillez précisez l\'objet de votre message</p>';
+                $frontController->contact($alert);
+
+            } elseif (empty($_POST['message'])) {
+
+                $alert = '<p class="form-error">Votre message est vide</p>';
+                $frontController->contact($alert);
+
+            } elseif (empty($_POST['object']) && empty($_POST['message'])) {
+
+                $alert = '<p class="form-error">Vous ne pouvez pas envoyer un message vide.</p>';
+                $frontController->contact($alert);
             
             } else {
 
@@ -110,8 +130,8 @@ try {
 
             if (empty($mail) || empty($password)) {
 
-                $error = '<p class="form-error">Tout les champs doivent être remplis !</p>';
-                $frontController->login($error);
+                $alert = '<p class="form-error">Tout les champs doivent être remplis !</p>';
+                $frontController->login($alert);
 
             } else {
 
@@ -142,32 +162,32 @@ try {
             }
 
             $data = [
-                ":lastname" => htmlspecialchars($_POST['lastname']),
-                ":firstname" => htmlspecialchars($_POST['firstname']),
-                ":mail" => htmlspecialchars($_POST['mail']),
-                ":password" => $passHash,
-                ":avatar" => $avatar
+                ':lastname' => htmlspecialchars($_POST['lastname']),
+                ':firstname' => htmlspecialchars($_POST['firstname']),
+                ':mail' => htmlspecialchars($_POST['mail']),
+                ':password' => $passHash,
+                ':avatar' => $avatar
             ];
             
             if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password']) || empty($_POST['confirmPswd'])) {
 
-                $error = '<p class="form-error">Tout les champs doivent être remplis !</p>';
-                $frontController->newUser($error);
+                $alert = '<p class="form-error">Tout les champs doivent être remplis !</p>';
+                $frontController->newUser($alert);
 
             } elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 
-                $error = '<p class="form-error">Cette adresse mail est invalide !</p>';
-                $frontController->newUser($error);
+                $alert = '<p class="form-error">Cette adresse mail est invalide !</p>';
+                $frontController->newUser($alert);
 
             } elseif ($passCheck != $pass) {
             
-                $error = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
-                $frontController->newUser($error);
+                $alert = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
+                $frontController->newUser($alert);
 
             } elseif (!isset($_POST['rgpd'])) {
 
-                $error = '<p class="form-error">Vous devez cocher la case pour continuer !</p>';
-                $frontController->newUser($error);
+                $alert = '<p class="form-error">Vous devez cocher la case pour continuer !</p>';
+                $frontController->newUser($alert);
 
             } else {
 
@@ -185,8 +205,8 @@ try {
         } elseif ($_GET['action'] == 'editAccount') {
             
             $data = [
-                ":id" => $_SESSION['id'],
-                ":avatar" => $userController->getImg('front', 'avatars', 100000)
+                ':id' => $_SESSION['id'],
+                ':avatar' => $userController->getImg('front', 'avatars', 100000)
             ];
 
             $_SESSION['avatar'] = $data[':avatar'];
@@ -207,7 +227,7 @@ try {
 
         } else {
 
-            throw new Exception("Cette action n'existe pas", 404);
+            throw new Exception('Cette action n\'existe pas', 404);
 
         }
     
@@ -222,14 +242,14 @@ try {
 
     eCatcher($e);
     if ($e->getCode() === 404) {
-        require "app/Views/front/errors/404.php";
+        require 'app/Views/front/errors/404.php';
     } else {
-        require "app/Views/front/errors/error.php";
+        require 'app/Views/front/errors/error.php';
     }
     
 } catch (Error $e) {
 
     eCatcher($e);
-    require "app/Views/front/errors/error.php";
+    require 'app/Views/front/errors/error.php';
 
 }

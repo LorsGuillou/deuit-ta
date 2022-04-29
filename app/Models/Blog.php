@@ -15,7 +15,7 @@ class Blog extends Manager {
 
     public function blogPage($firstBlog, $byPage) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at 
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             ORDER BY created_at 
                             DESC LIMIT :firstBlog, :byPage');
@@ -29,7 +29,7 @@ class Blog extends Manager {
 
     public function blogList() {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, DATE_FORMAT(created_at, "%d %M %Y") as date
                             FROM blog');
         $req->execute(array());
         $list = $req->fetchAll();
@@ -39,7 +39,7 @@ class Blog extends Manager {
 
     public function readBlog($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, content, created_at 
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, content, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             WHERE id = ?');
         $req->execute(array($id));
@@ -60,7 +60,7 @@ class Blog extends Manager {
 
     public function blogHome() {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, created_at 
+        $req = $pdo->prepare('SELECT id, title, excerpt, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             ORDER BY created_at 
                             DESC LIMIT 2');

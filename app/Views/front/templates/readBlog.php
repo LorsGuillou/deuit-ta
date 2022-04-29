@@ -3,7 +3,7 @@
     <main class="container">
         <article id="read-blog"> 
                <h1><?= $blog['title'] ?></h1>
-                <p><?= $blog['created_at'] ?></p>
+                <p><?= $blog['date'] ?></p>
                 <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['title'] ?>">
                 <p><?= $blog['content'] ?></p>
         </article>
@@ -11,7 +11,8 @@
             <div id="comments">
                 <h4>Commentaires (<?= $number['0'] ?>)</h4>
                 <?php foreach ($comments as $comment) : ?>
-                    <h5><?= $comment['lastname'] ?> <?= $comment['firstname'] ?></h5>
+                    <h5><img src="./Public/front/img/avatars/<?= $comment['avatar'] ?>"> <?= $comment['lastname'] ?> <?= $comment['firstname'] ?></h5>
+                    <p><?= $comment['date'] ?></p>
                     <p><?= $comment['comment'] ?></p>
                     <?php if (!empty($_SESSION) && $comment['idUser'] === $_SESSION['id'] || !empty($_SESSION) && $_SESSION['role'] === 1) : ?>
                         <a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>&idPage=<?= $blog['id'] ?>">

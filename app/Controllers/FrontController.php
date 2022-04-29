@@ -14,7 +14,7 @@ class FrontController extends Controller {
         require ($this->view('front', 'about'));
     }
 
-    public function actu($currentPage) {
+    public function blog($currentPage) {
         $blogManager = new \Projet\Models\Blog();
         $nbBlog = $blogManager->count();
         $byPage = 6;

@@ -49,7 +49,7 @@ try {
 
             }
 
-            $frontController->actu($currentPage);
+            $frontController->blog($currentPage);
 
         // Lire un article en entier
         } elseif ($_GET['action'] == 'readBlog') {

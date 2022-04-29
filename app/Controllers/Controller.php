@@ -24,7 +24,7 @@ class Controller {
         if (in_array($extension, $allowedExt) && $size <= $maxSize && $error === 0) {
 
             $uniqueName = uniqid('', true);
-            $img = $uniqueName . '.' . $extension;
+            $img = filter_var($uniqueName . '.' . $extension);
             move_uploaded_file($tmpName, './Public/' . $imgSide . '/img/' . $imgType . '/' . $img);
             
             return $img;

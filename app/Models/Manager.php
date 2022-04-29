@@ -20,6 +20,7 @@ class Manager {
                 $_ENV['DB_USERNAME'],
                 $_ENV['DB_PASSWORD']
             );
+                self::$pdo->query("SET lc_time_names = 'fr_FR'");
                 return self::$pdo;
             } catch (Exception $e) {
                 die ('Erreur : ' . $e->getMessage());

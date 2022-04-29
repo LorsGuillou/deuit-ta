@@ -235,9 +235,62 @@ header #headband .hamburger .bar {
     width: 100%;
 }
 
-/* ===================
-=== Page d'article === 
-=================== */
+/* ============================ 
+=== Page liste des articles === 
+============================ */
+
+#blog-page {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#blog-page .blog-layout {
+    width: 400px;
+    background-color: aqua;
+    margin: 20px 0 20px;
+    padding: 8px;
+}
+
+#blog-page .blog-layout .blog-title,
+#blog-page .blog-layout .blog-date {
+    width: 100%;
+}
+
+#blog-page .blog-layout img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+
+#blog-pagination .pagination {
+    margin: 10px 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#blog-pagination .pagination .page-nav a {
+    color: var(--shadow);
+}
+
+#blog-pagination .pagination .active a {
+    background-color: var(--shadow);
+    color: var(--lightbg);
+    font-size: 1.2rem;
+    padding: 3px 5px;
+}
+
+#blog-pagination .pagination .hidden {
+    display: none;
+}
+
+/* ======================
+=== Lecture d'article === 
+====================== */
 
 #comments p {
     white-space: pre-line;
@@ -375,10 +428,6 @@ header #headband .hamburger .bar {
 #contact-page {
     width: 60%;
 }
-
-/* =======================
-=== Création de compte === 
-======================= */
 
 /* ===========
 === Footer === 

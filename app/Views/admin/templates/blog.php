@@ -17,7 +17,7 @@
                         <tr>
                             <td><?= $blog['title'] ?></td>
                             <td><?= $blog['excerpt'] ?></td>
-                            <td><?= $blog['created_at'] ?></td>
+                            <td><?= $blog['date'] ?></td>
                             <td class="action-case">
                                 <a href="indexAdmin.php?action=readBlog&id=<?= $blog['id'] ?>" title="Voir l'article">
                                     <i class="fa-solid fa-eye action-view"></i>

@@ -15,7 +15,7 @@ class Contact extends Manager {
 
     public function mailList() {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT contact.id, contact.object, contact.created_at, users.lastname, users.firstname 
+        $req = $pdo->prepare('SELECT contact.id, contact.object, DATE_FORMAT(contact.created_at, "%d %M %Y") as date, users.lastname, users.firstname 
                             FROM contact 
                             INNER JOIN users
                             ON contact.idUser = users.id');
@@ -27,7 +27,7 @@ class Contact extends Manager {
 
     public function readMail($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT contact.id, contact.object, contact.message, contact.created_at, users.lastname, users.firstname, users.mail 
+        $req = $pdo->prepare('SELECT contact.id, contact.object, contact.message, DATE_FORMAT(contact.created_at, "%d %M %Y") as date, users.lastname, users.firstname, users.mail 
                             FROM contact
                             INNER JOIN users
                             ON contact.idUser = users.id 

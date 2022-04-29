@@ -18,7 +18,7 @@
                             <td><?= $mail['lastname'] ?></td>
                             <td><?= $mail['firstname'] ?></td>
                             <td><?= $mail['object'] ?></td>
-                            <td><?= $mail['created_at'] ?></td>
+                            <td><?= $mail['date'] ?></td>
                             <td class="action-case">
                                 <a href="indexAdmin.php?action=readMail&id=<?= $mail['id'] ?>" title="Lire">
                                     <i class="fa-solid fa-eye action-view"></i>

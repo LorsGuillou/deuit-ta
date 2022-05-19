@@ -224,8 +224,20 @@ header #headband .hamburger .bar {
     margin-bottom: 10px;
 }
 
+#home-page #home-blog {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#home-page #home-blog .home-actu .home-actu-date {
+    font-size: 0.85rem;
+    color: lightslategrey;
+}
+
 #home-page #home-blog .home-actu .home-actu-body figure {
-    width: 250px;
+    margin: 5px 0 10px;
+    width: 350px;
     height: 350px;
 }
 
@@ -233,6 +245,10 @@ header #headband .hamburger .bar {
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+
+#home-page #home-blog .home-actu .home-actu-body p {
+    margin-bottom: 10px;
 }
 
 /* ============================ 

@@ -4,17 +4,46 @@
             <h1>Modifier l'article</h1>
             <form action="indexAdmin.php?action=modify&id=<?= $blog['id'] ?>" method="post" enctype="multipart/form-data">
                 <p>
-                    <input type="text" id="edit-title" name="edit-title" value="<?php if (isset($blog['title'])) : echo $blog['title']; endif; ?>" required>
+                    <label for="edit-titleFR">Titre français :</label>
                 </p>
                 <p>
-                    <input type="text" id="edit-excerpt" name="edit-excerpt" value="<?php if (isset($blog['excerpt'])) : echo $blog['excerpt']; endif; ?>" required>
+                    <input type="text" id="edit-titleFR" name="edit-titleFR" value="<?php if (isset($blog['titleFR'])) : echo $blog['titleFR']; endif; ?>" required>
+                </p>
+                <p>
+                    <label for="edit-titleBZH">Titre breton :</label>
+                </p>
+                <p>
+                    <input type="text" id="edit-titleBZH" name="edit-titleBZH" value="<?php if (isset($blog['titleBZH'])) : echo $blog['titleBZH']; endif; ?>" required>
+                </p>
+                <p>
+                    <label for="edit-excerptFR">Extrait français :</label>
+                </p>
+                <p>
+                    <input type="text" id="edit-excerptFR" name="edit-excerptFR" value="<?php if (isset($blog['excerptFR'])) : echo $blog['excerptFR']; endif; ?>" required>
+                </p>
+                <p>
+                    <label for="edit-excerptBZH">Extrait breton :</label>
+                </p>
+                <p>
+                    <input type="text" id="edit-excerptBZH" name="edit-excerptBZH" value="<?php if (isset($blog['excerptBZH'])) : echo $blog['excerptBZH']; endif; ?>" required>
                 </p>
                 <p>
                     <label for="image">Image : </label>
+                </p>
+                <p>
                     <input type="file" id="edit-image" name="image" required>
                 </p>
                 <p>
-                    <textarea id="edit-content" name="edit-content" required><?php if (isset($blog['content'])) : echo $blog['content']; endif; ?></textarea>
+                    <label for="edit-contentFR">Texte français :</label>
+                </p>
+                <p>
+                    <textarea id="edit-contentFR" name="edit-contentFR" required><?php if (isset($blog['contentFR'])) : echo $blog['contentFR']; endif; ?></textarea>
+                </p>
+                <p>
+                    <label for="edit-contentBZH">Texte breton :</label>
+                </p>
+                <p>
+                    <textarea id="edit-contentBZH" name="edit-contentBZH" required><?php if (isset($blog['contentBZH'])) : echo $blog['contentBZH']; endif; ?></textarea>
                 </p>
                 <p>
                     <button type="submit" id="edit-submit">Envoyer</button>

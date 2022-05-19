@@ -6,8 +6,8 @@ class Blog extends Manager {
 
     public function publish($data) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('INSERT INTO blog (title, excerpt, img, content) 
-                            VALUES (:title, :excerpt, :img, :content)');
+        $req = $pdo->prepare('INSERT INTO blog (titleFR, titleBZH, excerptFR, excerptBZH, img, contentFR, contentBZH) 
+                            VALUES (:titleFR, :titleBZH, :excerptFR, :excerptBZH, :img, :contentFR, :contentBZH)');
         $req->execute($data);
 
         return $req;
@@ -15,7 +15,7 @@ class Blog extends Manager {
 
     public function blogPage($firstBlog, $byPage) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
+        $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             ORDER BY created_at 
                             DESC LIMIT :firstBlog, :byPage');
@@ -29,7 +29,7 @@ class Blog extends Manager {
 
     public function blogList() {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, DATE_FORMAT(created_at, "%d %M %Y") as date
+        $req = $pdo->prepare('SELECT id, titleFR, excerptFR, img, DATE_FORMAT(created_at, "%d %M %Y") as date
                             FROM blog');
         $req->execute(array());
         $list = $req->fetchAll();
@@ -39,7 +39,7 @@ class Blog extends Manager {
 
     public function readBlog($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, content, DATE_FORMAT(created_at, "%d %M %Y") as date 
+        $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, contentFR, contentBZH, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             WHERE id = ?');
         $req->execute(array($id));
@@ -51,7 +51,7 @@ class Blog extends Manager {
     public function editBlog($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('UPDATE blog
-                            SET title = :title, excerpt = :excerpt, img = :img, content = :content
+                            SET titleFR = :titleFR, titleBZH = :titleBZH, excerptFR = :excerptFR, excerptBZH = :excerptBZH, img = :img, contentFR = :contentFR, contentBZH = :contentBZH
                             WHERE id = :id');
         $req->execute($data);
 
@@ -60,10 +60,10 @@ class Blog extends Manager {
 
     public function blogHome() {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT id, title, excerpt, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
+        $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             ORDER BY created_at 
-                            DESC LIMIT 2');
+                            DESC LIMIT 3');
         $req->execute(array());
         $blog = $req->fetchAll();
         

@@ -19,10 +19,12 @@
             <section id="home-blog">
                 <?php foreach ($blogs as $blog) : ?>
                     <article class="home-actu">
-                        <h3><?= $blog['title'] ?> <?= $blog['date'] ?></h3>
+                        <h3><?= $blog['titleFR'] ?> <span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h3>
+                        <p class="home-actu-date"><?= $blog['date'] ?></p>
                         <div class="home-actu-body">
-                            <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>"></figure>
-                            <p><?= $blog['excerpt'] ?></p>
+                            <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>"></figure>
+                            <p><?= $blog['excerptFR'] ?></p>
+                            <p class="txt-bzh"><?= $blog['excerptBZH'] ?></p>
                             <a href="readBlog&id=<?= $blog['id'] ?>">Voir l'article</a>
                         </div>
                     </article>

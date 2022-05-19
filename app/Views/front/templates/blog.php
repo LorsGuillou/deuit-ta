@@ -5,10 +5,11 @@
             <section id="blog-page">
             <?php foreach ($blogs as $blog) : ?>
                 <article class="blog-layout">
-                    <h3 class="blog-title"><?= $blog['title'] ?></h3>
+                    <h3 class="blog-title"><?= $blog['titleFR'] ?> <span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h3>
                     <p class="blog-date"><?= $blog['date'] ?></p>
-                    <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['title'] ?>">
-                    <p class="blog-content"><?= $blog['excerpt'] ?></p>
+                    <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
+                    <p class="blog-content"><?= $blog['excerptFR'] ?></p>
+                    <p class="blog-content"><?= $blog['excerptBZH'] ?></p>
                     <a href="readBlog&id=<?= $blog['id'] ?>">Lire la suite</a>
                 </article>
             <?php endforeach; ?>

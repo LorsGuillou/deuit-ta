@@ -71,10 +71,13 @@ try {
         } elseif ($_GET['action'] == 'publish') {
 
             $data = [
-                ":title" => htmlspecialchars($_POST['blog-title']),
-                ":excerpt" => htmlspecialchars($_POST['blog-excerpt']),
+                ":titleFR" => htmlspecialchars($_POST['blog-titleFR']),
+                ":titleBZH" => htmlspecialchars($_POST['blog-titleBZH']),
+                ":excerptFR" => htmlspecialchars($_POST['blog-excerptFR']),
+                ":excerptBZH" => htmlspecialchars($_POST['blog-excerptBZH']),
                 ":img" => $adminController->getImg('admin', 'blog', 400000),
-                ":content" => htmlspecialchars($_POST['blog-content'])
+                ":contentFR" => htmlspecialchars($_POST['blog-contentFR']),
+                ":contentBZH" => htmlspecialchars($_POST['blog-contentBZH'])
             ];
 
             $adminController->publish($data);
@@ -96,10 +99,13 @@ try {
 
             $data = [
                 ":id" => $_GET['id'],
-                ":title" => htmlspecialchars($_POST['edit-title']),
-                ":excerpt" => htmlspecialchars($_POST['edit-excerpt']),
+                ":titleFR" => htmlspecialchars($_POST['edit-titleFR']),
+                ":titleBZH" => htmlspecialchars($_POST['edit-titleBZH']),
+                ":excerptFR" => htmlspecialchars($_POST['edit-excerptFR']),
+                ":excerptBZH" => htmlspecialchars($_POST['edit-excerptBZH']),
                 ":img" => $adminController->getImg('admin', 'blog', 400000),
-                ":content" => htmlspecialchars($_POST['edit-content'])
+                ":contentFR" => htmlspecialchars($_POST['edit-contentFR']),
+                ":contentBZH" => htmlspecialchars($_POST['edit-contentBZH'])
             ];
 
             $adminController->editBlog($data);

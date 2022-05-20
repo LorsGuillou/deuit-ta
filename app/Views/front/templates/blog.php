@@ -18,7 +18,7 @@
             <nav id="blog-pagination">
                 <ul class="pagination">
                     <li class="page-nav <?= ($currentPage == 1) ? "hidden" : "" ?>">
-                        <a href="blog&page=<?= $currentPage - 1 ?>" class="page-link">Précédente</a>
+                        <a href="blog&page=<?= $currentPage - 1 ?>" class="page-link"><i class="fa-solid fa-left-long"></i></a>
                     </li>
                     <?php for ($page = 1; $page <= $pages; $page++) : ?>
                     <li class="page-nav <?= ($currentPage == $page) ? "active" : "" ?>">
@@ -26,7 +26,7 @@
                     </li>
                     <?php endfor; ?>
                     <li class="page-nav <?= ($currentPage == $pages) ? "hidden" : "" ?>">
-                        <a href="blog&page=<?= $currentPage + 1 ?>" class="page-link">Suivante</a>
+                        <a href="blog&page=<?= $currentPage + 1 ?>" class="page-link"><i class="fa-solid fa-right-long"></i></a>
                     </li>
                 </ul>
             </nav>

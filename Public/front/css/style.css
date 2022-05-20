@@ -137,8 +137,20 @@ header #headband #avatar img {
 =============== */
 
 header #headband #navigation .nav-menu {
+    position: fixed;
     display: flex;
-    gap: 25px;
+    flex-direction: column;
+    background-color: var(--darkbg);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    left: -100%;
+    top: 84px;
+    gap: 0;
+}
+
+header #headband #navigation .nav-menu.active {
+    left: 0;
 }
 
 header #headband #navigation .nav-menu .nav-item {
@@ -168,7 +180,6 @@ header #headband #navigation .nav-menu .nav-item .nav-link i {
 ================ */
 
 header #headband .hamburger {
-    display: none;
     cursor: pointer;
 }
 
@@ -180,6 +191,18 @@ header #headband .hamburger .bar {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: var(--menulinks);
+}
+    
+header #headband .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+header #headband .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+header #headband .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ===================
@@ -200,12 +223,13 @@ header #headband .hamburger .bar {
 
 #banner p {
     margin: 0 auto;
-    padding: 10px 150px 30px;
+    padding: 10px 150px 5px;
 }
 
-#banner span {
+#banner p:nth-child(3) {
     color: rgba(176, 196, 222, 1);
     font-style: italic;
+    padding-bottom: 20px;
 }
 
 #home-page .home-titles {
@@ -226,8 +250,17 @@ header #headband .hamburger .bar {
 
 #home-page #home-blog {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
+}
+
+#home-page #home-blog .home-actu {
+    width: 450px;
+    padding: 10px;
+    background-color: var(--formbg);
+    margin: 5px 0;
+    box-shadow: 1px 1px 3px var(--shadow);
 }
 
 #home-page #home-blog .home-actu .home-actu-date {
@@ -237,8 +270,8 @@ header #headband .hamburger .bar {
 
 #home-page #home-blog .home-actu .home-actu-body figure {
     margin: 5px 0 10px;
-    width: 350px;
-    height: 350px;
+    width: 430px;
+    height: 315px;
 }
 
 #home-page #home-blog .home-actu .home-actu-body figure img {
@@ -280,13 +313,11 @@ header #headband .hamburger .bar {
     object-fit: cover;
 }
 
-
-
 #blog-pagination .pagination {
-    margin: 10px 40%;
+    margin: 10px 20%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #blog-pagination .pagination .page-nav a {
@@ -516,37 +547,20 @@ footer #footband p a:hover {
 === Media queries === 
 ================== */
 
-@media(max-width:768px) {
-    header #headband .hamburger {
-        display: block;
-    }
-    
-    header #headband .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    header #headband .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    
-    header #headband .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+@media(min-width:768px) {
 
     header #headband #navigation .nav-menu {
-        position: fixed;
-        flex-direction: column;
-        background-color: var(--darkbg);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        left: -100%;
-        top: 84px;
-        gap: 0;
+        position: static;
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        text-align: left;
+        left: auto;
+        top: auto;
+        gap: 25px;
     }
-
-    header #headband #navigation .nav-menu.active {
-        left: 0;
+    header #headband .hamburger {
+        display: none;
     }
 }
 

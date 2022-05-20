@@ -86,7 +86,7 @@ try {
         } elseif ($_GET['action'] == 'readBlog') {
 
             $id = htmlspecialchars($_GET['id']);
-            $adminController->readBlog($id);
+            $frontController->readBlog($id);
         
         // Modifier un article
         } elseif ($_GET['action'] == 'editBlog') {

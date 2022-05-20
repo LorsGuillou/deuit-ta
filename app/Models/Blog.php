@@ -63,7 +63,7 @@ class Blog extends Manager {
         $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
                             FROM blog 
                             ORDER BY created_at 
-                            DESC LIMIT 3');
+                            DESC LIMIT 4');
         $req->execute(array());
         $blog = $req->fetchAll();
         

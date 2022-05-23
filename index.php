@@ -139,6 +139,11 @@ try {
 
             }
         
+        // Mot de passe perdu
+        } else if ($_GET['action'] == 'reset') {
+
+            $frontController->reset();
+        
         // Aller sur Créer un compte
         } elseif ($_GET['action'] == 'register') {
 

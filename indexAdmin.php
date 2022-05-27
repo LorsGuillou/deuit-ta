@@ -13,7 +13,7 @@ try {
     $frontController = new \Projet\Controllers\FrontController();
     $userController = new \Projet\Controllers\UserController();
 
-    if (empty($_SESSION)) {
+    if (empty($_SESSION) || $_SESSION['role'] != 1) {
         throw new Exception('Vous n\'avez pas l\'autorisation d\'être là !', 401);
     }
 

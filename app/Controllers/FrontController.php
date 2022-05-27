@@ -2,6 +2,8 @@
 
 namespace Projet\Controllers;
 
+use Exception;
+
 class FrontController extends Controller {
 
     public function home() {
@@ -27,7 +29,7 @@ class FrontController extends Controller {
     public function readBlog($id) {
         $blogManager = new \Projet\Models\Blog();
         $commentManager = new \Projet\Models\Comments();
-        $blog = $blogManager->readBlog($id);
+        $blog = $this->throw404IfEmpty($blogManager->readBlog($id));
         $number = $commentManager->nbComments($id);
         $comments = $commentManager->displayComments($id);
         require ($this->view('front', 'readBlog'));
@@ -49,9 +51,14 @@ class FrontController extends Controller {
         require ($this->view('front', 'register'));
     }
 
-    public function account($id, $aAvatar = null, $aMail = null, $aPswd = null) {
+    public function account($alertAvatar = null, $alertMail = null, $alertPswd = null) {
         $commentsManager = new \Projet\Models\Comments;
-        $comments = $commentsManager->userComments($id);
-        require ($this->view('front', 'account'));
+        if (empty($_SESSION)) {
+            header('Location: login');
+        } else {
+            $id = $_SESSION['id'];
+            $comments = $commentsManager->userComments($id);
+            require ($this->view('front', 'account'));
+        }
     }
 }

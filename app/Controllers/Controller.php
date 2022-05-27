@@ -2,6 +2,8 @@
 
 namespace Projet\Controllers;
 
+use Exception;
+
 class Controller {
 
     public function view($viewType, $viewName) {
@@ -33,6 +35,14 @@ class Controller {
 
             echo "<script type='text/javascript'>alert('L'image n'est pas conforme.')</script>";
 
+        }
+    }
+
+    public function throw404IfEmpty($resource) {
+        if (!$resource) {
+            throw new Exception("La ressource demandée n'existe pas", 404);
+        } else {
+            return $resource;
         }
     }
 }

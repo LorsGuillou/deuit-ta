@@ -65,7 +65,7 @@ try {
                 ':idArticle' => htmlspecialchars($_GET['id']),
                 ':comment' => htmlspecialchars($_POST['type-comment'])
             ];
-
+            
             $userController->comment($data);
             $frontController->readBlog($_GET['id']);
 
@@ -198,7 +198,8 @@ try {
         // Aller sur la page compte
         } elseif ($_GET['action'] == 'account') {
 
-            $frontController->account($_SESSION['id']);
+
+                $frontController->account();
 
         // Modifier l'avatar
         } elseif ($_GET['action'] == 'editAvatar') {
@@ -210,6 +211,8 @@ try {
 
             $_SESSION['avatar'] = $data[':avatar'];
             $userController->editAvatar($data);
+            $alertAvatar = '<p class="form-success">L\'avatar a été modifié avec succès !</p>';
+            $frontController->account($alertAvatar);
 
         // Modifier l'adresse mail
         } elseif ($_GET['action'] == 'editMail') {
@@ -221,13 +224,16 @@ try {
 
             if (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
 
-                $aMail = '<p class="form-error">Cette adresse mail est invalide !</p>';
-                $frontController->account($_SESSION['id'], $aMail);
+                $alertMail = '<p class="form-error">Cette adresse mail est invalide !</p>';
+                $frontController->account($alertMail);
 
             } else {
 
                 $_SESSION['mail'] = $data[':mail'];
                 $userController->editMail($data);
+                $alertMail = '<p class="form-success">L\'adresse mail a été modifié avec succès !</p>';
+                $frontController->account($alertMail);
+
             }
 
         // Modifier le mot de passe
@@ -244,13 +250,15 @@ try {
 
             if ($passEdit != $editCheck) {
 
-                $aPswd = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
-                $frontController->account($_SESSION['id'], $aPswd);
+                $alertPswd = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
+                $frontController->account($alertPswd);
 
             } else {
 
                 $_SESSION['password'] = $data[':password'];
                 $userController->editPswd($data);
+                $alertPswd = '<p class="form-success">Le mot de passe a été modifié avec succès !</p>';
+                $frontController->account($alertPswd);
             
             }
         
@@ -259,7 +267,7 @@ try {
 
             $id = htmlspecialchars($_GET['id']);
             $userController->deleteComment($id);
-            $frontController->account($_SESSION['id']);
+            $frontController->account();
 
         // Se déconnecter
         } elseif ($_GET['action'] == 'logout') {
@@ -282,10 +290,10 @@ try {
 
 } catch (Exception $e) {
 
-    eCatcher($e);
     if ($e->getCode() === 404) {
         require 'app/Views/front/errors/404.php';
     } else {
+        eCatcher($e);
         require 'app/Views/front/errors/error.php';
     }
     

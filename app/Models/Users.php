@@ -13,7 +13,7 @@ class Users extends Manager {
         return $req;
    }
 
-   public function getPassword($mail, $password) {
+   public function doesUserExist($mail, $password) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, lastname, firstname, mail, password, avatar, DATE_FORMAT(created_at, "%d %M %Y") as date, role 
                               FROM users 

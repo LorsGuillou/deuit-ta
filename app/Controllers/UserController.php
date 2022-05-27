@@ -17,25 +17,24 @@ class UserController extends Controller {
     public function connect($mail, $password) {
         $userManager = new \Projet\Models\Users();
         $frontController = new \Projet\Controllers\FrontController();
-        $connect = $userManager->getPassword($mail, $password);
+        $connect = $userManager->doesUserExist($mail, $password);
 
-        $res = $connect->fetch();
+        $userData = $connect->fetch();
 
-        $passwordCheck = password_verify($password, $res['password']);
-
-        if (!empty($res)) {
+        if (!empty($userData)) {
+            $passwordCheck = password_verify($password, $userData['password']);
             if ($passwordCheck) {
-                $_SESSION['id'] = $res['id'];
-                $_SESSION['lastname'] = $res['lastname'];
-                $_SESSION['firstname'] = $res['firstname'];
-                $_SESSION['mail'] = $res['mail'];
-                $_SESSION['password'] = $res['password'];
-                $_SESSION['avatar'] = $res['avatar'];
-                $_SESSION['role'] = $res['role'];
-                if ($res['role'] === 1) {
+                $_SESSION['id'] = $userData['id'];
+                $_SESSION['lastname'] = $userData['lastname'];
+                $_SESSION['firstname'] = $userData['firstname'];
+                $_SESSION['mail'] = $userData['mail'];
+                $_SESSION['password'] = $userData['password'];
+                $_SESSION['avatar'] = $userData['avatar'];
+                $_SESSION['role'] = $userData['role'];
+                if ($userData['role'] === 1) {
                     header('Location: indexAdmin.php');
                 } else {
-                    require ($this->view('front', 'account'));
+                    header('Location: account');
                 }
             } else {
                 $error = '<p class="form-error">Le mot de passe est incorrect !</p>';
@@ -44,7 +43,7 @@ class UserController extends Controller {
         } else {
             $error = '<p class="form-error">Cette adresse e-mail ne correspond à aucun de nos utilisateurs !</p>';
             $frontController->login($error);
-        }
+        } 
     }
 
     public function editAvatar($data) {
@@ -66,7 +65,7 @@ class UserController extends Controller {
     public function editPswd($data) {
         $userManager = new \Projet\Models\Users();
         $edit = $userManager->editPswd($data);
-        header('Location: index.php?action=account');
+        header('Location: account');
     }
 
     public function comment($data) {

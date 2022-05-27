@@ -2,10 +2,10 @@
 
     <main class="container">
         <article id="read-blog"> 
-               <h1><?= $blog['title'] ?></h1>
+               <h1><?= $blog['titleFR'] ?></h1>
                 <p><?= $blog['date'] ?></p>
-                <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['title'] ?>">
-                <p><?= $blog['content'] ?></p>
+                <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
+                <p><?= $blog['contentFR'] ?></p>
         </article>
         <?php if (isset($comments)) : ?>
             <div id="comments">

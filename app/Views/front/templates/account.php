@@ -7,7 +7,7 @@
     <?php if (empty($comments)) : ?>
     <p>Vous n'avez pas écrit de commentaire.</p>
     <?php else : foreach ($comments as $comment) : ?>
-    <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['created_at'] ?> :</h4>
+    <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['date'] ?> :</h4>
     <p><?= $comment['comment'] ?></p>
     <a href="index.php?action=deleteCommFromAcc&id=<?= $comment['id'] ?>">
         <i class="fa-solid fa-trash-can action-delete"></i>
@@ -16,7 +16,7 @@
 
     <form action="editAvatar" method="post" enctype="multipart/form-data" class="input-page">
         <h2>Changer votre image de profil</h2>
-        <?= $aAvatar ?>
+        <?= $alertAvatar ?>
         <p>
             <input type="file" id="edit-avatar" name="image">
         </p>
@@ -27,7 +27,7 @@
 
     <form action="editMail" method="post" class="input-page">
         <h2>Changer votre adresse e-mail</h2>
-        <?= $aMail ?>
+        <?= $alertMail ?>
         <p>
             <input type="mail" id="edit-mail" name="edit-mail">
         </p>
@@ -38,7 +38,7 @@
 
     <form action="editPswd" method="post" class="input-page">
         <h2>Changer votre mot de passe</h2>
-        <?= $aPswd ?>
+        <?= $alertPswd ?>
         <p class="pswdSpace">
             <input type="password" id="password" name="edit-password" placeholder="Nouveau mot de passe"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"

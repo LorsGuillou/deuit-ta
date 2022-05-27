@@ -41,7 +41,6 @@ password.addEventListener("keyup", () => {
     if (password.value.length >= 8) {
         pswdLength.classList.remove("invalid");
         pswdLength.classList.add("valid");
-        checkmark
     } else {
         pswdLength.classList.remove("valid");
         pswdLength.classList.add("invalid");

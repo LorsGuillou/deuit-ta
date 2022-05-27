@@ -33,10 +33,30 @@ class Users extends Manager {
         return $list;
    }
 
-   public function editUser($data) {
+   public function editAvatar($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('UPDATE users
                               SET avatar = :avatar
+                              WHERE id = :id');
+        $req->execute($data);
+        
+        return $req;
+   }
+
+   public function editMail($data) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('UPDATE users
+                              SET mail = :mail
+                              WHERE id = :id');
+        $req->execute($data);
+        
+        return $req;
+   }
+   
+   public function editpswd($data) {
+        $pdo = self::dbConnect();
+        $req = $pdo->prepare('UPDATE users
+                              SET password = :password
                               WHERE id = :id');
         $req->execute($data);
         

@@ -45,15 +45,11 @@ class FrontController extends Controller {
         require ($this->view('front', 'login'));
     }
 
-    public function reset($alert = null) {
-        require ($this->view('front', 'reset'));
-    }
-
     public function newUser($alert = null) {
         require ($this->view('front', 'register'));
     }
 
-    public function account($id) {
+    public function account($id, $aAvatar = null, $aMail = null, $aPswd = null) {
         $commentsManager = new \Projet\Models\Comments;
         $comments = $commentsManager->userComments($id);
         require ($this->view('front', 'account'));

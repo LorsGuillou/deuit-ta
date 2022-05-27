@@ -47,9 +47,25 @@ class UserController extends Controller {
         }
     }
 
-    public function editUser($data) {
+    public function editAvatar($data) {
         $userManager = new \Projet\Models\Users();
-        $edit = $userManager->editUser($data);
+        $edit = $userManager->editAvatar($data);
+        header('Location: index.php?action=account');
+    }
+
+    public function editMail($data) {
+        $userManager = new \Projet\Models\Users();
+        if (filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
+            $edit = $userManager->editMail($data);
+            header('Location: index.php?action=account');
+        } else {
+            header('Location: app/Views/front/errors/error.php');
+        }
+    }
+
+    public function editPswd($data) {
+        $userManager = new \Projet\Models\Users();
+        $edit = $userManager->editPswd($data);
         header('Location: index.php?action=account');
     }
 

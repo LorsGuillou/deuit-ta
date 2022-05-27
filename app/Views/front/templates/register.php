@@ -1,7 +1,7 @@
 <?php include_once ('app/Views/front/layout/header.php') ?>
 
 
-    <main id="register" class="container">
+    <main class="container">
         <h1>Créez votre compte <span class="txt-bzh">Krouat ho kont</span></h1>
         <section id="register-page" class="input-page">
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>

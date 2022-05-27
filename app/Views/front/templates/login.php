@@ -16,7 +16,6 @@
                     <button type="submit" id="button-login" class="submit">Connexion</button>
                 </p>
             </form>
-            <a id="reset-link" href="reset">Mot de passe oublié ?</a>
         </section>
     </main>
 

@@ -139,11 +139,6 @@ try {
 
             }
         
-        // Mot de passe perdu
-        } else if ($_GET['action'] == 'reset') {
-
-            $frontController->reset();
-        
         // Aller sur Créer un compte
         } elseif ($_GET['action'] == 'register') {
 
@@ -203,11 +198,10 @@ try {
         // Aller sur la page compte
         } elseif ($_GET['action'] == 'account') {
 
-            $id = $_SESSION['id'];
-            $frontController->account($id);
+            $frontController->account($_SESSION['id']);
 
-        // Modifier le compte
-        } elseif ($_GET['action'] == 'editAccount') {
+        // Modifier l'avatar
+        } elseif ($_GET['action'] == 'editAvatar') {
             
             $data = [
                 ':id' => $_SESSION['id'],
@@ -215,7 +209,50 @@ try {
             ];
 
             $_SESSION['avatar'] = $data[':avatar'];
-            $userController->editUser($data);
+            $userController->editAvatar($data);
+
+        // Modifier l'adresse mail
+        } elseif ($_GET['action'] == 'editMail') {
+            
+            $data = [
+                ':id' => $_SESSION['id'],
+                ':mail' => htmlspecialchars($_POST['edit-mail'])
+            ];
+
+            if (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
+
+                $aMail = '<p class="form-error">Cette adresse mail est invalide !</p>';
+                $frontController->account($_SESSION['id'], $aMail);
+
+            } else {
+
+                $_SESSION['mail'] = $data[':mail'];
+                $userController->editMail($data);
+            }
+
+        // Modifier le mot de passe
+        } elseif ($_GET['action'] == 'editPswd') {
+            
+            $passEdit = htmlspecialchars($_POST['edit-password']);
+            $editCheck = htmlspecialchars($_POST['edit-confirmPswd']);
+            $editHash = password_hash($passEdit, PASSWORD_DEFAULT);
+
+            $data = [
+                ':id' => $_SESSION['id'],
+                ':password' => $editHash
+            ];
+
+            if ($passEdit != $editCheck) {
+
+                $aPswd = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
+                $frontController->account($_SESSION['id'], $aPswd);
+
+            } else {
+
+                $_SESSION['password'] = $data[':password'];
+                $userController->editPswd($data);
+            
+            }
         
         // Supprimer les commentaires depuis la page Compte
         } elseif ($_GET['action'] == 'deleteCommFromAcc') {

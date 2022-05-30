@@ -9,8 +9,9 @@
                 <p>
                     <input type="email" id="login-mail" name="login-mail" placeholder="Email">
                 </p>
-                <p>
-                    <input type="password" id="login-pswd" name="login-pswd" placeholder="Mot de passe">
+                <p class="pswdSpace">
+                    <input type="password" id="password" name="login-pswd" placeholder="Mot de passe">
+                    <i class="fa-solid fa-eye" id="togglePswd"></i>
                 </p>
                 <p>
                     <button type="submit" id="button-login" class="submit">Connexion</button>

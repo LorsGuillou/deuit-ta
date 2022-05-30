@@ -26,7 +26,7 @@
                             <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>"></figure>
                             <p><?= $blog['excerptFR'] ?></p>
                             <p class="txt-bzh"><?= $blog['excerptBZH'] ?></p>
-                            <a class="home-actu-link" href="readBlog&id=<?= $blog['id'] ?>">Voir l'article</a>
+                            <a class="home-actu-link" href="blogRead&id=<?= $blog['id'] ?>">Voir l'article</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

@@ -20,10 +20,10 @@
                             <td><?= $mail['object'] ?></td>
                             <td><?= $mail['date'] ?></td>
                             <td class="action-case">
-                                <a href="indexAdmin.php?action=readMail&id=<?= $mail['id'] ?>" title="Lire">
+                                <a href="mailRead&id=<?= $mail['id'] ?>" title="Lire">
                                     <i class="fa-solid fa-eye action-view"></i>
                                 </a>
-                                <a href="indexAdmin.php?action=deleteMail&id=<?= $mail['id'] ?>" title="Supprimer">
+                                <a href="mailDelete&id=<?= $mail['id'] ?>" title="Supprimer">
                                     <i class="fa-solid fa-trash-can action-delete"></i>
                                 </a>
                             </td>

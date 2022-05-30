@@ -52,13 +52,13 @@ try {
             $frontController->blog($currentPage);
 
         // Lire un article en entier
-        } elseif ($_GET['action'] == 'readBlog') {
+        } elseif ($_GET['action'] == 'blogRead') {
 
             $id = htmlspecialchars($_GET['id']);
             $frontController->readBlog($id);
 
         // Commenter un article
-        } elseif ($_GET['action'] == 'comment') {
+        } elseif ($_GET['action'] == 'blogComment') {
 
             $data = [
                 ':idUser' => htmlspecialchars($_SESSION['id']),
@@ -70,7 +70,7 @@ try {
             $frontController->readBlog($_GET['id']);
 
         // Supprimer son commentaire
-        } elseif ($_GET['action'] == 'deleteComment') {
+        } elseif ($_GET['action'] == 'blogDeleteComment') {
 
             $id = htmlspecialchars($_GET['id']);
             $idPage = htmlspecialchars($_GET['idPage']);
@@ -113,8 +113,10 @@ try {
             
             } else {
 
+                $alert = '<p class="form-success">Votre message nous a bien été transmis !</p>';
+                $frontController->contact($alert);
                 $userController->postMail($data);
-
+                // $frontController->setUrl('http://localhost/deuit-ta/contact');
             }
 
         // Aller sur Connexion
@@ -145,7 +147,7 @@ try {
             $frontController->newUser();
     
         // Création de compte
-        } elseif ($_GET['action'] == 'createUser') {
+        } elseif ($_GET['action'] == 'loginCreateUser') {
 
             $pass = htmlspecialchars($_POST['password']);
             $passCheck = htmlspecialchars($_POST['confirmPswd']);
@@ -202,7 +204,7 @@ try {
                 $frontController->account();
 
         // Modifier l'avatar
-        } elseif ($_GET['action'] == 'editAvatar') {
+        } elseif ($_GET['action'] == 'accountEditAvatar') {
             
             $data = [
                 ':id' => $_SESSION['id'],
@@ -211,11 +213,11 @@ try {
 
             $_SESSION['avatar'] = $data[':avatar'];
             $userController->editAvatar($data);
-            $alertAvatar = '<p class="form-success">L\'avatar a été modifié avec succès !</p>';
+            $alertAvatar = '<p class="edits-success">L\'avatar a été modifié avec succès !</p>';
             $frontController->account($alertAvatar);
 
         // Modifier l'adresse mail
-        } elseif ($_GET['action'] == 'editMail') {
+        } elseif ($_GET['action'] == 'accountEditMail') {
             
             $data = [
                 ':id' => $_SESSION['id'],
@@ -224,20 +226,20 @@ try {
 
             if (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
 
-                $alertMail = '<p class="form-error">Cette adresse mail est invalide !</p>';
+                $alertMail = '<p class="edits-error">Cette adresse mail est invalide !</p>';
                 $frontController->account($alertMail);
 
             } else {
 
                 $_SESSION['mail'] = $data[':mail'];
                 $userController->editMail($data);
-                $alertMail = '<p class="form-success">L\'adresse mail a été modifié avec succès !</p>';
+                $alertMail = '<p class="edits-success">L\'adresse mail a été modifié avec succès !</p>';
                 $frontController->account($alertMail);
 
             }
 
         // Modifier le mot de passe
-        } elseif ($_GET['action'] == 'editPswd') {
+        } elseif ($_GET['action'] == 'accountEditPswd') {
             
             $passEdit = htmlspecialchars($_POST['edit-password']);
             $editCheck = htmlspecialchars($_POST['edit-confirmPswd']);
@@ -250,20 +252,20 @@ try {
 
             if ($passEdit != $editCheck) {
 
-                $alertPswd = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
+                $alertPswd = '<p class="edits-error">Les mots de passes ne correspondent pas !</p>';
                 $frontController->account($alertPswd);
 
             } else {
 
                 $_SESSION['password'] = $data[':password'];
                 $userController->editPswd($data);
-                $alertPswd = '<p class="form-success">Le mot de passe a été modifié avec succès !</p>';
+                $alertPswd = '<p class="edits-success">Le mot de passe a été modifié avec succès !</p>';
                 $frontController->account($alertPswd);
             
             }
         
         // Supprimer les commentaires depuis la page Compte
-        } elseif ($_GET['action'] == 'deleteCommFromAcc') {
+        } elseif ($_GET['action'] == 'accountDeleteComment') {
 
             $id = htmlspecialchars($_GET['id']);
             $userController->deleteComment($id);

@@ -1,13 +1,24 @@
 const links = document.getElementById("nav-menu").getElementsByTagName("a");
+var url = location.href.split('/');
+const lastElement = url[url.length - 1];
 
-for (i = 0; i < links.length; i++)  {
-    if (location.href === links[i].href) {
-        links[0].classList.remove("active");
-        links[i].classList.add("active");
-    } else if (location.href.includes("blog&page=")) {
-        links[0].classList.remove("active");
-        links[2].classList.add("active");
-    } else if (location.href != "http://localhost/deuit-ta/index.php" && location.href != "http://localhost/deuit-ta/home") {
-        links[0].classList.remove("active");
+function activateLink(linkIndex) {
+    links[0].classList.remove("active");
+    links[linkIndex].classList.add("active");            
+}
+
+for (i = 0; i < links.length; i++) {
+    if (lastElement.startsWith("about")) {
+        activateLink(1);
+    } else if (lastElement.startsWith("blog")) {
+        activateLink(2);
+    } else if (lastElement.startsWith("login")) {
+        activateLink(3);
+    } else if (lastElement.startsWith("register")) {
+        activateLink(4);
+    } else if (lastElement.startsWith("contact")) {
+        activateLink(3);
+    } else if (lastElement.startsWith("account")) {
+        activateLink(4);
     }
 }

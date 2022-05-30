@@ -20,7 +20,7 @@
                             <td><?= $user['mail'] ?></td>
                             <td><?= $user['date'] ?></td>
                             <td class="action-case">
-                                <a href="indexAdmin.php?action=deleteUser&id=<?= $user['id'] ?>" title="Supprimer ce compte membre">
+                                <a href="deleteUser&id=<?= $user['id'] ?>" title="Supprimer ce compte membre">
                                     <span class="action-delete"><i class="fa-solid fa-ban"></i></span>
                                 </a>
                             </td>

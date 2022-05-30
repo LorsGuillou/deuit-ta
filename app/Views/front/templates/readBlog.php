@@ -15,7 +15,7 @@
                     <p><?= $comment['date'] ?></p>
                     <p><?= $comment['comment'] ?></p>
                     <?php if (!empty($_SESSION) && $comment['idUser'] === $_SESSION['id'] || !empty($_SESSION) && $_SESSION['role'] === 1) : ?>
-                        <a href="index.php?action=deleteComment&id=<?= $comment['id'] ?>&idPage=<?= $blog['id'] ?>">
+                        <a href="blogDeleteComment&id=<?= $comment['id'] ?>&idPage=<?= $blog['id'] ?>">
                             <i class="fa-solid fa-trash-can action-delete"></i>
                         </a>
                     <?php endif; ?>
@@ -24,13 +24,13 @@
         <?php endif; ?>
         <?php if (!empty($_SESSION)) : ?>
             <h4>Laissez un commentaire</h4>
-            <form id="commenting" action="index.php?action=comment&id=<?= $blog['id'] ?>" method="post">
+            <form id="commenting" action="blogComment&id=<?= $blog['id'] ?>" method="post">
                 <textarea name="type-comment" maxlength="250" placeholder="..."></textarea>
                 <button type="submit" class="submit">Envoyer</button>
             </form>
         <?php else : ?>
-            <p>Vous souhaitez commenter sur cet article ? <a href="index.php?action=register">Créez un compte</a> ou <a href="index.php?action=login">connectez-vous</a>.</p>
-            <p class="txt-bzh">Vous souhaitez commenter sur cet article ? <a href="index.php?action=register">Créez un compte</a> ou <a href="index.php?action=login">connectez-vous</a>.</p>
+            <p>Vous souhaitez commenter sur cet article ? <a href="register">Créez un compte</a> ou <a href="login">connectez-vous</a>.</p>
+            <p class="txt-bzh">Vous souhaitez commenter sur cet article ? <a href="register">Créez un compte</a> ou <a href="login">connectez-vous</a>.</p>
         <?php endif; ?>
     </main>
 

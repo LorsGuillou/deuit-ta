@@ -4,11 +4,13 @@ namespace Projet\Controllers;
 
 class UserController extends Controller {
 
-    public function createUser($data) {
+    public function createUser($userData) {
         $userManager = new \Projet\Models\Users();
+        $frontController = new \Projet\Controllers\FrontController();
         if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-            $newUser = $userManager->createUser($data);
-            require ($this->view('front', 'confirmation'));
+            $newUser = $userManager->createUser($userData);
+            $success = '<p class="form-success">Votre compte a bien été créé ! Vous pouvez désormais vous connecter !</p>';
+            $frontController->login($success);
         } else {
             header('Location: app/Views/front/errors/error.php');
         }
@@ -32,7 +34,7 @@ class UserController extends Controller {
                 $_SESSION['avatar'] = $userData['avatar'];
                 $_SESSION['role'] = $userData['role'];
                 if ($userData['role'] === 1) {
-                    header('Location: indexAdmin.php');
+                    header('Location: admin/home');
                 } else {
                     header('Location: account');
                 }
@@ -49,14 +51,14 @@ class UserController extends Controller {
     public function editAvatar($data) {
         $userManager = new \Projet\Models\Users();
         $edit = $userManager->editAvatar($data);
-        header('Location: index.php?action=account');
+        // header('Location: account');
     }
 
     public function editMail($data) {
         $userManager = new \Projet\Models\Users();
         if (filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
             $edit = $userManager->editMail($data);
-            header('Location: index.php?action=account');
+            // header('Location: account');
         } else {
             header('Location: app/Views/front/errors/error.php');
         }
@@ -65,13 +67,12 @@ class UserController extends Controller {
     public function editPswd($data) {
         $userManager = new \Projet\Models\Users();
         $edit = $userManager->editPswd($data);
-        header('Location: account');
+        // header('Location: account');
     }
 
     public function comment($data) {
         $commentManager = new \Projet\Models\Comments();
         $comment = $commentManager->comment($data);
-        echo "<script type='text/javascript'>alert('Votre message nous a bien été transmis !')</script>";
     }
 
    public function deleteComment($id) {
@@ -82,7 +83,5 @@ class UserController extends Controller {
     public function postMail($data) {
         $contactManager = new \Projet\Models\Contact();
         $mail = $contactManager->postMail($data);
-        echo "<script type='text/javascript'>alert('Votre commentaire a été publié !')</script>";
-        require ($this->view('front', 'contact'));
     }
 }

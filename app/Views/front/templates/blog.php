@@ -10,7 +10,7 @@
                     <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
                     <p class="blog-content"><?= $blog['excerptFR'] ?></p>
                     <p class="blog-content"><?= $blog['excerptBZH'] ?></p>
-                    <a href="readBlog&id=<?= $blog['id'] ?>">Lire la suite</a>
+                    <a href="blogRead&id=<?= $blog['id'] ?>">Lire la suite</a>
                 </article>
             <?php endforeach; ?>
             </section>

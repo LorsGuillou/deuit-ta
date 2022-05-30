@@ -40,13 +40,14 @@
     --linkhover: rgba(228, 35, 35, 1);
     --border: rgba(176, 196, 222, 1);
     --errorbg: rgba(250, 167, 167, 1);
+    --successbg: rgba(179, 251, 179, 1);
 }
 
 /* ======================================
 === Reset des marges et style général ===
 ====================================== */
 
-* {
+* { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -421,10 +422,13 @@ header #headband .hamburger.active .bar:nth-child(3) {
     padding: 20px 0;
 }
 
-
-/* =======================
-=== Création de compte === 
-========================*/
+.input-page .form-success {
+    background-color: var(--successbg);
+    color: green;
+    margin-top: -15px;
+    display: block;
+    padding: 20px 0;
+}
 
 .input-page .pswdSpace {
     margin-right: 11px;
@@ -478,6 +482,36 @@ header #headband .hamburger.active .bar:nth-child(3) {
 
 #contact-page {
     width: 80%;
+}
+
+/* ================
+=== Page compte ===
+================ */
+
+#alert-edits {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#alert-edits .edits-error {
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 20px 0;
+    background-color: var(--errorbg);
+    color: brown;
+    text-align: center;
+}
+
+#alert-edits .edits-success {
+    width: 50%;
+    margin-top: -30px;
+    margin-bottom: 15px;
+    padding: 20px 0;
+    background-color: var(--successbg);
+    color: limegreen;
+    text-align: center;
+    align-items: center;
 }
 
 /* ===========

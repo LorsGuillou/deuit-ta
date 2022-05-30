@@ -2,7 +2,7 @@
 
 
             <h1>Ecrire un article</h1>
-            <form action="indexAdmin.php?action=publish" method="post" enctype="multipart/form-data">
+            <form action="blogPublish" method="post" enctype="multipart/form-data">
                 <p>
                     <label for="blog-titleFR">Titre français :</label>
                 </p>

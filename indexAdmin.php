@@ -25,29 +25,29 @@ try {
             $adminController->dashboard();
 
         // Liste des membres
-        } elseif ($_GET['action'] == 'users') {
+        } elseif ($_GET['action'] == 'user') {
             
             $adminController->users();
 
         // Supprimer un utilisateur
-        } elseif ($_GET['action'] == 'deleteUser') {
+        } elseif ($_GET['action'] == 'userDelete') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteUser($id);
 
         // Liste des messages
-        } elseif ($_GET['action'] == 'mails') {
+        } elseif ($_GET['action'] == 'mail') {
 
             $adminController->mails();
 
         // Lire un message
-        } elseif ($_GET['action'] == 'readMail') {
+        } elseif ($_GET['action'] == 'mailRead') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->readMail($id);
 
         // Supprimer un message
-        } elseif ($_GET['action'] == 'deleteMail') {
+        } elseif ($_GET['action'] == 'mailDelete') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteMail($id);
@@ -63,12 +63,12 @@ try {
             $adminController->blog();
 
         // Ecrire un article
-        } elseif ($_GET['action'] == 'write') {
+        } elseif ($_GET['action'] == 'blogWrite') {
 
             $adminController->write();
 
         // Publier un article
-        } elseif ($_GET['action'] == 'publish') {
+        } elseif ($_GET['action'] == 'blogPublish') {
 
             $data = [
                 ":titleFR" => htmlspecialchars($_POST['blog-titleFR']),
@@ -83,19 +83,19 @@ try {
             $adminController->publish($data);
 
         // Lire un article
-        } elseif ($_GET['action'] == 'readBlog') {
+        } elseif ($_GET['action'] == 'blogRead') {
 
             $id = htmlspecialchars($_GET['id']);
             $frontController->readBlog($id);
         
         // Modifier un article
-        } elseif ($_GET['action'] == 'editBlog') {
+        } elseif ($_GET['action'] == 'blogEdit') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->edit($id);
 
         // Publier la modification
-        } elseif ($_GET['action'] == 'modify') {
+        } elseif ($_GET['action'] == 'blogModify') {
 
             $data = [
                 ":id" => $_GET['id'],
@@ -111,7 +111,7 @@ try {
             $adminController->editBlog($data);
 
         // Supprimer un article
-        } elseif ($_GET['action'] == 'deleteBlog') {
+        } elseif ($_GET['action'] == 'blogDelete') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteBlog($id);
@@ -119,13 +119,13 @@ try {
         // Naviguer sur le site
         } elseif ($_GET['action'] == 'navigate') {
 
-            $frontController->home();
+            header('Location: ../index.php');
 
         // Déconnexion
         } elseif ($_GET['action'] == 'logout') {
 
             session_destroy();
-            header('Location: index.php');
+            header('Location: ../index.php');
 
         }
 

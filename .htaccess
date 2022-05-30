@@ -3,4 +3,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.*)$ index.php?action=$1
+RewriteRule ^(?!admin\/)(.*)$ index.php?action=$1
+RewriteRule ^admin\/(.*)$ indexAdmin.php?action=$1

@@ -1,4 +1,4 @@
 
-    <script src="Public/admin/js/active.js"></script>
+    <script src="../Public/admin/js/active.js"></script>
 </body>
 </html>

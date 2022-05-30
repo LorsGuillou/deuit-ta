@@ -6,7 +6,7 @@
         <section id="register-page" class="input-page">
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>
             <?= $alert ?>
-            <form action="createUser" method="post" enctype="multipart/form-data">
+            <form action="loginCreateUser" method="post" enctype="multipart/form-data">
                 <p>
                     <input type="text" id="lastname" name="lastname" placeholder="Nom">
                 </p>

@@ -3,20 +3,25 @@
 <main class="container account-page">
     <h1>Bonjour, <?= $_SESSION['firstname'] ?> ! <span class="txt-bzh">Demat deoc'h, <?= $_SESSION['firstname'] ?>
             !</span></h1>
+    <div id="alert-edits">
+        <?= $alertAvatar ?>
+        <?= $alertPswd ?>
+        <?= $alertMail ?>
+    </div>
     <h2>Vos commentaires</h2>
     <?php if (empty($comments)) : ?>
     <p>Vous n'avez pas écrit de commentaire.</p>
     <?php else : foreach ($comments as $comment) : ?>
     <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['date'] ?> :</h4>
     <p><?= $comment['comment'] ?></p>
-    <a href="index.php?action=deleteCommFromAcc&id=<?= $comment['id'] ?>">
+    <a href="accountDeleteComment&id=<?= $comment['id'] ?>">
         <i class="fa-solid fa-trash-can action-delete"></i>
     </a>
     <?php endforeach; endif; ?>
 
     <form action="editAvatar" method="post" enctype="multipart/form-data" class="input-page">
         <h2>Changer votre image de profil</h2>
-        <?= $alertAvatar ?>
+        
         <p>
             <input type="file" id="edit-avatar" name="image">
         </p>
@@ -27,7 +32,6 @@
 
     <form action="editMail" method="post" class="input-page">
         <h2>Changer votre adresse e-mail</h2>
-        <?= $alertMail ?>
         <p>
             <input type="mail" id="edit-mail" name="edit-mail">
         </p>
@@ -38,7 +42,6 @@
 
     <form action="editPswd" method="post" class="input-page">
         <h2>Changer votre mot de passe</h2>
-        <?= $alertPswd ?>
         <p class="pswdSpace">
             <input type="password" id="password" name="edit-password" placeholder="Nouveau mot de passe"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"

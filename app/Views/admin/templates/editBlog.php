@@ -2,7 +2,7 @@
 
 
             <h1>Modifier l'article</h1>
-            <form action="indexAdmin.php?action=modify&id=<?= $blog['id'] ?>" method="post" enctype="multipart/form-data">
+            <form action="blogModify&id=<?= $blog['id'] ?>" method="post" enctype="multipart/form-data">
                 <p>
                     <label for="edit-titleFR">Titre français :</label>
                 </p>

@@ -32,7 +32,7 @@
                         <a class="nav-link" href="about"><i class="fa-solid fa-id-card"></i> A propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog"><i class="fa-solid fa-newspaper"></i> Actualités</a>
+                        <a class="nav-link" href="blog"><i class="fa-solid fa-newspaper"></i> Blog</a>
                     </li>
                     <?php if (!empty($_SESSION)) : ?>
                     <!-- Fonction à venir -->
@@ -58,7 +58,7 @@
                     <?php endif; ?>
                     <?php if (!empty($_SESSION) && $_SESSION['role'] === 1) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="indexAdmin.php?action=home"><i class="fa-solid fa-gear"></i></i>Administration</a>
+                        <a class="nav-link" href="admin/home"><i class="fa-solid fa-gear"></i></i>Administration</a>
                     </li>
                     <?php endif; ?>
                 </ul>

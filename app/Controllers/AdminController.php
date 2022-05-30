@@ -25,7 +25,7 @@ class AdminController extends Controller {
     public function deleteUser($id) {
         $userManager = new \Projet\Models\Users();
         $deleteUser = $userManager::delete($id);
-        header('Location: indexAdmin.php?action=users');
+        header('Location: users');
     }
 
     // Méthodes Mails
@@ -44,7 +44,7 @@ class AdminController extends Controller {
     public function deleteMail($id) {
         $contactManager = new \Projet\Models\Contact();
         $deleteMail = $contactManager->delete($id);
-        header('Location: indexAdmin.php?action=mails');
+        header('Location: mail');
     }
 
     // Méthodes Activités
@@ -93,6 +93,6 @@ class AdminController extends Controller {
     public function deleteBlog($id) {
         $blogManager = new \Projet\Models\Blog();
         $deleteBlog = $blogManager->delete($id);
-        header('Location: indexAdmin.php?action=blog');
+        header('Location: blog');
     }
 }

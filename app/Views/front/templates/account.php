@@ -19,7 +19,7 @@
     </a>
     <?php endforeach; endif; ?>
 
-    <form action="editAvatar" method="post" enctype="multipart/form-data" class="input-page">
+    <form action="accountEditAvatar" method="post" enctype="multipart/form-data" class="input-page">
         <h2>Changer votre image de profil</h2>
         
         <p>
@@ -30,7 +30,7 @@
         </p>
     </form>
 
-    <form action="editMail" method="post" class="input-page">
+    <form action="accountEditMail" method="post" class="input-page">
         <h2>Changer votre adresse e-mail</h2>
         <p>
             <input type="mail" id="edit-mail" name="edit-mail">
@@ -40,7 +40,7 @@
         </p>
     </form>
 
-    <form action="editPswd" method="post" class="input-page">
+    <form action="accountEditPswd" method="post" class="input-page">
         <h2>Changer votre mot de passe</h2>
         <p class="pswdSpace">
             <input type="password" id="password" name="edit-password" placeholder="Nouveau mot de passe"

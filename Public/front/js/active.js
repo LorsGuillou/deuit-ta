@@ -12,13 +12,9 @@ for (i = 0; i < links.length; i++) {
         activateLink(1);
     } else if (lastElement.startsWith("blog")) {
         activateLink(2);
-    } else if (lastElement.startsWith("login")) {
+    } else if (lastElement.startsWith("login") || lastElement.startsWith("contact")) {
         activateLink(3);
-    } else if (lastElement.startsWith("register")) {
-        activateLink(4);
-    } else if (lastElement.startsWith("contact")) {
-        activateLink(3);
-    } else if (lastElement.startsWith("account")) {
+    } else if (lastElement.startsWith("register") || lastElement.startsWith("account")) {
         activateLink(4);
     }
 }

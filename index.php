@@ -67,7 +67,8 @@ try {
             ];
             
             $userController->comment($data);
-            $frontController->readBlog($_GET['id']);
+            $alert = '<p class="success">Votre commentaire a bien été publié !</p>';
+            $frontController->readBlog($_GET['id'], $alert);
 
         // Supprimer son commentaire
         } elseif ($_GET['action'] == 'blogDeleteComment') {
@@ -75,7 +76,8 @@ try {
             $id = htmlspecialchars($_GET['id']);
             $idPage = htmlspecialchars($_GET['idPage']);
             $userController->deleteComment($id);
-            $frontController->readBlog($idPage);
+            $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
+            $frontController->readBlog($idPage, $alert);
 
         // Aller sur Rencontres
         } elseif ($_GET['action'] == 'activities') {
@@ -213,8 +215,8 @@ try {
 
             $_SESSION['avatar'] = $data[':avatar'];
             $userController->editAvatar($data);
-            $alertAvatar = '<p class="edits-success">L\'avatar a été modifié avec succès !</p>';
-            $frontController->account($alertAvatar);
+            $alert = '<p class="success">L\'avatar a été modifié avec succès !</p>';
+            $frontController->account($alert);
 
         // Modifier l'adresse mail
         } elseif ($_GET['action'] == 'accountEditMail') {
@@ -226,15 +228,15 @@ try {
 
             if (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
 
-                $alertMail = '<p class="edits-error">Cette adresse mail est invalide !</p>';
-                $frontController->account($alertMail);
+                $alert = '<p class="error">Cette adresse mail est invalide !</p>';
+                $frontController->account($alert);
 
             } else {
 
                 $_SESSION['mail'] = $data[':mail'];
                 $userController->editMail($data);
-                $alertMail = '<p class="edits-success">L\'adresse mail a été modifié avec succès !</p>';
-                $frontController->account($alertMail);
+                $alert = '<p class="success">L\'adresse mail a été modifié avec succès !</p>';
+                $frontController->account($alert);
 
             }
 
@@ -252,15 +254,15 @@ try {
 
             if ($passEdit != $editCheck) {
 
-                $alertPswd = '<p class="edits-error">Les mots de passes ne correspondent pas !</p>';
-                $frontController->account($alertPswd);
+                $alert = '<p class="error">Les mots de passes ne correspondent pas !</p>';
+                $frontController->account($alert);
 
             } else {
 
                 $_SESSION['password'] = $data[':password'];
                 $userController->editPswd($data);
-                $alertPswd = '<p class="edits-success">Le mot de passe a été modifié avec succès !</p>';
-                $frontController->account($alertPswd);
+                $alert = '<p class="success">Le mot de passe a été modifié avec succès !</p>';
+                $frontController->account($alert);
             
             }
         
@@ -269,7 +271,8 @@ try {
 
             $id = htmlspecialchars($_GET['id']);
             $userController->deleteComment($id);
-            $frontController->account();
+            $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
+            $frontController->account($alert);
 
         // Se déconnecter
         } elseif ($_GET['action'] == 'logout') {

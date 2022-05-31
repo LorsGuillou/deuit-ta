@@ -5,7 +5,7 @@
         <section id="login-page" class="input-page">
             <h2>Identifiants <span class="txt-bzh">Anaouderioù</span></h2>
             <?= $alert ?>
-            <form action="index.php?action=connect" method="post">
+            <form action="connect" method="post">
                 <p>
                     <input type="email" id="login-mail" name="login-mail" placeholder="Email">
                 </p>

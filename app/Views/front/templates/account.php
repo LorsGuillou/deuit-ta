@@ -3,25 +3,29 @@
 <main class="container account-page">
     <h1>Bonjour, <?= $_SESSION['firstname'] ?> ! <span class="txt-bzh">Demat deoc'h, <?= $_SESSION['firstname'] ?>
             !</span></h1>
-    <div id="alert-edits">
-        <?= $alertAvatar ?>
-        <?= $alertPswd ?>
-        <?= $alertMail ?>
+    <div class="alerts">
+        <?= $alert ?>
     </div>
     <h2>Vos commentaires</h2>
-    <?php if (empty($comments)) : ?>
-    <p>Vous n'avez pas écrit de commentaire.</p>
-    <?php else : foreach ($comments as $comment) : ?>
-    <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['date'] ?> :</h4>
-    <p><?= $comment['comment'] ?></p>
-    <a href="accountDeleteComment&id=<?= $comment['id'] ?>">
-        <i class="fa-solid fa-trash-can action-delete"></i>
-    </a>
-    <?php endforeach; endif; ?>
+    <div id="all-comments">
+        <?php if (empty($comments)) : ?>
+        <p>Vous n'avez pas écrit de commentaire.</p>
+        <?php else : foreach ($comments as $comment) : ?>
+        <div class="one-comment">
+            <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['date'] ?> :</h4>
+            <p><?= $comment['comment'] ?></p>
+            <a class="back-to-blog" href="blogRead&id=<?= $comment['link'] ?>" title="Lire l'article">
+                <i class="fa-solid fa-reply"></i>
+            </a>
+            <a class="delete-comment" href="accountDeleteComment&id=<?= $comment['id'] ?>" title="Effacer le commentaire">
+                <i class="fa-solid fa-trash-can action-delete"></i>
+            </a>
+        </div>
+        <?php endforeach; endif; ?>
+    </div>
 
     <form action="accountEditAvatar" method="post" enctype="multipart/form-data" class="input-page">
         <h2>Changer votre image de profil</h2>
-        
         <p>
             <input type="file" id="edit-avatar" name="image">
         </p>
@@ -56,8 +60,8 @@
             <p id="pswdLower" class="invalid">Une lettre minuscule</p>
         </div>
         <p class="pswdSpace">
-            <input type="password" id="confirmPswd" name="edit-confirmPswd" placeholder="Confirmer le nouveau mot de passe"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <input type="password" id="confirmPswd" name="edit-confirmPswd"
+                placeholder="Confirmer le nouveau mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
             <i class="fa-solid fa-eye" id="toggleConfirm"></i>
         </p>
         <p>

@@ -39,7 +39,7 @@ class Comments extends Manager {
 
     public function userComments($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT comments.id, comments.comment, DATE_FORMAT(comments.created_at, "%d %M %Y") as date, blog.titleFR
+        $req = $pdo->prepare('SELECT comments.id, comments.comment, DATE_FORMAT(comments.created_at, "%d %M %Y") as date, blog.id as link, blog.titleFR
                             FROM comments
                             INNER JOIN blog
                             ON blog.id = comments.idArticle

@@ -4,6 +4,9 @@
         <article id="read-blog"> 
                <h1><?= $blog['titleFR'] ?></h1>
                 <p><?= $blog['date'] ?></p>
+                <div class="alerts">
+                    <?= $alert ?>
+                </div>
                 <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
                 <p><?= $blog['contentFR'] ?></p>
         </article>

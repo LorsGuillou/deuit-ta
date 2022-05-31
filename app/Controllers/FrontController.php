@@ -26,7 +26,7 @@ class FrontController extends Controller {
         require ($this->view('front', 'blog'));
     }
 
-    public function readBlog($id) {
+    public function readBlog($id, $alert = null) {
         $blogManager = new \Projet\Models\Blog();
         $commentManager = new \Projet\Models\Comments();
         $blog = $this->throw404IfEmpty($blogManager->readBlog($id));
@@ -51,7 +51,7 @@ class FrontController extends Controller {
         require ($this->view('front', 'register'));
     }
 
-    public function account($alertAvatar = null, $alertMail = null, $alertPswd = null) {
+    public function account($alert = null) {
         $commentsManager = new \Projet\Models\Comments;
         if (empty($_SESSION)) {
             header('Location: login');

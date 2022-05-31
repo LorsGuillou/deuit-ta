@@ -9,7 +9,6 @@ const pswdLength = document.getElementById("pswdLength");
 const number = document.getElementById("pswdNumber");
 const upper = document.getElementById("pswdUpper");
 const lower = document.getElementById("pswdLower");
-const button = document.getElementById("submit-register");
 
 // Voir / cacher le mot de passe et la confirmation
 
@@ -33,7 +32,17 @@ if (eyeConfirm) {
 
 // Construction du mot de passe
 
-if (password && confirmPassword && message && pswdLength && number && upper && lower && button) {
+function pswdMsgGreen(lineName) {
+    lineName.classList.remove("invalid");
+    lineName.classList.add("valid");
+}
+
+function pswdMsgRed(lineName) {
+    lineName.classList.remove("valid");
+    lineName.classList.add("invalid");
+}
+
+if (password && confirmPassword && message && pswdLength && number && upper && lower) {
     password.addEventListener("focus", () => {
         message.style.display = "block";
     });
@@ -44,38 +53,30 @@ if (password && confirmPassword && message && pswdLength && number && upper && l
 
     password.addEventListener("keyup", () => {
         if (password.value.length >= 8) {
-            pswdLength.classList.remove("invalid");
-            pswdLength.classList.add("valid");
+            pswdMsgGreen(pswdLength);
         } else {
-            pswdLength.classList.remove("valid");
-            pswdLength.classList.add("invalid");
+            pswdMsgRed(pswdLength);
         }
 
         var numbers = /[0-9]/g;
         if(password.value.match(numbers)) {
-            number.classList.remove("invalid");
-            number.classList.add("valid");
+            pswdMsgGreen(number);
         } else {
-            number.classList.remove("valid");
-            number.classList.add("invalid");
+            pswdMsgRed(number);
         }
 
         var lowerLetters = /[a-z]/g;
         if (password.value.match(lowerLetters)) {
-            lower.classList.remove("invalid");
-            lower.classList.add("valid");
+            pswdMsgGreen(lower);
         } else {
-            lower.classList.remove("valid");
-            lower.classList.add("invalid");
+            pswdMsgRed(lower);
         }
 
         var upperLetters = /[A-Z]/g;
         if (password.value.match(upperLetters)) {
-            upper.classList.remove("invalid");
-            upper.classList.add("valid");
+            pswdMsgGreen(upper);
         } else {
-            upper.classList.remove("valid");
-            upper.classList.add("invalid");
+            pswdMsgRed(upper);
         }
     });
 }

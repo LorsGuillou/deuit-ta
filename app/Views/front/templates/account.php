@@ -14,12 +14,15 @@
         <div class="one-comment">
             <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['date'] ?> :</h4>
             <p><?= $comment['comment'] ?></p>
-            <a class="back-to-blog" href="blogRead&id=<?= $comment['link'] ?>" title="Lire l'article">
-                <i class="fa-solid fa-reply"></i>
-            </a>
-            <a class="delete-comment" href="accountDeleteComment&id=<?= $comment['id'] ?>" title="Effacer le commentaire">
-                <i class="fa-solid fa-trash-can action-delete"></i>
-            </a>
+            <div class="one-comment-actions">
+                <a class="back-to-blog" href="blogRead&id=<?= $comment['link'] ?>" title="Lire l'article">
+                    <i class="fa-solid fa-reply"></i>
+                </a>
+                <a class="delete-comment" href="accountDeleteComment&id=<?= $comment['id'] ?>"
+                    title="Effacer le commentaire">
+                    <i class="fa-solid fa-trash-can action-delete"></i>
+                </a>
+            </div>
         </div>
         <?php endforeach; endif; ?>
     </div>

@@ -61,4 +61,8 @@ class FrontController extends Controller {
             require ($this->view('front', 'account'));
         }
     }
+
+    public function noJSNav() {
+        require ($this->view('front', 'noJSNav'));
+    }
 }

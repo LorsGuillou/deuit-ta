@@ -1,5 +1,7 @@
 <?php
 
+use Projet\Controllers\FrontController;
+
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -278,11 +280,16 @@ try {
         } elseif ($_GET['action'] == 'logout') {
 
             session_destroy();
-            header('Location: index.php');
+            $frontController->home();
+
+        // JS désactivé
+        } elseif ($_GET['action'] == 'noJSNav') {
+
+            $frontController->noJSNAV();
 
         } else {
 
-            throw new Exception('Cette action n\'existe pas', 404);
+            throw new Exception('Cette action n\'existe pas', 500);
 
         }
     

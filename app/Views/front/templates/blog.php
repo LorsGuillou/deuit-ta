@@ -1,7 +1,7 @@
 <?php include_once ('app/Views/front/layout/header.php') ?>
 
     <main class="container">
-        <h1>Actualités</h1>
+        <h1>Blog</h1>
             <section id="blog-page">
             <?php foreach ($blogs as $blog) : ?>
                 <article class="blog-layout">

@@ -647,9 +647,9 @@ header #headband .hamburger.active .bar:nth-child(3) {
 #all-comments .one-comment {
     width: 380px;
     padding: 10px;
-    margin: 0 5px;
+    margin: 0 5px 10px;
     background-color: var(--bloglistbg);
-    box-shadow: 1px 1px 1px var(--shadow);
+    border: 0.5px solid var(--border);
 }
 
 #all-comments .one-comment h4 {
@@ -665,17 +665,40 @@ header #headband .hamburger.active .bar:nth-child(3) {
     text-overflow: ellipsis;
 }
 
-#all-comments .one-comment a {
-    margin-right: 40px;
+#all-comments .one-comment .one-comment-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+#all-comments .one-comment .one-comment-actions a {
     font-size: 1.2rem;
 }
 
-#all-comments .one-comment .back-to-blog {
+#all-comments .one-comment .one-comment-actions .back-to-blog {
     color: blue;
 }
 
-#all-comments .one-comment .delete-comment {
+#all-comments .one-comment .one-comment-actions .delete-comment {
     color: red;
+}
+
+/* =======================
+=== Navigation sans JS ===
+======================= */
+
+#emergency-navigation {
+    padding-top: 130px;
+}
+
+#emergency-navigation .nav-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+#emergency-navigation .nav-menu .nav-item {
+    font-size: 2rem;
 }
 
 /* ===========

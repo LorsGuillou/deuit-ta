@@ -26,13 +26,13 @@
             <nav id="navigation">
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
-                        <a class="nav-link active" href="home"><i class="fa-solid fa-house"></i> Accueil</a>
+                        <a class="nav-link active" href="home" title="Accueil"><i class="fa-solid fa-house"></i> Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about"><i class="fa-solid fa-id-card"></i> A propos</a>
+                        <a class="nav-link" href="about" title="A propos"><i class="fa-solid fa-id-card"></i> A propos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="blog"><i class="fa-solid fa-newspaper"></i> Blog</a>
+                        <a class="nav-link" href="blog" title="Blog"><i class="fa-solid fa-newspaper"></i> Blog</a>
                     </li>
                     <?php if (!empty($_SESSION)) : ?>
                     <!-- Fonction à venir -->
@@ -40,30 +40,30 @@
                         <a class="nav-link" href="activities"><i class="fa-solid fa-calendar"> </i>Activités</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+                        <a class="nav-link" href="contact" title="Contact"><i class="fa-solid fa-envelope"></i> Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="account"><i class="fa-solid fa-user"></i> Mon compte</a>
+                        <a class="nav-link" href="account" title="Mon compte"><i class="fa-solid fa-user"></i> Mon compte</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+                        <a class="nav-link" href="logout" title="Déconnexion"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
                     </li>
                     <?php else : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="login"><i class="fa-solid fa-user-check"></i> Connexion</a>
+                        <a class="nav-link" href="login" title="Connexion"><i class="fa-solid fa-user-check"></i> Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
+                        <a class="nav-link" href="register" title="Créer un compte"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
                     </li>
                     <?php endif; ?>
                     <?php if (!empty($_SESSION) && $_SESSION['role'] === 1) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/home"><i class="fa-solid fa-gear"></i></i>Administration</a>
+                        <a class="nav-link" href="admin/home" title="Administration"><i class="fa-solid fa-gear"></i></i>Administration</a>
                     </li>
                     <?php endif; ?>
                 </ul>
             </nav>
-            <a href="contact" class="hamburger">
+            <a href="noJSNav" class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>

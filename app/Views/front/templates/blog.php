@@ -8,9 +8,9 @@
                     <h3 class="blog-title"><?= $blog['titleFR'] ?> <span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h3>
                     <p class="blog-date"><?= $blog['date'] ?></p>
                     <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
-                    <p class="blog-content"><?= $blog['excerptFR'] ?></p>
-                    <p class="blog-content txt-bzh"><?= $blog['excerptBZH'] ?></p>
-                    <a href="blogRead&id=<?= $blog['id'] ?>">Lire la suite</a>
+                    <p class="blog-layout-excerpt"><?= $blog['excerptFR'] ?></p>
+                    <p class="blog-layout-excerpt txt-bzh"><?= $blog['excerptBZH'] ?></p>
+                    <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>">Lire la suite</a>
                 </article>
             <?php endforeach; ?>
             </section>

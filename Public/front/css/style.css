@@ -34,8 +34,9 @@
     --darkbg: rgba(38, 38, 38, 1);
     --lightbg: rgba(245, 245, 245, 0.95);
     --shadow: rgba(99, 112, 126, 0.87);
-    --bloglistbg: rgb(194, 215, 237);
+    --bloglistbg: rgba(215, 226, 238, 1);
     --formbg: rgba(196, 218, 247, 0.9);
+    --bannerbzh: rgba(176, 196, 222, 1);
     --bzh: rgba(102, 125, 155, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
     --linkhover: rgba(228, 35, 35, 1);
@@ -92,6 +93,10 @@ h2 .txt-bzh {
     margin-left: 10px;
 }
 
+textarea {
+    resize: none;
+}
+
 .alerts {
     width: 100%;
     display: flex;
@@ -116,6 +121,48 @@ h2 .txt-bzh {
     color: limegreen;
     text-align: center;
     align-items: center;
+}
+
+button {
+    border: none;
+    padding: 5px;
+    width: 80px;
+    margin: auto 3px;
+    color: white;
+    cursor: pointer;
+}
+
+.link-to-blog {
+    display: block;
+    width: fit-content;
+    padding: 3px 8px;
+    background-color: darkslateblue;
+    color: lightgray;
+}
+
+.link-to-blog:hover {
+    background-color: slateblue;
+    color: white;
+}
+
+.submit {
+    background-color: darkblue;
+    color: lightgrey;
+}
+
+.submit:hover {
+    background-color: blue;
+    color: white;
+}
+
+.reset {
+    background-color: darkred;
+    color: lightgrey;
+}
+
+.reset:hover {
+    background-color: red;
+    color: white;
 }
 
 /* ======================
@@ -253,13 +300,18 @@ header #headband .hamburger.active .bar:nth-child(3) {
     margin-bottom: 20px;
 }
 
+#banner h1 span {
+    color: var(--bannerbzh);
+    font-style: italic;
+}
+
 #banner p {
     margin: 0 auto;
     padding: 10px 150px 5px;
 }
 
 #banner p:nth-child(3) {
-    color: rgba(176, 196, 222, 1);
+    color: var(--bannerbzh);
     font-style: italic;
     padding-bottom: 20px;
 }
@@ -290,7 +342,7 @@ header #headband .hamburger.active .bar:nth-child(3) {
 #home-page #home-blog .home-actu {
     width: 450px;
     padding: 10px;
-    background-color: var(--formbg);
+    background-color: var(--bloglistbg);
     margin: 5px 0;
     box-shadow: 1px 1px 3px var(--shadow);
 }
@@ -330,13 +382,13 @@ header #headband .hamburger.active .bar:nth-child(3) {
 
 #blog-page {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
 }
 
 #blog-page .blog-layout {
-    width: 400px;
+    width: 80%;
     background-color: var(--bloglistbg);
     box-shadow: 1px 1px 1px var(--shadow);
     margin: 20px 0 20px;
@@ -357,6 +409,10 @@ header #headband .hamburger.active .bar:nth-child(3) {
     width: 100%;
     height: 150px;
     object-fit: cover;
+}
+
+#blog-page .blog-layout p {
+    margin: 8px 0 8px;
 }
 
 #blog-pagination .pagination {
@@ -385,8 +441,88 @@ header #headband .hamburger.active .bar:nth-child(3) {
 === Lecture d'article === 
 ====================== */
 
-#comments p {
+#read-blog .blog-date {
+    margin: -40px 0 40px;
+    font-style: italic;
+    color: var(--shadow);
+    font-size: 0.9rem;
+}
+
+#read-blog img {
+    width: 80%;
+    height: 300px;
+    display: block;
+    margin: 0 auto 40px;
+    object-fit: cover;
+}
+
+#read-blog p {
+    margin-bottom: 30px;
+}
+
+/* =================
+=== Commentaires ===
+================= */
+
+#comments, #comment-writing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0 25px;
+}
+
+#comments .one-comment,
+#comment-writing #commenting textarea {
+    width: 350px;
+    margin: 8px auto;
+}
+
+#comments .one-comment {
+    background-color: var(--bloglistbg);
+    padding: 5px;
+    border: 0.5px solid var(--border);
+}
+
+#comments .one-comment .comment-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.03rem;
+}
+
+#comments .one-comment .comment-head img {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+}
+
+#comments .one-comment .comment-head a {
+    color: var(--linkhover);
+    margin-left: 150px;
+}
+
+#comments .one-comment .comment-content {
+    text-align: left;
+}
+
+#comments .one-comment .comment-date {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--shadow);
+    margin-bottom: 8px;
+}
+
+#comments .one-comment .comment-text {
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    word-wrap: break-word; 
     white-space: pre-line;
+}
+
+#comment-writing #commenting textarea {
+    padding: 3px;
 }
 
 /* ================
@@ -418,40 +554,12 @@ header #headband .hamburger.active .bar:nth-child(3) {
 .input-page p input {
     padding: 3px;
     width: 85%;
-}
-
-.input-page p button {
-    border: none;
-    padding: 5px;
-    width: 80px;
-    margin: auto 3px;
-    color: white;
-    cursor: pointer;
-}
-
-.input-page p button.submit {
-    background-color: darkblue;
-    color: lightgrey;
-}
-
-.input-page p button.submit:hover {
-    background-color: blue;
-    color: white;
-}
-
-.input-page p button.reset {
-    background-color: darkred;
-    color: lightgrey;
-}
-
-.input-page p button.reset:hover {
-    background-color: red;
-    color: white;
+    box-sizing: border-box;
 }
 
 .input-page p textarea {
-    padding: 1px;
-    width: 80%;
+    padding: 3px;
+    width: 85%;
     height: 300px;
 }
 
@@ -653,12 +761,32 @@ footer #footband p a:hover {
         top: auto;
         gap: 25px;
     }
+
     header #headband .hamburger {
         display: none;
+    }
+
+    #blog-page {
+        justify-content: space-between;
+    }
+
+    #blog-page .blog-layout {
+        width: 400px;
+    }
+
+    #comments .one-comment,
+    #comment-writing #commenting textarea {
+        width: 600px;
+    }
+
+    #comments .one-comment .comment-head a {
+        margin-left: 400px;
     }
 
     .input-page {
         width: 600px;
     }
+
+    
 }
 

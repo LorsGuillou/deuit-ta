@@ -13,7 +13,7 @@
                     <p>Un texte bouche trou</p>
                 <?php else : ?>
                     <p class="txt-visitor">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="register">Créez un compte</a> ou <a href="login">connectez-vous</a> pour parler breton en bonne compagnie !</p>
-                    <p class="txt-visitor txt-bzh">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="register">Créez un compte</a> ou <a href="login">connectez-vous</a> pour parler breton en bonne compagnie !</p>
+                    <p class="txt-visitor txt-bzh">C'hoant ho peus da welout pe da enskrivañ ac'hanoc'h war an oberezhioù aozet gant hon izili ? <a href="register">Krouit ur c'hont</a> pe <a href="login">digerit un dalc'h</a> evit komz brezhoneg gant tud a-feson !</p>
                 <?php endif; ?>
             </section>
             <h2 class="home-titles">Les dernières actualités</h2>
@@ -26,7 +26,7 @@
                             <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>"></figure>
                             <p><?= $blog['excerptFR'] ?></p>
                             <p class="txt-bzh"><?= $blog['excerptBZH'] ?></p>
-                            <a class="home-actu-link" href="blogRead&id=<?= $blog['id'] ?>">Voir l'article</a>
+                            <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>">Voir l'article</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

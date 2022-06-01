@@ -16,7 +16,7 @@ class AdminController extends Controller {
     }
 
     // Méthodes Membres
-    public function users() {
+    public function users($alert = null) {
         $userManager = new \Projet\Models\Users();
         $users = $userManager->userList();
         require ($this->view('admin', 'users'));
@@ -24,12 +24,11 @@ class AdminController extends Controller {
 
     public function deleteUser($id) {
         $userManager = new \Projet\Models\Users();
-        $deleteUser = $userManager::delete($id);
-        header('Location: users');
+        $deleteUser = $userManager->delete($id);
     }
 
     // Méthodes Mails
-    public function mails() {
+    public function mails($alert = null) {
         $contactManager = new \Projet\Models\Contact();
         $mails = $contactManager->mailList();
         require ($this->view('admin', 'mails'));
@@ -44,7 +43,6 @@ class AdminController extends Controller {
     public function deleteMail($id) {
         $contactManager = new \Projet\Models\Contact();
         $deleteMail = $contactManager->delete($id);
-        header('Location: mail');
     }
 
     // Méthodes Activités
@@ -54,7 +52,7 @@ class AdminController extends Controller {
 
 
     // Méthodes Articles
-    public function blog() {
+    public function blog($alert = null) {
         $blogManager = new \Projet\Models\Blog();
         $blogs = $blogManager->blogList();
         require ($this->view('admin', 'blog'));
@@ -75,7 +73,6 @@ class AdminController extends Controller {
     public function publish($data) {
         $blogManager = new \Projet\Models\Blog();
         $publish = $blogManager->publish($data);
-        require ($this->view('admin', 'confirmation'));
     }
 
     public function readBlog($id) {
@@ -87,12 +84,10 @@ class AdminController extends Controller {
     public function editBlog($data) {
         $blogManager = new \Projet\Models\Blog();
         $edit = $blogManager->editBlog($data);
-        require ($this->view('admin', 'confirmation'));
     }
 
     public function deleteBlog($id) {
         $blogManager = new \Projet\Models\Blog();
         $deleteBlog = $blogManager->delete($id);
-        header('Location: blog');
     }
 }

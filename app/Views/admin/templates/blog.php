@@ -2,7 +2,8 @@
 
 
             <h1>Articles</h1>
-            <a href="blogWrite">Ecrire un article</a>
+            <?= $alert ?>
+            <a href="blogWrite" id="new-article" title="Ecrire un article"><i class="fa-solid fa-plus"></i> Ecrire un article</a>
             <table id="blog-list" class="admin-table">
                 <thead>
                     <tr>

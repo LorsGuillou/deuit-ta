@@ -280,7 +280,7 @@ try {
         } elseif ($_GET['action'] == 'logout') {
 
             session_destroy();
-            $frontController->home();
+            header('Location: index.php');
 
         // JS désactivé
         } elseif ($_GET['action'] == 'noJSNav') {

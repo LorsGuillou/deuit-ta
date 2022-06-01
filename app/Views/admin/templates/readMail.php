@@ -4,7 +4,7 @@
                 <div class="read-mail">
                     <h3>Objet : <?= $mail['object'] ?></h3>
                         <p><?= $mail['message'] ?></p>
-                        <a href="mailto:<?= $mail['mail'] ?>"><i class="fa-solid fa-reply"></i></a>
+                        <a href="mailto:<?= $mail['mail'] ?>" title="Répondre au mail"><i class="fa-solid fa-reply"></i></a>
                 </div>
         </section>
     </main>

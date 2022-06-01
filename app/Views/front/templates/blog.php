@@ -10,7 +10,7 @@
                     <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
                     <p class="blog-layout-excerpt"><?= $blog['excerptFR'] ?></p>
                     <p class="blog-layout-excerpt txt-bzh"><?= $blog['excerptBZH'] ?></p>
-                    <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>">Lire la suite</a>
+                    <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>" title="Lire l'article <?= $blog['titleFR'] ?>">Lire la suite</a>
                 </article>
             <?php endforeach; ?>
             </section>
@@ -18,15 +18,15 @@
             <nav id="blog-pagination">
                 <ul class="pagination">
                     <li class="page-nav <?= ($currentPage == 1) ? "hidden" : "" ?>">
-                        <a href="blog&page=<?= $currentPage - 1 ?>" class="page-link"><i class="fa-solid fa-left-long"></i></a>
+                        <a href="blog&page=<?= $currentPage - 1 ?>" class="page-link" title="Page précédente"><i class="fa-solid fa-left-long"></i></a>
                     </li>
                     <?php for ($page = 1; $page <= $pages; $page++) : ?>
                     <li class="page-nav <?= ($currentPage == $page) ? "active" : "" ?>">
-                        <a href="blog&page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                        <a href="blog&page=<?= $page ?>" class="page-link" title="Page <?= $page ?>"><?= $page ?></a>
                     </li>
                     <?php endfor; ?>
                     <li class="page-nav <?= ($currentPage == $pages) ? "hidden" : "" ?>">
-                        <a href="blog&page=<?= $currentPage + 1 ?>" class="page-link"><i class="fa-solid fa-right-long"></i></a>
+                        <a href="blog&page=<?= $currentPage + 1 ?>" class="page-link" title="Page suivante"><i class="fa-solid fa-right-long"></i></a>
                     </li>
                 </ul>
             </nav>

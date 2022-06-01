@@ -2,6 +2,7 @@
 
 
             <h1>Mails</h1>
+            <?= $alert ?>
             <table id="user-list" class="admin-table">
                 <thead>
                     <tr>
@@ -20,10 +21,10 @@
                             <td><?= $mail['object'] ?></td>
                             <td><?= $mail['date'] ?></td>
                             <td class="action-case">
-                                <a href="mailRead&id=<?= $mail['id'] ?>" title="Lire">
+                                <a href="mailRead&id=<?= $mail['id'] ?>" title="Lire le mail">
                                     <i class="fa-solid fa-eye action-view"></i>
                                 </a>
-                                <a href="mailDelete&id=<?= $mail['id'] ?>" title="Supprimer">
+                                <a href="mailDelete&id=<?= $mail['id'] ?>" title="Supprimer le mail">
                                     <i class="fa-solid fa-trash-can action-delete"></i>
                                 </a>
                             </td>

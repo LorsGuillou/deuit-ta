@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <div id="bandeau" class="container">
+        <div id="headband" class="container">
             <a href="home"><?= $_SESSION['firstname'] ?> <?= $_SESSION['lastname'] ?></a>
         </div>        
     </header>
@@ -18,13 +18,13 @@
         <section id="side-menu">
             <nav id="navigation">
                 <ul id="admin-menu">
-                    <li class="admin-item"><a href="user"><i class="fa-solid fa-users"></i> <span>Membres</span></a></li>
-                    <li class="admin-item"><a href="mail"><i class="fa-solid fa-envelope"></i> <span>Mails</span></a></li>
-                    <li class="admin-item"><a href="blog"><i class="fa-solid fa-newspaper"></i> <span>Articles</span></a></li>
+                    <li class="admin-item"><a href="user" title="Membres"><i class="fa-solid fa-users"></i> <span>Membres</span></a></li>
+                    <li class="admin-item"><a href="mail" title="Mails"><i class="fa-solid fa-envelope"></i> <span>Mails</span></a></li>
+                    <li class="admin-item"><a href="blog" title="Blog"><i class="fa-solid fa-newspaper"></i> <span>Blog</span></a></li>
                     <!-- A venir -->
                     <!-- <li class="admin-item"><a href="indexAdmin.php?action=adminactivities"><i class="fa-solid fa-calendar"></i> <span>Activités</span></a></li> -->
-                    <li class="admin-item"><a href="navigate"><i class="fa-solid fa-house"></i> <span>Site</span></a></li>
-                    <li class="admin-item"><a href="logout" class="disconnect"><i class="fa-solid fa-right-from-bracket"></i> <span>Déconnexion</span></a></li>
+                    <li class="admin-item"><a href="navigate" title="Site"><i class="fa-solid fa-house"></i> <span>Site</span></a></li>
+                    <li class="admin-item"><a href="logout" title="Déconnexion"><i class="fa-solid fa-right-from-bracket"></i> <span>Déconnexion</span></a></li>
                 </ul>
             </nav>
         </section>

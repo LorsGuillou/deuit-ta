@@ -10,7 +10,8 @@
             <h2 class="home-titles">Activités à venir <span class="txt-bzh">Oberezhioù da-zont</span></h2>
             <section id="home-activities">
                 <?php if (!empty($_SESSION)) : ?>
-                    <p>Un texte bouche trou</p>
+                    <p class="txt-visitor">Fonctionnalité à venir !</p>
+                    <p class="txt-visitor txt-bzh">Arc'hweladur da-zont !</p>
                 <?php else : ?>
                     <p class="txt-visitor">Vous souhaitez voir ou vous inscrire aux activités organisées par nos membres ? <a href="register" title="Crééz un compte">Créez un compte</a> ou <a href="login" title="Connectez-vous">connectez-vous</a> pour parler breton en bonne compagnie !</p>
                     <p class="txt-visitor txt-bzh">C'hoant ho peus da welout pe da enskrivañ ac'hanoc'h war an oberezhioù aozet gant hon izili ? <a href="register" title="Krouit ur c'hont">Krouit ur c'hont</a> pe <a href="login" title="Digerit une dalc'h">digerit un dalc'h</a> evit komz brezhoneg gant tud a-feson !</p>
@@ -26,7 +27,7 @@
                             <figure><img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>"></figure>
                             <p><?= $blog['excerptFR'] ?></p>
                             <p class="txt-bzh"><?= $blog['excerptBZH'] ?></p>
-                            <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>" title="<?= $blog['titleFR'] ?>">Voir l'article</a>
+                            <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>" title="Lire l'article <?= $blog['titleFR'] ?>">Voir l'article</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

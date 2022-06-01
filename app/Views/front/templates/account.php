@@ -15,7 +15,7 @@
             <h4>Sur l'article <?= $comment['titleFR'] ?> écrit le <?= $comment['date'] ?> :</h4>
             <p><?= $comment['comment'] ?></p>
             <div class="one-comment-actions">
-                <a class="back-to-blog" href="blogRead&id=<?= $comment['link'] ?>" title="Lire l'article">
+                <a class="back-to-blog" href="blogRead&id=<?= $comment['link'] ?>" title="Aller sur l'article <?= $comment['titleFR'] ?>">
                     <i class="fa-solid fa-reply"></i>
                 </a>
                 <a class="delete-comment" href="accountDeleteComment&id=<?= $comment['id'] ?>"

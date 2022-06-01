@@ -34,6 +34,8 @@ try {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteUser($id);
+            $alert = '<p class="alert">Le compte utilisateur a bien été supprimé.</p>';
+            $adminController->users($alert);
 
         // Liste des messages
         } elseif ($_GET['action'] == 'mail') {
@@ -51,6 +53,8 @@ try {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteMail($id);
+            $alert = '<p class="alert">L\'email a bien été supprimé.</p>';
+            $adminController->mails($alert);
 
         // Liste des activités
         } elseif ($_GET['action'] == 'adminactivities') {
@@ -81,12 +85,14 @@ try {
             ];
 
             $adminController->publish($data);
+            $alert = '<p class="alert">L\'article a bien été publié.</p>';
+            $adminController->blog($alert);
 
         // Lire un article
         } elseif ($_GET['action'] == 'blogRead') {
 
             $id = htmlspecialchars($_GET['id']);
-            $frontController->readBlog($id);
+            header('Location: ../blogRead&id=' . $id);
         
         // Modifier un article
         } elseif ($_GET['action'] == 'blogEdit') {
@@ -109,12 +115,16 @@ try {
             ];
 
             $adminController->editBlog($data);
+            $alert = '<p class="alert">L\'article a bien été modifié.</p>';
+            $adminController->blog($alert);
 
         // Supprimer un article
         } elseif ($_GET['action'] == 'blogDelete') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteBlog($id);
+            $alert = '<p class="alert">L\'article a bien été supprimé</p>';
+            $adminController->blog($alert);
 
         // Naviguer sur le site
         } elseif ($_GET['action'] == 'navigate') {

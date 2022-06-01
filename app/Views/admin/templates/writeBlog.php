@@ -13,7 +13,7 @@
                     <label for="blog-titleBZH">Titre breton :</label>
                 </p>
                 <p>
-                    <input type="text" id="blog-titleBZH" name="blog-titleBZH" placeholder="Titre" required>
+                    <input type="text" id="blog-titleBZH" name="blog-titleBZH" placeholder="Titl" required>
                 </p>
                 <p>
                     <label for="blog-excerptFR">Extrait français :</label>
@@ -25,7 +25,7 @@
                     <label for="blog-excerptBZH">Extrait breton :</label>
                 </p>
                 <p>
-                    <input type="text" id="blog-excerptBZH" name="blog-excerptBZH" placeholder="Extrait" required>
+                    <input type="text" id="blog-excerptBZH" name="blog-excerptBZH" placeholder="Tennad" required>
                 </p>
                 <p>
                     <label for="image">Image : </label>
@@ -35,13 +35,13 @@
                     <label for="blog-contentFR">Texte français :</label>
                 </p>
                 <p>
-                    <textarea id="blog-contentFR" name="blog-contentFR" placeholder="Contenu" required></textarea>
+                    <textarea id="blog-contentFR" name="blog-contentFR" placeholder="Texte" required></textarea>
                 </p>
                 <p>
                     <label for="blog-contentBZH">Texte breton :</label>
                 </p>
                 <p>
-                    <textarea id="blog-contentBZH" name="blog-contentBZH" placeholder="Contenu" required></textarea>
+                    <textarea id="blog-contentBZH" name="blog-contentBZH" placeholder="Testenn" required></textarea>
                 </p>
                 <p>
                     <button type="submit" id="blog-submit">Envoyer</button>

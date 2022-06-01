@@ -14,7 +14,7 @@
     <header>
         <div id="headband" class="container">
             <div id="logo">
-                <a href="home">
+                <a href="home" title="Deuit 'ta !">
                     <img src="Public/front/img/front/logo.png" alt="Logo Deuit 'ta !">
                 </a>
             </div>
@@ -39,9 +39,11 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="activities"><i class="fa-solid fa-calendar"> </i>Activités</a>
                     </li> -->
+                    <?php if (!empty($_SESSION) && $_SESSION['role'] != 1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="contact" title="Contact"><i class="fa-solid fa-envelope"></i> Contact</a>
                     </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="account" title="Mon compte"><i class="fa-solid fa-user"></i> Mon compte</a>
                     </li>

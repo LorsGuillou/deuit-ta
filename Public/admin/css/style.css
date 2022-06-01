@@ -38,6 +38,7 @@
     --tabletitles: rgba(235, 242, 250, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
     --linkhover: rgba(228, 35, 35, 0.99);
+    --successbg: rgba(179, 251, 179, 1);
 }
 
 /* ======================================
@@ -74,6 +75,27 @@ main {
     padding: 0 15px;
 }
 
+h1 {
+    margin: 10px auto 20px;
+}
+
+.alert {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: auto auto 15px;
+    padding: 20px 0;
+    background-color: var(--successbg);
+    color: limegreen;
+    text-align: center;
+    align-items: center;
+}
+
+textarea {
+    resize: none;
+}
+
 /* ======================
 === Header et bandeau ===
 ====================== */
@@ -82,12 +104,12 @@ header {
     background-color: var(--darkbg);
 }
 
-header #bandeau {
-    height: 50px;
+header #headband {
     padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-header #bandeau a {
+header #headband a {
     color: white;
     font-size: 2rem;
 }
@@ -142,14 +164,10 @@ header #bandeau a {
 === Tableau de bord ===
 ==================== */
 
-#dashboard {
-    margin-top: 10px;
-}
-
 #dashboard .admin-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
+    margin: 20px auto;
 }
 
 #dashboard .admin-table,
@@ -158,6 +176,7 @@ header #bandeau a {
     border: 2px solid var(--table);
     padding: 8px 4px;
     text-align: left;
+    text-overflow: ellipsis;
 }
 
 #dashboard .admin-table thead tr th {
@@ -198,26 +217,38 @@ header #bandeau a {
     border-bottom: 4px solid var(--table);
 }
 
-#dashboard .read-mail {
-    margin-top: 20px;
-}
-
 #dashboard .read-mail h3 {
     padding-bottom: 20px;
     border-bottom: 2px solid var(--table);
 }
 
 #dashboard .read-mail p {
-    margin-top: 25px;
+    margin: 25px auto;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--table);
 }
 
-/* ======================
-=== Lecture d'article === 
-====================== */
+#dashboard .read-mail a {
+    font-size: 2rem;
+}
 
 /* =================================
 === Création / édition d'article === 
 ================================= */
+
+#dashboard #new-article {
+    display: block;
+    width: fit-content;
+    font-size: 1.1rem;
+    padding: 3px 8px;
+    background-color: darkslateblue;
+    color: lightgrey;
+}
+
+#dashboard #new-article:hover {
+    background-color: slateblue;
+    color: white;
+}
 
 #dashboard form {
     margin-top: 20px;

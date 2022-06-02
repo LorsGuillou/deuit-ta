@@ -40,7 +40,7 @@ class Controller {
 
     public function throw404IfEmpty($resource) {
         if (!$resource) {
-            throw new Exception("La ressource demandée n'existe pas", 404);
+            throw new Exception("", 404);
         } else {
             return $resource;
         }

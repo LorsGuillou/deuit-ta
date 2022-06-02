@@ -7,6 +7,18 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+// function eCatcher($e) {
+//     if($_ENV["APP_ENV"] === "dev") {
+//         $whoops = new \Whoops\Run;
+//         $whoops->allowQuit(false);
+//         $whoops->writeToOutput(false);
+//         $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+//         $html = $whoops->handleException($e);
+    
+//         require './app/Views/admin/errors/error.php';
+//     }
+// }
+
 try {
 
     $adminController = new \Projet\Controllers\AdminController();
@@ -14,7 +26,7 @@ try {
     $userController = new \Projet\Controllers\UserController();
 
     if (empty($_SESSION) || $_SESSION['role'] != 1) {
-        throw new Exception('Vous n\'avez pas l\'autorisation d\'être là !', 401);
+        throw new Exception('', 401);
     }
 
     if (isset($_GET['action'])) {
@@ -148,6 +160,18 @@ try {
 
 } catch (Exception $e) {
 
-    echo $e->getMessage();
+    if ($e->getCode() === 401) {
+        header('Location: ../401.php');
+    } elseif ($e->getCode() === 404) {
+        header('Location: ../404.php');
+    } else {
+        // eCatcher($e);
+        require 'app/Views/front/errors/error.php';
+    }
+    
+} catch (Error $e) {
+
+    // eCatcher($e);
+    require 'app/Views/front/errors/error.php';
 
 }

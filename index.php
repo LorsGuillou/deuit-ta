@@ -1,7 +1,5 @@
 <?php
 
-use Projet\Controllers\FrontController;
-
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -9,17 +7,17 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-function eCatcher($e) {
-    if($_ENV["APP_ENV"] === "dev") {
-        $whoops = new \Whoops\Run;
-        $whoops->allowQuit(false);
-        $whoops->writeToOutput(false);
-        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-        $html = $whoops->handleException($e);
+// function eCatcher($e) {
+//     if($_ENV["APP_ENV"] === "dev") {
+//         $whoops = new \Whoops\Run;
+//         $whoops->allowQuit(false);
+//         $whoops->writeToOutput(false);
+//         $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+//         $html = $whoops->handleException($e);
     
-        require './app/Views/admin/errors/error.php';
-    }
-}
+//         require './app/Views/admin/errors/error.php';
+//     }
+// }
 
 try {
 
@@ -302,16 +300,18 @@ try {
 
 } catch (Exception $e) {
 
-    if ($e->getCode() === 404) {
+    if ($e->getCode() === 401) {
+        require 'app/Views/front/errors/401.php';
+    } elseif ($e->getCode() === 404) {
         require 'app/Views/front/errors/404.php';
     } else {
-        eCatcher($e);
+        // eCatcher($e);
         require 'app/Views/front/errors/error.php';
     }
     
 } catch (Error $e) {
 
-    eCatcher($e);
+    // eCatcher($e);
     require 'app/Views/front/errors/error.php';
 
 }

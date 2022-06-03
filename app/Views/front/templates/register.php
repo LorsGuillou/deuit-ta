@@ -8,10 +8,7 @@
             <?= $alert ?>
             <form action="loginCreateUser" method="post" enctype="multipart/form-data">
                 <p>
-                    <input type="text" id="lastname" name="lastname" placeholder="Nom">
-                </p>
-                <p>
-                    <input type="text" id="firstname" name="firstname" placeholder="Prénom">
+                    <input type="text" id="username" name="username" placeholder="Pseudonyme">
                 </p>
                 <p>
                     <label for="image">Image de profil : </label>
@@ -34,10 +31,6 @@
                 <p class="pswdSpace">
                     <input type="password" id="confirmPswd" name="confirmPswd" placeholder="Confirmer le mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     <i class="fa-solid fa-eye" id="toggleConfirm"></i>
-                </p>
-                <p>
-                    <label for="rgpd">RGPD</label>
-                    <input type="checkbox" id="rgpd" name="rgpd">
                 </p>
                 <p>
                     <button type="submit" id="submit-register" class="submit">Envoyer</button>

@@ -1,7 +1,7 @@
 <?php include_once ('app/Views/front/layout/header.php') ?>
 
 <main class="container account-page">
-    <h1>Bonjour, <?= $_SESSION['firstname'] ?> ! <span class="txt-bzh">Demat deoc'h, <?= $_SESSION['firstname'] ?>
+    <h1>Bonjour, <?= $_SESSION['username'] ?> ! <span class="txt-bzh">Demat deoc'h, <?= $_SESSION['username'] ?>
             !</span></h1>
     <div class="alerts">
         <?= $alert ?>
@@ -27,6 +27,16 @@
         <?php endforeach; endif; ?>
     </div>
 
+    <form action="accounteditUsername" method="post" class="input-page">
+        <h2>Changer votre pseudonyme</h2>
+        <p>
+            <input type="text" id="edit-username" name="edit-username" placeholder="Nouveau pseudonyme">
+        </p>
+        <p>
+            <button type="submit" id="submit-editUsername" class="submit">Envoyer</button>
+        </p>
+    </form>
+
     <form action="accountEditAvatar" method="post" enctype="multipart/form-data" class="input-page">
         <h2>Changer votre image de profil</h2>
         <p>
@@ -37,7 +47,7 @@
         </p>
     </form>
 
-    <form action="accountEditMail" method="post" class="input-page">
+    <form action="accountEditMail" method="post" class="input-page" placeholder="Nouvelle adresse e-mail">
         <h2>Changer votre adresse e-mail</h2>
         <p>
             <input type="mail" id="edit-mail" name="edit-mail">

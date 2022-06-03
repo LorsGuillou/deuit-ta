@@ -11,7 +11,7 @@
 <body>
     <header>
         <div id="headband" class="container">
-            <a href="home"><?= $_SESSION['firstname'] ?> <?= $_SESSION['lastname'] ?></a>
+            <a href="home"><?= $_SESSION['username'] ?></a>
         </div>        
     </header>
     <main>

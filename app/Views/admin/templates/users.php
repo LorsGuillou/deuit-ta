@@ -6,8 +6,7 @@
             <table id="user-list" class="admin-table">
                 <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
+                        <th>Pseudonyme</th>
                         <th>Adresse e-mail</th>
                         <th>Date d'inscription</th>
                         <th>Actions</th>
@@ -16,13 +15,15 @@
                 <?php foreach ($users as $user) : ?>
                     <tbody>
                         <tr>
-                            <td><?= $user['lastname'] ?></td>
-                            <td><?= $user['firstname'] ?></td>
+                            <td><?= $user['username'] ?></td>
                             <td><?= $user['mail'] ?></td>
                             <td><?= $user['date'] ?></td>
                             <td class="action-case">
+                                <a href="mailto:<?= $user['mail'] ?>" title="Envoyer un mail">
+                                    <i class="fa-solid fa-paper-plane action-mail"></i>
+                                </a>
                                 <a href="userDelete&id=<?= $user['id'] ?>" title="Supprimer ce compte membre">
-                                    <span class="action-delete"><i class="fa-solid fa-ban"></i></span>
+                                    <i class="fa-solid fa-ban action-delete"></i>
                                 </a>
                             </td>
                         </tr>

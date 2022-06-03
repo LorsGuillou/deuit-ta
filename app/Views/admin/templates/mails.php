@@ -16,8 +16,7 @@
                 <?php foreach ($mails as $mail) : ?>
                     <tbody>
                         <tr>
-                            <td><?= $mail['lastname'] ?></td>
-                            <td><?= $mail['firstname'] ?></td>
+                            <td><?= $mail['username'] ?></td>
                             <td><?= $mail['object'] ?></td>
                             <td><?= $mail['date'] ?></td>
                             <td class="action-case">

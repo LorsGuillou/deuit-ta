@@ -208,6 +208,10 @@ header #headband a {
     color: red;
 }
 
+#dashboard .admin-table tbody tr .action-case a .action-mail {
+    color: blue;
+}
+
 /* ====================
 === Lecture de mail === 
 ==================== */
@@ -230,6 +234,7 @@ header #headband a {
 
 #dashboard .read-mail a {
     font-size: 2rem;
+    color: blue;
 }
 
 /* =================================

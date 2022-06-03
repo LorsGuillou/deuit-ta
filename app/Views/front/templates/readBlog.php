@@ -18,7 +18,7 @@
         <div class="one-comment">
             <div class="comment-head">
                 <img src="./Public/front/img/avatars/<?= $comment['avatar'] ?>">
-                <h5><?= $comment['lastname'] ?> <?= $comment['firstname'] ?></h5>
+                <h5><?= $comment['username'] ?></h5>
                 <?php if (!empty($_SESSION) && $comment['idUser'] === $_SESSION['id'] || !empty($_SESSION) && $_SESSION['role'] === 1) : ?>
                 <a href="blogDeleteComment&id=<?= $comment['id'] ?>&idPage=<?= $blog['id'] ?>"
                     title="Effacer le commentaire">

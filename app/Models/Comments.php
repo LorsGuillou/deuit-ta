@@ -26,7 +26,7 @@ class Comments extends Manager {
 
     public function displayComments($id) {
         $pdo = self::dbConnect();
-        $req = $pdo->prepare('SELECT users.lastname, users.firstname, users.avatar, comments.id, comments.idUser, comments.comment, DATE_FORMAT(comments.created_at, "%d %M %Y") as date
+        $req = $pdo->prepare('SELECT users.username, users.avatar, comments.id, comments.idUser, comments.comment, DATE_FORMAT(comments.created_at, "%d %M %Y") as date
                             FROM comments
                             INNER JOIN users
                             ON users.id = comments.idUser

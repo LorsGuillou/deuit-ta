@@ -166,14 +166,13 @@ try {
             }
 
             $data = [
-                ':lastname' => htmlspecialchars($_POST['lastname']),
-                ':firstname' => htmlspecialchars($_POST['firstname']),
+                ':username' => htmlspecialchars($_POST['username']),
                 ':mail' => htmlspecialchars($_POST['mail']),
                 ':password' => $passHash,
                 ':avatar' => $avatar
             ];
             
-            if (empty($_POST['lastname']) || empty($_POST['firstname']) || empty($_POST['mail']) || empty($_POST['password']) || empty($_POST['confirmPswd'])) {
+            if (empty($_POST['username']) || empty($_POST['mail']) || empty($_POST['password']) || empty($_POST['confirmPswd'])) {
 
                 $alert = '<p class="form-error">Tout les champs doivent être remplis !</p>';
                 $frontController->newUser($alert);
@@ -188,11 +187,6 @@ try {
                 $alert = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
                 $frontController->newUser($alert);
 
-            } elseif (!isset($_POST['rgpd'])) {
-
-                $alert = '<p class="form-error">Vous devez cocher la case pour continuer !</p>';
-                $frontController->newUser($alert);
-
             } else {
 
                 $userController->createUser($data);
@@ -204,6 +198,35 @@ try {
 
 
                 $frontController->account();
+
+        // Modifier le pseudonyme
+        } elseif ($_GET['action'] == 'accountEditUsername') {
+            
+            $newUsername = htmlspecialchars($_POST['edit-username']);
+
+            $data = [
+                ':id' => $_SESSION['id'],
+                ':username' => $newUsername
+            ];
+
+            if (empty($newUsername)) {
+
+                $alert = '<p class="error">Le champs Nouveau pseudonyme est vide !</p>';
+                $frontController->account($alert);
+
+            } elseif ($_SESSION['username'] === $newUsername) {
+
+                $alert = '<p class="error">Vous utilisez déjà ce pseudonyme !</p>';
+                $frontController->account($alert);
+
+            } else {
+
+                $_SESSION['username'] = $data[':username'];
+                $userController->editUsername($data);
+                $alert = '<p class="success">Le pseudonyme a été modifié avec succès !</p>';
+                $frontController->account($alert);
+
+            }
 
         // Modifier l'avatar
         } elseif ($_GET['action'] == 'accountEditAvatar') {
@@ -221,12 +244,19 @@ try {
         // Modifier l'adresse mail
         } elseif ($_GET['action'] == 'accountEditMail') {
             
+            $newMail = htmlspecialchars($_POST['edit-mail']);
+
             $data = [
                 ':id' => $_SESSION['id'],
-                ':mail' => htmlspecialchars($_POST['edit-mail'])
+                ':mail' => $newMail
             ];
 
-            if (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
+            if (empty($newMail)) {
+
+                $alert = '<p class="error">Le champ Nouvelle adresse e-mail est vide !</p>';
+                $frontController->account($alert);
+
+            } elseif (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
 
                 $alert = '<p class="error">Cette adresse mail est invalide !</p>';
                 $frontController->account($alert);
@@ -243,16 +273,21 @@ try {
         // Modifier le mot de passe
         } elseif ($_GET['action'] == 'accountEditPswd') {
             
-            $passEdit = htmlspecialchars($_POST['edit-password']);
-            $editCheck = htmlspecialchars($_POST['edit-confirmPswd']);
-            $editHash = password_hash($passEdit, PASSWORD_DEFAULT);
+            $newPass = htmlspecialchars($_POST['edit-password']);
+            $newPassCheck = htmlspecialchars($_POST['edit-confirmPswd']);
+            $newPassHash = password_hash($newPass, PASSWORD_DEFAULT);
 
             $data = [
                 ':id' => $_SESSION['id'],
-                ':password' => $editHash
+                ':password' => $newPassHash
             ];
 
-            if ($passEdit != $editCheck) {
+            if (empty($newPass) || empty($newPassCheck)) {
+
+                $alert = '<p class="error">Le champ Nouveau mot de passe ou le champ de confirmation est vide !</p>';
+                $frontController->account($alert);
+
+            } elseif ($newPass != $newPassCheck) {
 
                 $alert = '<p class="error">Les mots de passes ne correspondent pas !</p>';
                 $frontController->account($alert);

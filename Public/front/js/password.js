@@ -12,22 +12,21 @@ const lower = document.getElementById("pswdLower");
 
 // Voir / cacher le mot de passe et la confirmation
 
-if (eye) {
-    eye.addEventListener("click", () => {
-        const type = password.getAttribute("type") === "password" ? "text" : "password"; 
-        password.setAttribute("type", type);
-        eye.classList.toggle("fa-eye");
-        eye.classList.toggle("fa-eye-slash");
+function togglePswdVisibility (toggle, input) {
+    toggle.addEventListener("click", () => {
+        let type = input.getAttribute("type") === "password" ? "text" : "password";
+        input.setAttribute("type", type);
+        toggle.classList.toggle("fa-eye");
+        toggle.classList.toggle("fa-eye-slash");
     });
 }
 
+if (eye) {
+    togglePswdVisibility(eye, password);
+}
+
 if (eyeConfirm) {
-    eyeConfirm.addEventListener("click", () => {
-        const typeConfirm = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
-        confirmPassword.setAttribute("type", typeConfirm);
-        eyeConfirm.classList.toggle("fa-eye");
-        eyeConfirm.classList.toggle("fa-eye-slash");
-    });
+    togglePswdVisibility(eyeConfirm, confirmPassword);
 }
 
 // Construction du mot de passe

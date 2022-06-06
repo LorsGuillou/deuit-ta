@@ -32,6 +32,10 @@
                     <input type="password" id="confirmPswd" name="confirmPswd" placeholder="Confirmer le mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                     <i class="fa-solid fa-eye" id="toggleConfirm"></i>
                 </p>
+                <p class="RGPDSpace">
+                    <input type="checkbox" id="RGPD" name="RGPD">
+                    <label for="RGPD" class="label-RGPD" >En fournissant votre adresse e-mail, vous acceptez de recevoir la newsletter de Deuit 'ta et vous reconnaisez avoir pris connaissance de notre <a href="#">politique de confidentialité</a>.</label>
+                </p>
                 <p>
                     <button type="submit" id="submit-register" class="submit">Envoyer</button>
                     <button type="reset" id="reset-register" class="reset">Effacer</button>

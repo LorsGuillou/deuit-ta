@@ -625,6 +625,21 @@ header #headband .hamburger.active .bar:nth-child(3) {
     content: "\2716";
 }
 
+.input-page .RGPDSpace {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.input-page .RGPDSpace #RGPD {
+    margin-right: 9px;
+}
+
+.input-page .RGPDSpace .label-RGPD {
+    text-align: justify;
+    font-size: 0.6rem;
+}
+
 /* ============
 === Contact === 
 ============ */

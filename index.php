@@ -187,6 +187,11 @@ try {
                 $alert = '<p class="form-error">Les mots de passes ne correspondent pas !</p>';
                 $frontController->newUser($alert);
 
+            } elseif (empty($_POST['RGPD'])) {
+
+                $alert = '<p class="form-error">Vous devez agréer à notre politique de confidentialité pour vous inscrire !</p>';
+                $frontController->newUser($alert);
+
             } else {
 
                 $userController->createUser($data);
@@ -236,10 +241,19 @@ try {
                 ':avatar' => $userController->getImg('front', 'avatars', 100000)
             ];
 
-            $_SESSION['avatar'] = $data[':avatar'];
-            $userController->editAvatar($data);
-            $alert = '<p class="success">L\'avatar a été modifié avec succès !</p>';
-            $frontController->account($alert);
+            if ($_FILES['image']['name'] == "") {
+
+                $alert = '<p class="error">Vous n\'avez sélectionner aucune image !</p>';
+                $frontController->account($alert);
+
+            } else {
+
+                $_SESSION['avatar'] = $data[':avatar'];
+                $userController->editAvatar($data);
+                $alert = '<p class="success">L\'avatar a été modifié avec succès !</p>';
+                $frontController->account($alert);
+            
+            }
 
         // Modifier l'adresse mail
         } elseif ($_GET['action'] == 'accountEditMail') {

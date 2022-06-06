@@ -629,6 +629,7 @@ header #headband .hamburger.active .bar:nth-child(3) {
     display: flex;
     justify-content: space-around;
     margin: 20px;
+    width: 85%;
 }
 
 .input-page .RGPDSpace #RGPD {

@@ -62,7 +62,7 @@ try {
 
             $data = [
                 ':idUser' => htmlspecialchars($_SESSION['id']),
-                ':idArticle' => htmlspecialchars($_GET['id']),
+                ':idBlog' => htmlspecialchars($_GET['id']),
                 ':comment' => htmlspecialchars($_POST['type-comment'])
             ];
             

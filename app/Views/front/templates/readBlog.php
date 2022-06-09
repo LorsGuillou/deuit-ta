@@ -2,14 +2,14 @@
 
 <main class="container">
     <article id="read-blog">
-        <h1><?= $blog['titleFR'] ?><span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h1>
+        <h1 class="blog-title"><?= $blog['titleFR'] ?><span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h1>
         <p class="blog-date"><?= $blog['date'] ?></p>
         <div class="alerts">
             <?= $alert ?>
         </div>
         <img src="./Public/admin/img/blog/<?= $blog['img'] ?>" alt="<?= $blog['titleFR'] ?>">
-        <p><?= $blog['contentFR'] ?></p>
-        <p class="txt-bzh"><?= $blog['contentBZH'] ?></p>
+        <p class="blog-body"><?= $blog['contentFR'] ?></p>
+        <p class="blog-body txt-bzh"><?= $blog['contentBZH'] ?></p>
     </article>
     <?php if (isset($comments)) : ?>
     <h3>Commentaires (<?= $number['0'] ?>)</h3>

@@ -97,6 +97,16 @@ textarea {
     resize: none;
 }
 
+.blog-title {
+    display: flex;
+    flex-direction: column;
+    min-height: 70px;
+}
+
+.blog-title .txt-bzh {
+    margin-left: 0;
+}
+
 .alerts {
     width: 100%;
     display: flex;
@@ -366,6 +376,7 @@ header #headband .hamburger.active .bar:nth-child(3) {
 
 #home-page #home-blog .home-actu .home-actu-body p {
     margin-bottom: 10px;
+    min-height: 40px;
 }
 
 /* ==================
@@ -413,6 +424,7 @@ header #headband .hamburger.active .bar:nth-child(3) {
 
 #blog-page .blog-layout p {
     margin: 8px 0 8px;
+    min-height: 40px;
 }
 
 #blog-pagination .pagination {
@@ -458,6 +470,10 @@ header #headband .hamburger.active .bar:nth-child(3) {
 
 #read-blog p {
     margin-bottom: 30px;
+}
+
+#read-blog .blog-body {
+    white-space: pre-line;
 }
 
 /* =================

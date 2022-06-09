@@ -69,7 +69,7 @@ try {
             $adminController->mails($alert);
 
         // Liste des activités
-        } elseif ($_GET['action'] == 'adminactivities') {
+        } elseif ($_GET['action'] == 'activties') {
 
             $adminController->activities();
         
@@ -86,19 +86,30 @@ try {
         // Publier un article
         } elseif ($_GET['action'] == 'blogPublish') {
 
+            $imgSize = $_FILES['image']['size'];
+
             $data = [
                 ":titleFR" => htmlspecialchars($_POST['blog-titleFR']),
                 ":titleBZH" => htmlspecialchars($_POST['blog-titleBZH']),
                 ":excerptFR" => htmlspecialchars($_POST['blog-excerptFR']),
                 ":excerptBZH" => htmlspecialchars($_POST['blog-excerptBZH']),
-                ":img" => $adminController->getImg('admin', 'blog', 400000),
+                ":img" => $adminController->getImg('admin', 'blog', $imgSize),
                 ":contentFR" => htmlspecialchars($_POST['blog-contentFR']),
                 ":contentBZH" => htmlspecialchars($_POST['blog-contentBZH'])
             ];
 
-            $adminController->publish($data);
-            $alert = '<p class="alert">L\'article a bien été publié.</p>';
-            $adminController->blog($alert);
+            if ($imgSize > 10000000) {
+
+                $alert = '<p class="error">L\'image sélectionnée est trop lourde.</p>';
+                $adminController->blog($alert);
+
+            } else {
+
+                $adminController->publish($data);
+                $alert = '<p class="alert">L\'article a bien été publié.</p>';
+                $adminController->blog($alert);
+            
+            }
 
         // Lire un article
         } elseif ($_GET['action'] == 'blogRead') {
@@ -115,20 +126,31 @@ try {
         // Publier la modification
         } elseif ($_GET['action'] == 'blogModify') {
 
+            $imgSize = $_FILES['image']['size'];
+
             $data = [
                 ":id" => $_GET['id'],
                 ":titleFR" => htmlspecialchars($_POST['edit-titleFR']),
                 ":titleBZH" => htmlspecialchars($_POST['edit-titleBZH']),
                 ":excerptFR" => htmlspecialchars($_POST['edit-excerptFR']),
                 ":excerptBZH" => htmlspecialchars($_POST['edit-excerptBZH']),
-                ":img" => $adminController->getImg('admin', 'blog', 400000),
+                ":img" => $adminController->getImg('admin', 'blog', $imgSize),
                 ":contentFR" => htmlspecialchars($_POST['edit-contentFR']),
                 ":contentBZH" => htmlspecialchars($_POST['edit-contentBZH'])
             ];
 
-            $adminController->editBlog($data);
-            $alert = '<p class="alert">L\'article a bien été modifié.</p>';
-            $adminController->blog($alert);
+            if ($imgSize > 10000000) {
+
+                $alert = '<p class="error">L\'image sélectionnée est trop lourde.</p>';
+                $adminController->blog($alert);
+
+            } else {    
+
+                $adminController->editBlog($data);
+                $alert = '<p class="alert">L\'article a bien été modifié.</p>';
+                $adminController->blog($alert);
+
+            }
 
         // Supprimer un article
         } elseif ($_GET['action'] == 'blogDelete') {
@@ -149,6 +171,10 @@ try {
             session_destroy();
             header('Location: ../index.php');
 
+        } else {
+
+            throw new Exception('Cette action n\'existe pas');
+
         }
 
     // Arrivée sur l'administration
@@ -160,18 +186,10 @@ try {
 
 } catch (Exception $e) {
 
-    if ($e->getCode() === 401) {
-        header('Location: ../401.php');
-    } elseif ($e->getCode() === 404) {
-        header('Location: ../404.php');
-    } else {
-        // eCatcher($e);
-        require 'app/Views/front/errors/error.php';
-    }
+    require 'app/Views/admin/errors/error.php';
     
 } catch (Error $e) {
 
-    // eCatcher($e);
-    require 'app/Views/front/errors/error.php';
+    require 'app/Views/admin/errors/error.php';
 
 }

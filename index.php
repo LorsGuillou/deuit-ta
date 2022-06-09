@@ -7,22 +7,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// function eCatcher($e) {
-//     if($_ENV["APP_ENV"] === "dev") {
-//         $whoops = new \Whoops\Run;
-//         $whoops->allowQuit(false);
-//         $whoops->writeToOutput(false);
-//         $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-//         $html = $whoops->handleException($e);
-    
-//         require './app/Views/admin/errors/error.php';
-//     }
-// }
-
 try {
 
     $frontController = new \Projet\Controllers\FrontController();
     $userController = new \Projet\Controllers\UserController();
+    $noAuthorisation = new Exception ('Vous n\'avez pas l\'autorisation pour cette requête.', 401);
 
     if (isset($_GET['action'])) {
     
@@ -87,38 +76,53 @@ try {
         // Aller sur Contact
         } elseif ($_GET['action'] == 'contact') {
 
-            $frontController->contact();
+            if (empty($_SESSION)) {
+
+                throw $noAuthorisation;
+
+            } else {
+
+                $frontController->contact();
+
+            }
 
         // Formulaire de contact
         } elseif ($_GET['action'] == 'contactPost') {
 
-            $data = [
-                ':id' => htmlspecialchars($_SESSION['id']),
-                ':object' => htmlspecialchars($_POST['object']),
-                ':message' => htmlspecialchars($_POST['message'])
-            ];
+            if (empty($_SESSION)) {
 
-            if (empty($_POST['object'])) {
+                throw $noAuthorisation;
 
-                $alert = '<p class="form-error">Veuillez précisez l\'objet de votre message</p>';
-                $frontController->contact($alert);
-
-            } elseif (empty($_POST['message'])) {
-
-                $alert = '<p class="form-error">Votre message est vide</p>';
-                $frontController->contact($alert);
-
-            } elseif (empty($_POST['object']) && empty($_POST['message'])) {
-
-                $alert = '<p class="form-error">Vous ne pouvez pas envoyer un message vide.</p>';
-                $frontController->contact($alert);
-            
             } else {
 
-                $alert = '<p class="form-success">Votre message nous a bien été transmis !</p>';
-                $frontController->contact($alert);
-                $userController->postMail($data);
-                // $frontController->setUrl('http://localhost/deuit-ta/contact');
+                $data = [
+                    ':id' => htmlspecialchars($_SESSION['id']),
+                    ':object' => htmlspecialchars($_POST['object']),
+                    ':message' => htmlspecialchars($_POST['message'])
+                ];
+
+                if (empty($_POST['object'])) {
+
+                    $alert = '<p class="form-error">Veuillez précisez l\'objet de votre message</p>';
+                    $frontController->contact($alert);
+
+                } elseif (empty($_POST['message'])) {
+
+                    $alert = '<p class="form-error">Votre message est vide</p>';
+                    $frontController->contact($alert);
+
+                } elseif (empty($_POST['object']) && empty($_POST['message'])) {
+
+                    $alert = '<p class="form-error">Vous ne pouvez pas envoyer un message vide.</p>';
+                    $frontController->contact($alert);
+            
+                } else {
+
+                    $alert = '<p class="form-success">Votre message nous a bien été transmis !</p>';
+                    $frontController->contact($alert);
+                    $userController->postMail($data);
+                }
+
             }
 
         // Aller sur Connexion
@@ -154,6 +158,7 @@ try {
             $pass = htmlspecialchars($_POST['password']);
             $passCheck = htmlspecialchars($_POST['confirmPswd']);
             $passHash = password_hash($pass, PASSWORD_DEFAULT);
+            $imgSize = $_FILES['image']['size'];
 
             if (($_FILES['image']['name'] == "")) {
 
@@ -161,7 +166,7 @@ try {
 
             } else {
 
-                $avatar = htmlspecialchars($frontController->getImg('front', 'avatars', 100000));
+                $avatar = htmlspecialchars($frontController->getImg('front', 'avatars', $imgSize));
 
             }
 
@@ -180,6 +185,11 @@ try {
             } elseif (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
 
                 $alert = '<p class="form-error">Cette adresse mail est invalide !</p>';
+                $frontController->newUser($alert);
+
+            } elseif($imgSize > 5000000) {
+
+                $alert = '<p class="form-error">Le poids de l\'image est trop important !</p>';
                 $frontController->newUser($alert);
 
             } elseif ($passCheck != $pass) {
@@ -201,127 +211,174 @@ try {
         // Aller sur la page compte
         } elseif ($_GET['action'] == 'account') {
 
+            if (empty($_SESSION)) {
 
-                $frontController->account();
-
-        // Modifier le pseudonyme
-        } elseif ($_GET['action'] == 'accountEditUsername') {
-            
-            $newUsername = htmlspecialchars($_POST['edit-username']);
-
-            $data = [
-                ':id' => $_SESSION['id'],
-                ':username' => $newUsername
-            ];
-
-            if (empty($newUsername)) {
-
-                $alert = '<p class="error">Le champs Nouveau pseudonyme est vide !</p>';
-                $frontController->account($alert);
-
-            } elseif ($_SESSION['username'] === $newUsername) {
-
-                $alert = '<p class="error">Vous utilisez déjà ce pseudonyme !</p>';
-                $frontController->account($alert);
+                throw $noAuthorisation;
 
             } else {
 
-                $_SESSION['username'] = $data[':username'];
-                $userController->editUsername($data);
-                $alert = '<p class="success">Le pseudonyme a été modifié avec succès !</p>';
-                $frontController->account($alert);
+                $frontController->account();
+
+            }
+
+        // Modifier le pseudonyme
+        } elseif ($_GET['action'] == 'accountEditUsername') {
+
+            if (empty($_SESSION)) {
+
+                throw $noAuthorisation;
+
+            } else {
+            
+                $newUsername = htmlspecialchars($_POST['edit-username']);
+
+                $data = [
+                    ':id' => $_SESSION['id'],
+                    ':username' => $newUsername
+                ];
+
+                if (empty($newUsername)) {
+
+                    $alert = '<p class="error">Le champs Nouveau pseudonyme est vide !</p>';
+                    $frontController->account($alert);
+
+                } elseif ($_SESSION['username'] === $newUsername) {
+
+                    $alert = '<p class="error">Vous utilisez déjà ce pseudonyme !</p>';
+                    $frontController->account($alert);
+
+                } else {
+
+                    $_SESSION['username'] = $data[':username'];
+                    $userController->editUsername($data);
+                    $alert = '<p class="success">Le pseudonyme a été modifié avec succès !</p>';
+                    $frontController->account($alert);
+
+                }
 
             }
 
         // Modifier l'avatar
         } elseif ($_GET['action'] == 'accountEditAvatar') {
-            
-            $data = [
-                ':id' => $_SESSION['id'],
-                ':avatar' => $userController->getImg('front', 'avatars', 100000)
-            ];
 
-            if ($_FILES['image']['name'] == "") {
+            if (empty($_SESSION)) {
 
-                $alert = '<p class="error">Vous n\'avez sélectionner aucune image !</p>';
-                $frontController->account($alert);
+                throw $noAuthorisation;
 
             } else {
-
-                $_SESSION['avatar'] = $data[':avatar'];
-                $userController->editAvatar($data);
-                $alert = '<p class="success">L\'avatar a été modifié avec succès !</p>';
-                $frontController->account($alert);
             
+                $data = [
+                    ':id' => $_SESSION['id'],
+                    ':avatar' => $userController->getImg('front', 'avatars', 100000)
+                ];
+
+                if ($_FILES['image']['name'] == "") {
+
+                    $alert = '<p class="error">Vous n\'avez sélectionner aucune image !</p>';
+                    $frontController->account($alert);
+
+                } else {
+
+                    $_SESSION['avatar'] = $data[':avatar'];
+                    $userController->editAvatar($data);
+                    $alert = '<p class="success">L\'avatar a été modifié avec succès !</p>';
+                    $frontController->account($alert);
+            
+                }
+        
             }
 
         // Modifier l'adresse mail
         } elseif ($_GET['action'] == 'accountEditMail') {
-            
-            $newMail = htmlspecialchars($_POST['edit-mail']);
 
-            $data = [
-                ':id' => $_SESSION['id'],
-                ':mail' => $newMail
-            ];
+            if (empty($_SESSION)) {
 
-            if (empty($newMail)) {
-
-                $alert = '<p class="error">Le champ Nouvelle adresse e-mail est vide !</p>';
-                $frontController->account($alert);
-
-            } elseif (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
-
-                $alert = '<p class="error">Cette adresse mail est invalide !</p>';
-                $frontController->account($alert);
+                throw $noAuthorisation;
 
             } else {
+            
+                $newMail = htmlspecialchars($_POST['edit-mail']);
 
-                $_SESSION['mail'] = $data[':mail'];
-                $userController->editMail($data);
-                $alert = '<p class="success">L\'adresse mail a été modifié avec succès !</p>';
-                $frontController->account($alert);
+                $data = [
+                    ':id' => $_SESSION['id'],
+                    ':mail' => $newMail
+                ];
+
+                if (empty($newMail)) {
+
+                    $alert = '<p class="error">Le champ Nouvelle adresse e-mail est vide !</p>';
+                    $frontController->account($alert);
+
+                } elseif (!filter_var($_POST['edit-mail'], FILTER_VALIDATE_EMAIL)) {
+
+                    $alert = '<p class="error">Cette adresse mail est invalide !</p>';
+                    $frontController->account($alert);
+
+                } else {
+
+                    $_SESSION['mail'] = $data[':mail'];
+                    $userController->editMail($data);
+                    $alert = '<p class="success">L\'adresse mail a été modifié avec succès !</p>';
+                    $frontController->account($alert);
+
+                }
 
             }
 
         // Modifier le mot de passe
         } elseif ($_GET['action'] == 'accountEditPswd') {
-            
-            $newPass = htmlspecialchars($_POST['edit-password']);
-            $newPassCheck = htmlspecialchars($_POST['edit-confirmPswd']);
-            $newPassHash = password_hash($newPass, PASSWORD_DEFAULT);
 
-            $data = [
-                ':id' => $_SESSION['id'],
-                ':password' => $newPassHash
-            ];
+            if (empty($_SESSION)) {
 
-            if (empty($newPass) || empty($newPassCheck)) {
-
-                $alert = '<p class="error">Le champ Nouveau mot de passe ou le champ de confirmation est vide !</p>';
-                $frontController->account($alert);
-
-            } elseif ($newPass != $newPassCheck) {
-
-                $alert = '<p class="error">Les mots de passes ne correspondent pas !</p>';
-                $frontController->account($alert);
+                throw $noAuthorisation;
 
             } else {
-
-                $_SESSION['password'] = $data[':password'];
-                $userController->editPswd($data);
-                $alert = '<p class="success">Le mot de passe a été modifié avec succès !</p>';
-                $frontController->account($alert);
             
+                $newPass = htmlspecialchars($_POST['edit-password']);
+                $newPassCheck = htmlspecialchars($_POST['edit-confirmPswd']);
+                $newPassHash = password_hash($newPass, PASSWORD_DEFAULT);
+
+                $data = [
+                    ':id' => $_SESSION['id'],
+                    ':password' => $newPassHash
+                ];
+
+                if (empty($newPass) || empty($newPassCheck)) {
+
+                    $alert = '<p class="error">Le champ Nouveau mot de passe ou le champ de confirmation est vide !</p>';
+                    $frontController->account($alert);
+
+                } elseif ($newPass != $newPassCheck) {
+
+                    $alert = '<p class="error">Les mots de passes ne correspondent pas !</p>';
+                    $frontController->account($alert);
+
+                } else {
+
+                    $_SESSION['password'] = $data[':password'];
+                    $userController->editPswd($data);
+                    $alert = '<p class="success">Le mot de passe a été modifié avec succès !</p>';
+                    $frontController->account($alert);
+            
+                }
+
             }
         
         // Supprimer les commentaires depuis la page Compte
         } elseif ($_GET['action'] == 'accountDeleteComment') {
 
-            $id = htmlspecialchars($_GET['id']);
-            $userController->deleteComment($id);
-            $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
-            $frontController->account($alert);
+            if (empty($_SESSION)) {
+
+                throw $noAuthorisation;
+
+            } else {
+
+                $id = htmlspecialchars($_GET['id']);
+                $userController->deleteComment($id);
+                $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
+                $frontController->account($alert);
+
+            }
 
         // Se déconnecter
         } elseif ($_GET['action'] == 'logout') {
@@ -336,7 +393,7 @@ try {
 
         } else {
 
-            throw new Exception('Cette action n\'existe pas', 500);
+            throw new Exception('Cette action n\'existe pas');
 
         }
     
@@ -349,18 +406,10 @@ try {
 
 } catch (Exception $e) {
 
-    if ($e->getCode() === 401) {
-        require 'app/Views/front/errors/401.php';
-    } elseif ($e->getCode() === 404) {
-        require 'app/Views/front/errors/404.php';
-    } else {
-        // eCatcher($e);
-        require 'app/Views/front/errors/error.php';
-    }
+    require 'app/Views/front/errors/error.php';
     
 } catch (Error $e) {
 
-    // eCatcher($e);
     require 'app/Views/front/errors/error.php';
 
 }

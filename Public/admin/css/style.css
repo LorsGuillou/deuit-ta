@@ -38,6 +38,7 @@
     --tabletitles: rgba(235, 242, 250, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
     --linkhover: rgba(228, 35, 35, 0.99);
+    --errorbg: rgba(250, 167, 167, 1);
     --successbg: rgba(179, 251, 179, 1);
 }
 
@@ -79,17 +80,26 @@ h1 {
     margin: 10px auto 20px;
 }
 
-.alert {
+.alert,
+.error {
     width: 100%;
     display: flex;
     justify-content: center;
     width: 50%;
     margin: auto auto 15px;
     padding: 20px 0;
-    background-color: var(--successbg);
-    color: limegreen;
     text-align: center;
     align-items: center;
+}
+
+.alert {
+    background-color: var(--successbg);
+    color: limegreen;
+}
+
+.error {
+    background-color: var(--errorbg);
+    color: brown;
 }
 
 textarea {

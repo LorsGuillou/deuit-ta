@@ -74,7 +74,7 @@ class Users extends Manager {
         return $req;
    }
    
-   public function editpswd($data) {
+   public function editPswd($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('UPDATE users
                               SET password = :password

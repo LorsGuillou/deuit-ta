@@ -44,6 +44,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact" title="Contact"><i class="fa-solid fa-envelope"></i> Contact</a>
                     </li>
+                    <?php elseif (!empty($_SESSION) && $_SESSION['role'] === 1) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/home" title="Administration"><i class="fa-solid fa-gear"></i></i>Administration</a>
+                    </li>
                     <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="account" title="Mon compte"><i class="fa-solid fa-user"></i> Mon compte</a>
@@ -57,11 +61,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="register" title="Créer un compte"><i class="fa-solid fa-user-plus"></i>Créer un compte</a>
-                    </li>
-                    <?php endif; ?>
-                    <?php if (!empty($_SESSION) && $_SESSION['role'] === 1) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="admin/home" title="Administration"><i class="fa-solid fa-gear"></i></i>Administration</a>
                     </li>
                     <?php endif; ?>
                 </ul>

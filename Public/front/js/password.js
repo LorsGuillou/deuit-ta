@@ -1,4 +1,4 @@
-// Constantes
+// Gestion des champs mot de passe
 
 const password = document.getElementById("password");
 const eye = document.getElementById("togglePswd");

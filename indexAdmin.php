@@ -155,6 +155,7 @@ try {
         // Déconnexion
         } elseif ($_GET['action'] == 'logout') {
 
+            session_unset();
             session_destroy();
             header('Location: ../index.php');
 

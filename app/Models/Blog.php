@@ -4,6 +4,7 @@ namespace Projet\Models;
 
 class Blog extends Manager {
 
+    // Création d'article
     public function publish($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO blog (titleFR, titleBZH, excerptFR, excerptBZH, img, contentFR, contentBZH) 
@@ -13,6 +14,7 @@ class Blog extends Manager {
         return $req;
     }
 
+    // Affichage des articles dans la catégorie Blog, en limitant le nombre d'articles par page
     public function blogPage($firstBlog, $byPage) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, DATE_FORMAT(created_at, "%d %M %Y") as date 
@@ -27,6 +29,7 @@ class Blog extends Manager {
         return $blog;
     }
 
+    // Liste des articles dans la partie admin
     public function blogList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, titleFR, excerptFR, img, DATE_FORMAT(created_at, "%d %M %Y") as date
@@ -37,6 +40,7 @@ class Blog extends Manager {
         return $list;
     }
 
+    // Récupération des données d'un article en particulier pour sa lecture
     public function readBlog($id) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, contentFR, contentBZH, DATE_FORMAT(created_at, "%d %M %Y") as date 
@@ -48,6 +52,7 @@ class Blog extends Manager {
         return $blog;
     }
 
+    // Edition d'un blog en partie admin
     public function editBlog($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('UPDATE blog
@@ -58,6 +63,7 @@ class Blog extends Manager {
         return $req;
     }
 
+    // Affichage des deux derniers articles pour la page d'accueil
     public function blogHome() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, titleFR, titleBZH, excerptFR, excerptBZH, img, DATE_FORMAT(created_at, "%d %M %Y") as date 

@@ -68,11 +68,6 @@ try {
             $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
             $frontController->readBlog($idPage, $alert);
 
-        // Aller sur Rencontres
-        } elseif ($_GET['action'] == 'activities') {
-
-            $frontController->activities();
-
         // Aller sur Contact
         } elseif ($_GET['action'] == 'contact') {
 

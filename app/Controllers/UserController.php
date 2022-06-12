@@ -4,6 +4,7 @@ namespace Projet\Controllers;
 
 class UserController extends Controller {
 
+    // Gestion de la création de compte, de ces conditions et des alertes associées
     public function createUser($userData) {
         $userManager = new \Projet\Models\Users();
         $frontController = new \Projet\Controllers\FrontController();
@@ -21,6 +22,7 @@ class UserController extends Controller {
         }
     }
 
+    // Gestion de la connexion, des vérifications et des alertes associées
     public function connect($mail, $password) {
         $userManager = new \Projet\Models\Users();
         $frontController = new \Projet\Controllers\FrontController();
@@ -52,6 +54,7 @@ class UserController extends Controller {
         } 
     }
 
+    // Gestion de l'édition du compte : pseudonyme, avatar, adresse e-mail et mot de passe
     public function editUsername($data) {
         $userManager = new \Projet\Models\Users();
         $edit = $userManager->editUsername($data);
@@ -77,6 +80,7 @@ class UserController extends Controller {
         $edit = $userManager->editPswd($data);
     }
 
+    // Gestion des commentaires : publier et effacer
     public function comment($data) {
         $commentManager = new \Projet\Models\Comments();
         $comment = $commentManager->comment($data);
@@ -87,6 +91,7 @@ class UserController extends Controller {
        $delete = $commentManager->delete($id);
    }
 
+   // Gestion de l'envoi de message à l'administrateur
     public function postMail($data) {
         $contactManager = new \Projet\Models\Contact();
         $mail = $contactManager->postMail($data);

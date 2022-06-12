@@ -4,20 +4,9 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Récupération des variables du dossier .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
-// function eCatcher($e) {
-//     if($_ENV["APP_ENV"] === "dev") {
-//         $whoops = new \Whoops\Run;
-//         $whoops->allowQuit(false);
-//         $whoops->writeToOutput(false);
-//         $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-//         $html = $whoops->handleException($e);
-    
-//         require './app/Views/admin/errors/error.php';
-//     }
-// }
 
 try {
 
@@ -25,10 +14,13 @@ try {
     $frontController = new \Projet\Controllers\FrontController();
     $userController = new \Projet\Controllers\UserController();
 
+
+    // Vérification du statut d'admin
     if (empty($_SESSION) || $_SESSION['role'] != 1) {
         throw new Exception('', 401);
     }
 
+    // Vérification des actions dans l'URL 
     if (isset($_GET['action'])) {
 
         // Retour au tableau de bord
@@ -67,11 +59,6 @@ try {
             $adminController->deleteMail($id);
             $alert = '<p class="alert">L\'email a bien été supprimé.</p>';
             $adminController->mails($alert);
-
-        // Liste des activités
-        } elseif ($_GET['action'] == 'activties') {
-
-            $adminController->activities();
         
         // Liste des articles
         } elseif ($_GET['action'] == 'blog') {
@@ -184,6 +171,7 @@ try {
 
     }
 
+// Gestion des exceptions et erreurs
 } catch (Exception $e) {
 
     require 'app/Views/admin/errors/error.php';

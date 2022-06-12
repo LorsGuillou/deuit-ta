@@ -4,6 +4,7 @@ namespace Projet\Models;
 
 class Comments extends Manager {
 
+    // Rédaction de commentaire
     public function comment($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO comments (idUser, idBlog, comment) 
@@ -13,6 +14,7 @@ class Comments extends Manager {
         return $req;
     }
 
+    // Nombre de commentaires sur un article donné
     public function nbComments($id) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT COUNT(id) 
@@ -24,6 +26,7 @@ class Comments extends Manager {
         return $number;
     }
 
+    // Affichage des commentaires sur la page de l'article
     public function displayComments($id) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT users.username, users.avatar, comments.id, comments.idUser, comments.comment, DATE_FORMAT(comments.created_at, "%d %M %Y") as date
@@ -37,6 +40,7 @@ class Comments extends Manager {
         return $liste;
     }
 
+    // Visionnage des commentaires de l'utilisateurs
     public function userComments($id) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT comments.id, comments.comment, DATE_FORMAT(comments.created_at, "%d %M %Y") as date, blog.id as link, blog.titleFR

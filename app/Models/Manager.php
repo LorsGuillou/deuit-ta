@@ -6,8 +6,10 @@ use FFI\Exception;
 
 class Manager {
 
+    // Singleton -> optimisation de l'accès à la base de données
     private static $pdo = null;
 
+    // Fonction d'accès à la base de données
     protected static function dbConnect() {
         if (isset(self::$pdo)) {
             return self::$pdo;
@@ -28,6 +30,7 @@ class Manager {
         }
     }
 
+    // Fonction permettant de récupérer le nom d'une classe instanciée pour faire fonctionner les fonctions suivantes
     public static function getChild() {
         $child = get_called_class();
         $childName = explode('\\', $child);
@@ -36,6 +39,7 @@ class Manager {
         return $res;
     }
 
+    // Compter le nombre d'instance de chaque classe
     public static function count() {
         $pdo = self::dbConnect();
         $child = self::getChild();
@@ -47,6 +51,7 @@ class Manager {
         return $number;
     }
 
+    // Effacer une instance de classe
     public static function delete($id) {
         $pdo = self::dbConnect();
         $child = self::getChild();

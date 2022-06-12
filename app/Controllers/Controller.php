@@ -6,10 +6,12 @@ use Exception;
 
 class Controller {
 
+    // Fonction retournant une vue selon son type (front / admin) et son nom
     public function view($viewType, $viewName) {
         return 'app/Views/' . $viewType . '/templates/' . $viewName . '.php';
     }
 
+    // Gestion des images
     public function getImg($imgSide, $imgType, $maxSize) {
 
         $tmpName = $_FILES['image']['tmp_name'];
@@ -38,6 +40,7 @@ class Controller {
         }
     }
 
+    // Gestions des ressources inexistantes / manquantes
     public function throw404IfEmpty($resource) {
         if (!$resource) {
             throw new Exception("La ressource demandée n'existe pas.", 404);

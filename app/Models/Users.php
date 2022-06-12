@@ -4,6 +4,7 @@ namespace Projet\Models;
 
 class Users extends Manager {
 
+     // Création de compte
     public function createUser($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO users (username, mail, password, avatar) 
@@ -13,6 +14,7 @@ class Users extends Manager {
         return $req;
    }
 
+   //  Vérification de disponibilité du pseudonyme
    public function doesNameExists($username) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT username
@@ -24,6 +26,7 @@ class Users extends Manager {
         return $check;
    }
 
+   // Vérification à la connexion    
    public function loginCheck($mail, $password) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, username, mail, password, avatar, DATE_FORMAT(created_at, "%d %M %Y") as date, role 
@@ -34,6 +37,7 @@ class Users extends Manager {
         return $req;
    }
 
+   // Liste des membres dans la partie admin
    public function userList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT id, username, mail, avatar, DATE_FORMAT(created_at, "%d %M %Y") as date 
@@ -44,6 +48,7 @@ class Users extends Manager {
         return $list;
    }
 
+   // Edition du compte par l'utilisateurs : pseudonyme, avatar, adresse e-mail, mot de passe  
    public function editUsername($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('UPDATE users

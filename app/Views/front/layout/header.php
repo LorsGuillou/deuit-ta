@@ -35,12 +35,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="blog" title="Blog"><i class="fa-solid fa-newspaper"></i> Blog</a>
                     </li>
-                    <?php if (!empty($_SESSION)) : ?>
-                    <!-- Fonction à venir -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="activities"><i class="fa-solid fa-calendar"> </i>Activités</a>
-                    </li> -->
-                    <?php if (!empty($_SESSION) && $_SESSION['role'] != 1) : ?>
+                    <?php if (!empty($_SESSION)) :
+                    if (!empty($_SESSION) && $_SESSION['role'] != 1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="contact" title="Contact"><i class="fa-solid fa-envelope"></i> Contact</a>
                     </li>

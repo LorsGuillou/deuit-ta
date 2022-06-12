@@ -7,8 +7,8 @@
             <p class="container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias enim molestiae consequuntur culpa dignissimos error cumque nulla repellat delectus quidem!</p>
         </div>
         <div id="home-page" class="container">
-            <h2 class="home-titles">Activités à venir <span class="txt-bzh">Oberezhioù da-zont</span></h2>
             <section id="home-activities">
+                <h2 class="home-titles">Activités à venir <span class="txt-bzh">Oberezhioù da-zont</span></h2>
                 <?php if (!empty($_SESSION)) : ?>
                     <p class="txt-visitor">Fonctionnalité à venir !</p>
                     <p class="txt-visitor txt-bzh">Arc'hweladur da-zont !</p>
@@ -17,8 +17,8 @@
                     <p class="txt-visitor txt-bzh">C'hoant ho peus da welout pe da enskrivañ ac'hanoc'h war an oberezhioù aozet gant hon izili ? <a href="register" title="Krouit ur c'hont">Krouit ur c'hont</a> pe <a href="login" title="Digerit une dalc'h">digerit un dalc'h</a> evit komz brezhoneg gant tud a-feson !</p>
                 <?php endif; ?>
             </section>
-            <h2 class="home-titles">Derniers articles du blog <span class="txt-bzh">Pennadoù diwezhañ blog</span></h2>
             <section id="home-blog">
+                <h2 class="home-titles">Derniers articles du blog <span class="txt-bzh">Pennadoù diwezhañ blog</span></h2>
                 <?php foreach ($blogs as $blog) : ?>
                     <article class="home-actu">
                         <h3 class="blog-title"><?= $blog['titleFR'] ?> <span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h3>

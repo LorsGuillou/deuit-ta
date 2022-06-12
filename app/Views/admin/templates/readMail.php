@@ -6,7 +6,7 @@
                         <p><?= $mail['message'] ?></p>
                         <a href="mailto:<?= $mail['mail'] ?>" title="Répondre au mail"><i class="fa-solid fa-reply action-mail"></i></a>
                 </div>
-        </section>
+            </div>
     </main>
 
 <?php include_once('app/Views/admin/layout/footer.php') ?>

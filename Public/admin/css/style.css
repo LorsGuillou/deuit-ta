@@ -31,7 +31,6 @@
 ========================== */
 
 :root {
-    --darkbg: rgba(38, 38, 38, 1);
     --lightbg: rgba(245, 245, 245, 0.95);
     --table: rgba(83, 84, 89, 0.95);
     --tablehead: rgba(112, 128, 144, 0.9);
@@ -111,7 +110,7 @@ textarea {
 ====================== */
 
 header {
-    background-color: var(--darkbg);
+    background-color: black;
 }
 
 header #headband {
@@ -137,7 +136,7 @@ header #headband a {
 
 #side-menu #navigation {
     padding-left: 15px;
-    background-color: var(--darkbg);
+    background-color: black;
     
 }
 

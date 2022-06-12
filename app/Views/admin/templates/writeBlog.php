@@ -28,8 +28,8 @@
                     <input type="text" id="blog-excerptBZH" name="blog-excerptBZH" placeholder="Tennad" required>
                 </p>
                 <p>
-                    <label for="image">Image : </label>
-                    <input type="file" id="blog-name" name="image" required>
+                    <label for="blog-image">Image : </label>
+                    <input type="file" id="blog-image" name="image" required>
                 </p>
                 <p>
                     <label for="blog-contentFR">Texte français :</label>
@@ -47,7 +47,7 @@
                     <button type="submit" id="blog-submit">Envoyer</button>
                 </p>
             </form>
-        </section>
+        </div>
     </main>
 
 <?php include_once('app/Views/admin/layout/footer.php') ?>

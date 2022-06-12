@@ -45,11 +45,13 @@
                 <button type="reset" class="reset">Effacer</button>
             </p>
         </form>
+    </div>
         <?php else : ?>
+    <div id="comment-visitor">
         <p>Vous souhaitez commenter sur cet article ? <a href="register">Créez un compte</a> ou <a
                 href="login">connectez-vous</a>.</p>
-        <p class="txt-bzh">Vous souhaitez commenter sur cet article ? <a href="register">Créez un compte</a> ou <a
-                href="login">connectez-vous</a>.</p>
+        <p class="txt-bzh">C'hoant ho peus da skrivañ un evezhiadenn ? <a href="register">Krouit ur c'hont</a> pe <a
+                href="login">digerit un dalc'h</a>.</p>
     </div>
     <?php endif; ?>
 </main>

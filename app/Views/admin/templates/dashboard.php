@@ -5,7 +5,7 @@
             <p>Nombre de membres : <?= $nbUsers['0'] ?></p>
             <p>Nombre de mails : <?= $nbMails['0'] ?></p>
             <p>Nombre d'articles : <?= $nbBlog['0'] ?></p>
-        </section>
+        </div>
     </main>
 
 <?php include_once('app/Views/admin/layout/footer.php') ?>

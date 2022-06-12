@@ -11,11 +11,11 @@
                     <input type="text" id="username" name="username" placeholder="Pseudonyme">
                 </p>
                 <p>
-                    <label for="image">Image de profil : </label>
+                    <label for="avatar">Image de profil : </label>
                     <input type="file" id="avatar" name="image">
                 </p>
                 <p>
-                    <input type="mail" id="mail" name="mail" placeholder="Email">
+                    <input type="email" id="mail" name="mail" placeholder="Email">
                 </p>
                 <p class="pswdSpace">
                     <input type="password" id="password" name="password" placeholder="Mot de passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Le mot de passe doit contenir au moins 8 caractères, 1 chiffre, 1 lettre majuscule et 1 lettre minuscule.">

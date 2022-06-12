@@ -28,7 +28,7 @@
                     <input type="text" id="edit-excerptBZH" name="edit-excerptBZH" value="<?php if (isset($blog['excerptBZH'])) : echo $blog['excerptBZH']; endif; ?>" required>
                 </p>
                 <p>
-                    <label for="image">Image : </label>
+                    <label for="edit-image">Image : </label>
                 </p>
                 <p>
                     <input type="file" id="edit-image" name="image" required>
@@ -49,7 +49,7 @@
                     <button type="submit" id="edit-submit">Envoyer</button>
                 </p>
             </form>
-        </section>
+        </div>
     </main>
 
 <?php include_once('app/Views/admin/layout/footer.php') ?>

@@ -47,10 +47,10 @@
         </p>
     </form>
 
-    <form action="accountEditMail" method="post" class="input-page" placeholder="Nouvelle adresse e-mail">
+    <form action="accountEditMail" method="post" class="input-page">
         <h2>Changer votre adresse e-mail</h2>
         <p>
-            <input type="mail" id="edit-mail" name="edit-mail">
+            <input type="email" id="edit-mail" name="edit-mail" placeholder="Nouvelle adresse e-mail">
         </p>
         <p>
             <button type="submit" id="submit-editMail" class="submit">Envoyer</button>

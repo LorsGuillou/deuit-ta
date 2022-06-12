@@ -2,7 +2,7 @@
 
     <main class="container">
         <h1>Blog</h1>
-            <section id="blog-page">
+            <div id="blog-page">
             <?php foreach ($blogs as $blog) : ?>
                 <article class="blog-layout">
                     <h3 class="blog-title"><?= $blog['titleFR'] ?> <span class="txt-bzh"><?= $blog['titleBZH'] ?></span></h3>
@@ -13,7 +13,7 @@
                     <a class="link-to-blog" href="blogRead&id=<?= $blog['id'] ?>" title="Lire l'article <?= $blog['titleFR'] ?>">Lire la suite</a>
                 </article>
             <?php endforeach; ?>
-            </section>
+            </div>
             <?php if ($pages > 1) : ?>
             <nav id="blog-pagination">
                 <ul class="pagination">

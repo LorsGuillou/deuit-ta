@@ -34,7 +34,7 @@
                     </tbody>
                 <?php endforeach ?>
             </table>
-        </section>
+        </div>
     </main>
 
 <?php include_once('app/Views/admin/layout/footer.php') ?>

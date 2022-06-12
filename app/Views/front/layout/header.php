@@ -42,7 +42,7 @@
                     </li>
                     <?php elseif (!empty($_SESSION) && $_SESSION['role'] === 1) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/home" title="Administration"><i class="fa-solid fa-gear"></i></i>Administration</a>
+                        <a class="nav-link" href="admin/home" title="Administration"><i class="fa-solid fa-gear"></i>Administration</a>
                     </li>
                     <?php endif; ?>
                     <li class="nav-item">

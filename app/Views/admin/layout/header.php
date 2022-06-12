@@ -16,7 +16,7 @@
         </div>        
     </header>
     <main>
-        <section id="side-menu">
+        <div id="side-menu">
             <nav id="navigation">
                 <ul id="admin-menu">
                     <li class="admin-item"><a href="user" title="Membres"><i class="fa-solid fa-users"></i> <span>Membres</span></a></li>
@@ -28,7 +28,7 @@
                     <li class="admin-item"><a href="logout" title="Déconnexion"><i class="fa-solid fa-right-from-bracket"></i> <span>Déconnexion</span></a></li>
                 </ul>
             </nav>
-        </section>
-        <section id="dashboard" class="container">
+        </div>
+        <div id="dashboard" class="container">
 
 

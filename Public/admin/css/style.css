@@ -173,6 +173,11 @@ header #headband a {
 === Tableau de bord ===
 ==================== */
 
+#dashboard .admin-numbers {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
 #dashboard .admin-table {
     width: 100%;
     border-collapse: collapse;

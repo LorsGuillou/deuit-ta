@@ -9,9 +9,11 @@ class AdminController extends Controller {
         $userManager = new \Projet\Models\Users();
         $contactManager = new \Projet\Models\Contact();
         $blogManager = new \Projet\Models\Blog();
+        $commentManager = new \Projet\Models\Comments();
         $nbUsers = $userManager->count();
         $nbMails = $contactManager->count();
         $nbBlog = $blogManager->count();
+        $nbComments = $commentManager->count();
         require ($this->view('admin', 'dashboard'));
     }
 

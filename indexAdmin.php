@@ -38,8 +38,6 @@ try {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteUser($id);
-            $alert = '<p class="alert">Le compte utilisateur a bien été supprimé.</p>';
-            $adminController->users($alert);
 
         // Liste des messages
         } elseif ($_GET['action'] == 'mail') {
@@ -57,8 +55,6 @@ try {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteMail($id);
-            $alert = '<p class="alert">L\'email a bien été supprimé.</p>';
-            $adminController->mails($alert);
         
         // Liste des articles
         } elseif ($_GET['action'] == 'blog') {
@@ -84,19 +80,7 @@ try {
                 ":contentFR" => htmlspecialchars($_POST['blog-contentFR']),
                 ":contentBZH" => htmlspecialchars($_POST['blog-contentBZH'])
             ];
-
-            if ($imgSize > 10000000) {
-
-                $alert = '<p class="error">L\'image sélectionnée est trop lourde.</p>';
-                $adminController->blog($alert);
-
-            } else {
-
-                $adminController->publish($data);
-                $alert = '<p class="alert">L\'article a bien été publié.</p>';
-                $adminController->blog($alert);
-            
-            }
+            $adminController->publish($data);
 
         // Lire un article
         } elseif ($_GET['action'] == 'blogRead') {
@@ -125,27 +109,13 @@ try {
                 ":contentFR" => htmlspecialchars($_POST['edit-contentFR']),
                 ":contentBZH" => htmlspecialchars($_POST['edit-contentBZH'])
             ];
-
-            if ($imgSize > 10000000) {
-
-                $alert = '<p class="error">L\'image sélectionnée est trop lourde.</p>';
-                $adminController->blog($alert);
-
-            } else {    
-
-                $adminController->editBlog($data);
-                $alert = '<p class="alert">L\'article a bien été modifié.</p>';
-                $adminController->blog($alert);
-
-            }
+            $adminController->editBlog($data);
 
         // Supprimer un article
         } elseif ($_GET['action'] == 'blogDelete') {
 
             $id = htmlspecialchars($_GET['id']);
             $adminController->deleteBlog($id);
-            $alert = '<p class="alert">L\'article a bien été supprimé</p>';
-            $adminController->blog($alert);
 
         // Naviguer sur le site
         } elseif ($_GET['action'] == 'navigate') {

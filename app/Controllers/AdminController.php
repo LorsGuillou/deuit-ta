@@ -28,7 +28,10 @@ class AdminController extends Controller {
     // Effacer un compte membre
     public function deleteUser($id) {
         $userManager = new \Projet\Models\Users();
-        $deleteUser = $userManager->delete($id);
+
+        $userManager->delete($id);
+        $alert = '<p class="alert">Le compte utilisateur a bien été supprimé.</p>';
+        $this->users($alert);
     }
 
     // Gestions des messages
@@ -42,14 +45,17 @@ class AdminController extends Controller {
     // Lecture de message
     public function readMail($id) {
         $contactManager = new \Projet\Models\Contact();
-        $mail = $contactManager->readMail($id);
+        $mail = $this->throw404IfEmpty($contactManager->readMail($id));
         require ($this->view('admin', 'readMail'));
     }
 
     // Effacer un message
     public function deleteMail($id) {
         $contactManager = new \Projet\Models\Contact();
-        $deleteMail = $contactManager->delete($id);
+
+        $contactManager->delete($id);
+        $alert = '<p class="alert">L\'email a bien été supprimé.</p>';
+        $this->mails($alert);
     }
 
     // Gestions des articles et des alertes associées
@@ -62,8 +68,6 @@ class AdminController extends Controller {
 
     // Aller sur la page de rédaction
     public function write() {
-        $blogManager = new \Projet\Models\Blog();
-        $blogs = $blogManager->blogList();
         require ($this->view('admin', 'writeBlog'));
     }
 
@@ -77,18 +81,41 @@ class AdminController extends Controller {
     // Publier un article
     public function publish($data) {
         $blogManager = new \Projet\Models\Blog();
-        $publish = $blogManager->publish($data);
+
+        $imgSize = $_FILES['image']['size'];
+
+        if ($imgSize > 10000000) {
+            $alert = '<p class="error">L\'image sélectionnée est trop lourde.</p>';
+            $this->blog($alert);
+        } else {
+            $blogManager->publish($data);
+            $alert = '<p class="alert">L\'article a bien été publié.</p>';
+            $this->blog($alert);
+        }
     }
 
     // Editer un article
     public function editBlog($data) {
         $blogManager = new \Projet\Models\Blog();
-        $edit = $blogManager->editBlog($data);
+
+        $imgSize = $_FILES['image']['size'];
+
+        if ($imgSize > 10000000) {
+            $alert = '<p class="error">L\'image sélectionnée est trop lourde.</p>';
+            $this->blog($alert);
+        } else {    
+            $blogManager->editBlog($data);
+            $alert = '<p class="alert">L\'article a bien été modifié.</p>';
+            $this->blog($alert);
+        }
     }
 
     // Effacer un article
     public function deleteBlog($id) {
         $blogManager = new \Projet\Models\Blog();
-        $deleteBlog = $blogManager->delete($id);
+
+        $blogManager->delete($id);
+        $alert = '<p class="alert">L\'article a bien été supprimé</p>';
+        $this->blog($alert);
     }
 }

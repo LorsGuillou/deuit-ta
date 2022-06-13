@@ -27,7 +27,7 @@
         <?php endforeach; endif; ?>
     </div>
 
-    <form action="accounteditUsername" method="post" class="input-page">
+    <form action="accountEditUsername" method="post" class="input-page">
         <h2>Changer votre pseudonyme</h2>
         <p>
             <input type="text" id="edit-username" name="edit-username" placeholder="Nouveau pseudonyme">

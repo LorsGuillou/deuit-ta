@@ -17,8 +17,8 @@ Pour pouvoir faire fonctionner le site sur un serveur local, la marche à suivre
 -> Installer composer et effectuer un composer install à l'emplacement du site dans un terminal de commande
 
 -> Pour vous connecter en tant qu'administrateur : 
-    -> Rendez-vous sur la page Connexion
-    -> Rentrer comme adresse e-mail "admin@admin.fr" et comme mot de passe "admin"
+    -> Rendez-vous sur la page Connexion et rentrer comme adresse e-mail "admin@admin.fr" et comme mot de passe "admin"
+    -> Ou bien créer un nouveau compte, et dans la base de données changer la valeur de la colonne role à 1, ce qui donnera à ce compte le statut d'admin
 
 Le dossier Public contient les fichiers CSS et JS, ainsi que les images du blog.
 

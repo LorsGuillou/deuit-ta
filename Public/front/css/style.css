@@ -218,6 +218,7 @@ header #headband #avatar img {
     border: 2px solid var(--border);
     border-radius: 50%;
     width: 100%;
+    height: 100%;
 }
 
 /* =============== 

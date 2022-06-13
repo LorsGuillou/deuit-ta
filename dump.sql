@@ -11,6 +11,25 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Listage de la structure de la base pour deuit-ta
+CREATE DATABASE IF NOT EXISTS `deuit-ta` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `deuit-ta`;
+
+-- Listage de la structure de la table deuit-ta. blog
+CREATE TABLE IF NOT EXISTS `blog` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `titleFR` varchar(50) NOT NULL,
+  `titleBZH` varchar(50) NOT NULL,
+  `excerptFR` varchar(200) NOT NULL,
+  `excerptBZH` varchar(200) NOT NULL,
+  `img` varchar(200) NOT NULL,
+  `contentFR` text NOT NULL,
+  `contentBZH` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
 -- Listage des données de la table deuit-ta.blog : ~8 rows (environ)
 /*!40000 ALTER TABLE `blog` DISABLE KEYS */;
 INSERT INTO `blog` (`id`, `titleFR`, `titleBZH`, `excerptFR`, `excerptBZH`, `img`, `contentFR`, `contentBZH`, `created_at`) VALUES
@@ -24,19 +43,57 @@ INSERT INTO `blog` (`id`, `titleFR`, `titleBZH`, `excerptFR`, `excerptBZH`, `img
 	(39, 'La Fête du Bruit à Landerneau', 'Gouel an Trouz e Landerne', 'Un programme de qualité au bord de l&#039;Elorn !', 'Ur programm a -feson war bord an Elorn !', '62a201b72e83e4.50602481.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Itaque contra est, ac dicitis; Sed ea mala virtuti magnitudine obruebantur. Bonum valitudo: miser morbus. Neminem videbis ita laudatum, ut artifex callidus comparandarum voluptatum diceretur. Non semper, inquam; \r\n\r\nQuid me istud rogas? Illi enim inter se dissentiunt. Nam ante Aristippus, et ille melius. Recte, inquit, intellegis. Quamquam tu hanc copiosiorem etiam soles dicere. \r\n\r\nAliud igitur esse censet gaudere, aliud non dolere. Duo Reges: constructio interrete. Itaque his sapiens semper vacabit. A mene tu? \r\n\r\nSed ne, dum huic obsequor, vobis molestus sim. Bestiarum vero nullum iudicium puto. Tollenda est atque extrahenda radicitus. Tum mihi Piso: Quid ergo? \r\n\r\nMaximus dolor, inquit, brevis est. Et ille ridens: Video, inquit, quid agas; Quis istud, quaeso, nesciebat? Conferam tecum, quam cuique verso rem subicias; Eaedem res maneant alio modo. Sin aliud quid voles, postea. \r\n\r\n', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et non ex maxima parte de tota iudicabis? Nihil ad rem! Ne sit sane; Mihi, inquam, qui te id ipsum rogavi? Vide, quaeso, rectumne sit. Si longus, levis. Ut optime, secundum naturam affectum esse possit. Quodsi ipsam honestatem undique pertectam atque absolutam. Sequitur disserendi ratio cognitioque naturae; \r\n\r\nQuid de Platone aut de Democrito loquar? Et nemo nimium beatus est; Tum mihi Piso: Quid ergo? Tum mihi Piso: Quid ergo? Et quod est munus, quod opus sapientiae? \r\n\r\nDuo Reges: constructio interrete. Eaedem enim utilitates poterunt eas labefactare atque pervertere. Sequitur disserendi ratio cognitioque naturae; Etiam beatissimum? Non est igitur voluptas bonum. \r\n\r\nAt hoc in eo M. Cur id non ita fit? Recte, inquit, intellegis. Quo tandem modo? Proclivi currit oratio. Ita enim vivunt quidam, ut eorum vita refellatur oratio. \r\n\r\nNunc vides, quid faciat. Audeo dicere, inquit. Quid censes in Latino fore? Quorum sine causa fieri nihil putandum est. \r\n\r\n', '2022-06-09 16:20:39');
 /*!40000 ALTER TABLE `blog` ENABLE KEYS */;
 
--- Listage des données de la table deuit-ta.comments : ~0 rows (environ)
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
-
--- Listage des données de la table deuit-ta.contact : ~0 rows (environ)
-/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
+-- Listage de la structure de la table deuit-ta. users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `avatar` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `role` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- Listage des données de la table deuit-ta.users : ~1 rows (environ)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `mail`, `password`, `avatar`, `created_at`, `role`) VALUES
 	(25, 'Admin', 'admin@admin.fr', '$2y$10$cJi.bU2kMgGcKyEW80KxVOFLlQWp/TLuHr12y1llUkKYDit11nLYG', 'blank.jpg', '2022-06-03 14:58:24', 1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Listage de la structure de la table deuit-ta. comments
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `idUser` bigint(20) unsigned NOT NULL,
+  `idBlog` bigint(20) unsigned NOT NULL,
+  `comment` varchar(250) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK_commentaires_actu` (`idBlog`),
+  KEY `FK_commentaires_user` (`idUser`),
+  CONSTRAINT `FK_commentaires_actu` FOREIGN KEY (`idBlog`) REFERENCES `blog` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_commentaires_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Listage des données de la table deuit-ta.comments : ~0 rows (environ)
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+
+-- Listage de la structure de la table deuit-ta. contact
+CREATE TABLE IF NOT EXISTS `contact` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `idUser` bigint(20) unsigned NOT NULL,
+  `object` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `FK_mail_user` (`idUser`),
+  CONSTRAINT `FK_mail_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Listage des données de la table deuit-ta.contact : ~0 rows (environ)
+/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

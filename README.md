@@ -33,7 +33,7 @@ La partie administration permet de publier, d'éditer et de supprimer les articl
 
 L'administrateur peut également supprimer n'importe quel commentaire. Les utilisateurs peuvent supprimer leurs propres commentaires s'ils sont connectés directement sur la page de l'article ou par l'espace compte.
 
-Un diagramme UML est présent au format .png à la racine du projet.
+Un diagramme UML est présent aux formats .drawio.xml et .png à la racine du projet.
 
 Je vous remercie de l'attention que vous portez à mon projet !
 N'hésitez à me faire parvenir vos retours !

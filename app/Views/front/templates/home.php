@@ -3,8 +3,8 @@
     <main>
         <div id="banner">
             <h1>Bienvenue ! <span>Degemer mat !</span></h1>
-            <p class="container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos dolor voluptate obcaecati facilis delectus enim harum nisi sapiente et deserunt.</p> 
-            <p class="container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias enim molestiae consequuntur culpa dignissimos error cumque nulla repellat delectus quidem!</p>
+            <p class="container">Ici, on parle à la fois français et breton ! Deuit 'ta ce veut être un endroit ou on peut découvrir la langue bretonne, ou s'entraîner et la pratiquer à plusieurs ! Que vous soyez débutant ou déjà à l'aise, vous trouverez votre bonheur ! </p> 
+            <p class="container">Amañ e vez komzet galleg ha brezhoneg a-gevret ! Gallout a rit dizoleiñ ar yezh brezhoneg, pe pleustriñ ha komz asambles amañ e Deuit 'ta ! Deraouad pe barrek, kavout a reoc'h ho levenez !</p>
         </div>
         <div id="home-page" class="container">
             <section id="home-activities">

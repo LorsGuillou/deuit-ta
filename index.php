@@ -4,6 +4,7 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Récupération des variables du dossier .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 

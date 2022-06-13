@@ -35,7 +35,7 @@ class Controller {
 
         } else {
 
-            echo "<script type='text/javascript'>alert('L'image n'est pas conforme.')</script>";
+            throw new Exception ('Le format de cette image n\'est pas valide.');
 
         }
     }

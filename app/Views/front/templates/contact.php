@@ -2,10 +2,12 @@
 
     <main class="container">
         <h1>Contact</h1>
+        <div class="alerts">
+            <?= $alert ?>
+        </div>
             <?php if (!empty($_SESSION)) : ?>
             <section id="contact-page" class="input-page">
                 <h2>Contactez-nous</h2>
-                <?= $alert ?>
                 <p>Un problème avec le site ? Une idée à nous proposer ? Dites-nous tout !</p>
                 <form id="contact-form" action="contactPost" method="post">
                     <p>

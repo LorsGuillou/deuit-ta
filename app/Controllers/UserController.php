@@ -181,24 +181,23 @@ class UserController extends Controller {
    }
 
    // Gestion de l'envoi de message à l'administrateur
-    public function postMail($data) {
+    public function messageAdmin($data) {
         $contactManager = new \Projet\Models\Contact();
         $frontController = new \Projet\Controllers\FrontController();
-        $mail = $contactManager->postMail($data);
 
-        if (empty($_POST['object'])) {
-            $alert = '<p class="form-error">Veuillez précisez l\'objet de votre message</p>';
+        if (empty($_POST['object']) && empty($_POST['message'])) {
+            $alert = '<p class="error">Les deux champs doivent être remplis.</p>';
+            $frontController->contact($alert);
+        } elseif (empty($_POST['object'])) {
+            $alert = '<p class="error">Veuillez préciser l\'objet du message</p>';
             $frontController->contact($alert);
         } elseif (empty($_POST['message'])) {
-            $alert = '<p class="form-error">Votre message est vide</p>';
-            $frontController->contact($alert);
-        } elseif (empty($_POST['object']) && empty($_POST['message'])) {
-            $alert = '<p class="form-error">Vous ne pouvez pas envoyer un message vide.</p>';
+            $alert = '<p class="error">Vous ne pouvez pas envoyer un message vide.</p>';
             $frontController->contact($alert); 
         } else {
-            $alert = '<p class="form-success">Votre message nous a bien été transmis !</p>';
+            $alert = '<p class="success">Votre message nous a bien été transmis !</p>';
             $frontController->contact($alert);
-            $mail = $contactManager->postMail($data);
+            $contactManager->messageAdmin($data);
         }
     }
 }

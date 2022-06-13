@@ -77,7 +77,7 @@ try {
                     ':object' => htmlspecialchars($_POST['object']),
                     ':message' => htmlspecialchars($_POST['message'])
                 ];
-                $userController->postMail($data);
+                $userController->messageAdmin($data);
             }  
 
         // Aller sur Connexion

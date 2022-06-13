@@ -6,8 +6,7 @@
             <table id="user-list" class="admin-table">
                 <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
+                        <th>Auteur</th>
                         <th>Objet</th>
                         <th>Date d'envoi</th>
                         <th>Actions</th>

@@ -38,14 +38,14 @@ class AdminController extends Controller {
     // Liste des messages
     public function mails($alert = null) {
         $contactManager = new \Projet\Models\Contact();
-        $mails = $contactManager->mailList();
+        $mails = $contactManager->messageList();
         require ($this->view('admin', 'mails'));
     }
 
     // Lecture de message
     public function readMail($id) {
         $contactManager = new \Projet\Models\Contact();
-        $mail = $this->throw404IfEmpty($contactManager->readMail($id));
+        $mail = $this->throw404IfEmpty($contactManager->readMessage($id));
         require ($this->view('admin', 'readMail'));
     }
 

@@ -5,7 +5,7 @@ namespace Projet\Models;
 class Contact extends Manager {
 
     // Rédaction d'un message
-    public function postMail($data) {
+    public function messageAdmin($data) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('INSERT INTO contact (idUser, object, message) 
                             VALUES (:id, :object, :message)');
@@ -15,7 +15,7 @@ class Contact extends Manager {
     }
 
     // Liste des messages sur la page admin
-    public function mailList() {
+    public function messageList() {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT contact.id, contact.object, DATE_FORMAT(contact.created_at, "%d %M %Y") as date, users.username
                             FROM contact 
@@ -28,7 +28,7 @@ class Contact extends Manager {
     }
 
     // Lecture de message
-    public function readMail($id) {
+    public function readMessage($id) {
         $pdo = self::dbConnect();
         $req = $pdo->prepare('SELECT contact.id, contact.object, contact.message, DATE_FORMAT(contact.created_at, "%d %M %Y") as date, users.username, users.mail 
                             FROM contact

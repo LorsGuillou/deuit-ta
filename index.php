@@ -198,7 +198,7 @@ try {
                 throw $noAuthorisation;
             } else {
                 $id = htmlspecialchars($_GET['id']);
-                $userController->deleteComment($id);
+                $userController->deleteCommentFromAccount($id);
             }
 
         // Se déconnecter

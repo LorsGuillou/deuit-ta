@@ -38,7 +38,7 @@
     --bannerbzh: rgba(176, 196, 222, 1);
     --bzh: rgba(102, 125, 155, 1);
     --menulinks: rgba(202, 209, 224, 0.87);
-    --linkhover: rgb(252, 46, 46);
+    --linkhover: rgba(252, 46, 46, 1);
     --border: rgba(176, 196, 222, 1);
     --errorbg: rgba(250, 167, 167, 1);
     --successbg: rgba(179, 251, 179, 1);

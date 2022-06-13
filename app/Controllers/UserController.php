@@ -170,15 +170,26 @@ class UserController extends Controller {
         $frontController->readBlog($_GET['id'], $alert);
     }
 
+    // Effacer depuis l'article
    public function deleteComment($id) {
        $commentManager = new \Projet\Models\Comments();
-       $delete = $commentManager->delete($id);
        $frontController = new \Projet\Controllers\FrontController();
-
+       
+       $commentManager->delete($id);
        $idPage = htmlspecialchars($_GET['idPage']);
        $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
        $frontController->readBlog($idPage, $alert);
    }
+
+   // Effacer depuis l'espace compte
+   public function deleteCommentFromAccount($id) {
+        $commentManager = new \Projet\Models\Comments();
+        $frontController = new \Projet\Controllers\FrontController();
+
+        $commentManager->delete($id);
+        $alert = '<p class="success">Votre commentaire a bien été supprimé !</p>';
+        $frontController->account($alert);
+   }   
 
    // Gestion de l'envoi de message à l'administrateur
     public function messageAdmin($data) {
